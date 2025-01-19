@@ -1,0 +1,70 @@
+/* Define fonts */
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    background-color: #0A0A0A;
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    margin: 0;
+    padding: 0; 
+}
+
+* {
+    box-sizing: border-box;
+    color: #ffffff;
+}
+
+header {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 70px;
+}
+.brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+.brand h1 {
+    font-weight: normal;
+    background: linear-gradient(90deg, #FFFFFF 0%, #628150 45.9%, #82C35C 100%);
+    -webkit-background-clip: text; 
+    color: transparent; 
+    font-size: 2.2rem;
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+
+.main-nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    list-style: none;
+    align-items: center;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
