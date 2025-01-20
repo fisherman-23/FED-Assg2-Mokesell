@@ -1,14 +1,14 @@
 /* Define fonts */
 @font-face {
     font-family: 'Poppins';
-    src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+    src: url('../fonts/Poppins-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('../assets/fonts/Poppins-Bold.ttf') format('truetype');
+    src: url('../fonts/Poppins-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
@@ -28,10 +28,11 @@ body {
 }
 
 header {
-
+    position: absolute;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 20px 70px;
+    padding: 1.5rem 6rem;
 }
 .brand {
     display: flex;
@@ -67,4 +68,56 @@ header {
     text-decoration: none;
     font-size: 1.2rem;
     color: #ffffff;
+}
+
+.landing-section {
+    background-image: url('../landing-bg.png');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+
+.landing-text {
+    flex: 5.5;
+    padding: 6rem;
+}
+.landing-text p {
+    font-size: 1.1rem;
+    line-height: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+.landing-3d {
+    flex: 4.5;
+}
+
+.btn {
+    display: inline-block;          /* Ensures proper sizing and padding */
+    padding: 20px 40px;            /* Adjust padding as needed */
+    border: 2px solid #ffffff;    /* Adds a border with your desired color */
+    border-radius: 25px;          /* Makes the button rounded */
+    background-color: transparent; /* Transparent background */
+    color: #ffffff;               /* Text color matching the border */
+    text-decoration: none;        /* Removes underline from the link */
+    font-size: 16px;              /* Adjust font size as needed */
+    text-align: center;           /* Centers text within the button */
+    transition: all 0.3s ease;    /* Smooth transition for hover effects */
+}
+
+.btn:hover {
+    background-color: #ffffff4b;    /* Adds a filled background on hover */
+    color: white;                 /* Changes text color to white on hover */
+  }
+
+#canvas {
+    display: block;
+    position: relative;  /* Adjust position to be relative to the .landing-3d container */
+    z-index: 1;  /* Lower z-index so it doesn't overlap too much with the text */
+    max-width: 100%;  /* Ensure it doesn't overflow */
+    max-height: 100%;  /* Keep it within the bounds of its container */
+    background-color: transparent;
 }
