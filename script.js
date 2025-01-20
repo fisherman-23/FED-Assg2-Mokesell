@@ -1,13 +1,16 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+
 const scene = new THREE.Scene();
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#canvas"),
   alpha: true,
 });
-renderer.setSize(window.innerWidth, window.innerHeight);
-// => change it to
-console.log("Hello World!");
+renderer.setSize(
+  document.querySelector("#canvas").clientWidth,
+  document.querySelector("#canvas").clientHeight
+);
+
 // Camera
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -15,7 +18,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.set(0, 1, 3); // Adjust position as needed
+camera.position.set(0.75, 0.5, 0.75); // Adjust position as needed
 
 // Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
@@ -29,6 +32,9 @@ loader.load(
     const model = gltf.scene;
     scene.add(model);
     model.position.set(0, 0, 0); // Adjust model's position if necessary
+
+    // Make the camera look at the model
+    camera.lookAt(model.position);
   },
   undefined,
   (error) => {

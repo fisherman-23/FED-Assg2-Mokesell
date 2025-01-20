@@ -79,12 +79,14 @@ header {
     display: flex;
     flex-direction: row;
     align-items: end;
+    
 }
 
 .landing-text {
     flex: 5.5;
     padding: 6rem;
 }
+
 .landing-text p {
     font-size: 1.1rem;
     line-height: 2rem;
@@ -93,6 +95,7 @@ header {
 }
 .landing-3d {
     flex: 4.5;
+    height: 80%;
 }
 
 .btn {
@@ -117,7 +120,6 @@ header {
     display: block;
     position: relative;  /* Adjust position to be relative to the .landing-3d container */
     z-index: 1;  /* Lower z-index so it doesn't overlap too much with the text */
-    max-width: 100%;  /* Ensure it doesn't overflow */
-    max-height: 100%;  /* Keep it within the bounds of its container */
-    background-color: transparent;
+    width: 100%;  /* Ensure it doesn't overflow */
+    height: 100%;  /* Keep it within the bounds of its container */
 }
