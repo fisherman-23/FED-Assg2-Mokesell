@@ -1,0 +1,13 @@
+{
+    "_id": "product_456",
+    "seller_id": "user_123",
+    "name": "Used Laptop",
+    "description": "A well-maintained used laptop",
+    "category": "electronics",
+    "price": 300,
+    "quantity": 1,
+    "condition": "used",
+    "images": ["url_image1", "url_image2"],
+    "date_listed": "2025-01-01T12:00:00Z",
+    "status": "available"
+}
