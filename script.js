@@ -134,6 +134,7 @@ function animate() {
     // Calculate target rotation based on mouse position
     target.x = mouse.x * maxRotation;
     target.y = mouse.y * maxRotation;
+    console.log(target.x, target.y);
 
     // Smoothly interpolate current rotation to target rotation
     model.rotation.y += (target.x - model.rotation.y) * rotationSpeed;
