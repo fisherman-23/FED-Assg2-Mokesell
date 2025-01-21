@@ -137,7 +137,7 @@ function animate() {
     console.log(target.x, target.y);
 
     // Smoothly interpolate current rotation to target rotation
-    model.rotation.y += (target.x - model.rotation.y) * rotationSpeed;
+    model.rotation.y += (target.x - model.rotation.y) * rotationSpeed - 0.5;
     model.rotation.x += (target.y - model.rotation.x) * rotationSpeed;
 
     // Optional: Add a gentle floating animation
