@@ -124,7 +124,10 @@ ground.receiveShadow = true;
 
 // Animation parameters
 const rotationSpeed = 0.1;
-const maxRotation = Math.PI / 6; // 30 degrees
+var XmaxRotation = Math.PI / 12; // 30 degrees
+var YmaxRotation = Math.PI / 6;
+var rotationSpeedX = 0.1; // Smoothing factor for X rotation
+var rotationSpeedY = 0.1; // Smoothing factor for Y rotation;
 
 // Render Loop with smooth animation
 function animate() {
@@ -132,14 +135,23 @@ function animate() {
 
   if (model) {
     // Calculate target rotation based on mouse position
-    target.x = mouse.x * maxRotation;
-    target.y = mouse.y * maxRotation;
-    console.log(target.x, target.y);
+    target.x = -mouse.y * YmaxRotation; // Invert Y-axis for correct orientation
+    target.y = mouse.x * XmaxRotation;
+    let targetXmaxRotation = Math.PI / 12;
+    // Smoothly adjust XmaxRotation based on condition
+    if (target.y > -0.3) {
+      targetXmaxRotation = Math.PI / 1.5;
+    } else {
+      targetXmaxRotation = Math.PI / 12;
+    }
+    XmaxRotation += (targetXmaxRotation - XmaxRotation) * 0.05; // Smooth transition
 
     // Smoothly interpolate current rotation to target rotation
-    model.rotation.y += (target.x - model.rotation.y) * rotationSpeed - 0.5;
-    model.rotation.x += (target.y - model.rotation.x) * rotationSpeed;
-
+    if (model.rotation.y > 1) {
+      target.x = -target.x;
+    }
+    model.rotation.x += (target.x - model.rotation.x) * rotationSpeedX;
+    model.rotation.y += (target.y - model.rotation.y) * rotationSpeedY;
     // Optional: Add a gentle floating animation
     model.position.y = Math.sin(Date.now() * 0.001) * 0.05;
   }
