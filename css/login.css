@@ -1,0 +1,115 @@
+
+.login-section {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    display: flex;
+    flex: 5;
+    flex-direction: column;
+    padding-left: 6rem;
+    padding-top: 8rem;
+}
+.login-section h1 {
+    font-size: 2.2rem;
+    color: #fff;
+    font-weight: normal;
+    margin-top: 0rem;
+}
+.login-section h2 {
+    font-size: 1.5rem;
+    color: #8B8B8B;
+    font-weight: normal;
+    margin-bottom: 0rem;
+
+}
+.login-3d {
+    background-image: url('../landing-bg.png');
+    background-size: cover;
+    background-position: center;
+    flex: 5;
+    height: 100%;
+}
+.login-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+#canvas {
+    padding-top: 10rem;
+}
+#login-form {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+#login-form input {
+    padding: 0.5rem;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+    background-color: transparent;
+    width: 100%;
+    font-family: Poppins;
+}
+
+#login-form button {
+    border-radius: 50%;
+    aspect-ratio: 1 / 1; /* Ensures a 1:1 ratio for width and height */
+    margin: 1rem;
+    cursor: pointer;
+    height: 5rem;
+    display: flex; /* Enables flexbox for centering */
+    align-items: center; /* Centers the image vertically */
+    justify-content: center; /* Centers the image horizontally */
+}
+#signup-form {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+}
+
+#signup-form input {
+    padding: 0.5rem;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+    background-color: transparent;
+    width: 100%;
+    font-family: Poppins;
+}
+
+#signup-form button {
+    border-radius: 50%;
+    aspect-ratio: 1 / 1; /* Ensures a 1:1 ratio for width and height */
+    margin: 1rem;
+    cursor: pointer;
+    height: 5rem;
+    display: flex; /* Enables flexbox for centering */
+    align-items: center; /* Centers the image vertically */
+    justify-content: center; /* Centers the image horizontally */
+}
+.google-btn {
+    margin-top: 1rem;
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+    padding: 0.5rem;
+    font-family: Poppins, sans-serif;
+    cursor: pointer;
+    width: 50%;
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Centers items vertically */
+    justify-content: center; /* Centers items horizontally */
+    gap: 10px; /* Adds spacing between the image and text */
+}
+
+form div {
+    width: 70%;
+}
+.input-group {
+    width: 100%;
+}

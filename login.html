@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Create Account</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <header>
+        <div class="brand">
+            <img src="mokesell2 2.png" alt="Mokesell Logo" style="height: 50px;">
+            <h1>mokesell</h1>
+        </div>
+
+    </header>
+    <div class="login-container">
+        <div class="login-section">
+            <h2>Already a user?</h2>
+            <h1>Log In</h1>
+            <form id="login-form">
+                <div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn"><img src="caret-right.svg"></button>
+            </form>
+            <h2>Not yet a user?</h2>
+            <h1>Sign Up</h1>
+            <form id="signup-form">
+                <div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="username" name="username" id="username" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn"><img src="caret-right.svg"></button>
+            </form>
+            <h2>OR</h2>
+            <button class="google-btn"><img src="google.svg">Continue with Google</button>
+
+
+        </div>
+
+        <div class="login-3d">
+            <canvas id="canvas"></canvas>
+        </div>
+
+    </div>
+    <script type="module" src="three.js"></script>
+
+</body>
+
+</html>

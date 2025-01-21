@@ -121,6 +121,8 @@ header {
     /* Centers text within the button */
     transition: all 0.3s ease;
     /* Smooth transition for hover effects */
+    cursor: pointer;
+
 }
 
 .btn:hover {
