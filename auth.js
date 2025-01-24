@@ -85,8 +85,8 @@ export const checkSignedIn = () => {
     // If a user is signed in, get the ID token
     return getIdToken(user)
       .then((token) => {
-        console.log("User is signed in, token:", token);
-        return token;
+        console.log("User is signed in, token:", token, user.uid);
+        return [user.uid, token];
       })
       .catch((error) => {
         console.error("Error getting token:", error);
