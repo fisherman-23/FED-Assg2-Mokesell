@@ -3,10 +3,11 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, getIdToken } from "firebase/auth";
 import { auth } from "./firebase"; // Import the `auth` instance from firebase.js
-
 import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+
 const db = getFirestore();
 // Signup function
 export const signUp = async (email, password, username) => {
@@ -73,3 +74,27 @@ onAuthStateChanged(auth, (user) => {
     console.log("No user is signed in.");
   }
 });
+// Import necessary functions from Firebase SDK
+
+export const checkSignedIn = () => {
+  const auth = getAuth(); // Initialize Firebase Authentication
+
+  const user = auth.currentUser; // Get the current user
+
+  if (user) {
+    // If a user is signed in, get the ID token
+    return getIdToken(user)
+      .then((token) => {
+        console.log("User is signed in, token:", token);
+        return token;
+      })
+      .catch((error) => {
+        console.error("Error getting token:", error);
+        return null;
+      });
+  } else {
+    // No user is signed in
+    console.log("No user is signed in");
+    return null;
+  }
+};
