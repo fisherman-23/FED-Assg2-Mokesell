@@ -170,11 +170,8 @@ header {
     gap: 1rem;
     width: 80vw;
 }
-.product-card {
-    flex: 1 1 23%;
-    max-width: calc(25% - 1rem);
-}
-.product-card img {
+
+.gradient-blur img {
     max-width: 100%;
     border-radius: 15px;
     object-fit: cover;
@@ -183,12 +180,14 @@ header {
 .gradient-blur {
     position: relative;
     z-index: 5;
-    inset: auto 0 10% 0; /* Moved down 10% */
-    height: 65%;
     pointer-events: none;
     border-radius: 15px;
 }
-
+.product-card {
+    flex: 1 1 23%;
+    max-width: calc(25% - 1rem);
+    cursor: pointer;
+}
 .gradient-blur > div,
 .gradient-blur::before,
 .gradient-blur::after {
