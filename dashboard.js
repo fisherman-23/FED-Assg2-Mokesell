@@ -1,5 +1,18 @@
-import { checkSignedIn } from "./auth";
+import { checkSignedIn, logout } from "./auth";
 import { getUserData } from "./services";
+
+function logOut() {
+  logout()
+    .then(() => {
+      window.location.href = "login.html";
+    })
+    .catch((error) => {
+      console.error("Error logging out:", error);
+    });
+}
+let logout_button = document.getElementById("logout-btn");
+logout_button.addEventListener("click", logOut);
+
 let welcome_string = document.getElementById("dashboard-welcome");
 document.addEventListener("DOMContentLoaded", function () {
   // Ensure checkSignedIn returns a resolved promise, even if it's null

@@ -43,6 +43,7 @@ hr {
 .dashboard-sidebar ul li a {
     color: #ffffff;
     font-size: 1.2rem;
+
 }
 .dashboard-content {
     flex: 10;
@@ -54,4 +55,17 @@ hr {
 .dashboard-content h1 {
     font-size: 2.5rem;
     font-weight: normal;
+}
+#logout-btn {
+    background-color: #e44141;
+    color: #ffffff;
+    padding: 1rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+#logout-btn a {
+    color: #ffffff;
+    text-decoration: none;
 }
