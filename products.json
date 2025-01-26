@@ -171,7 +171,7 @@
     {
         "_id": "product_014",
         "seller_id": "user_014",
-        "name": "AMD Radeon RX 7900 XT",
+        "name": "RTX 5080 Water Cooled",
         "description": "Next-gen GPU with 20GB GDDR6 memory",
         "category": "graphics cards",
         "price": 900,
