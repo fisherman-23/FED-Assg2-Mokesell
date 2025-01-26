@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (result) {
           // go to profile screen
           console.log("User is signed in: ", result[0], result[1]);
+          window.location.href = "dashboard.html";
         } else {
           // go to login screen
           window.location.href = "login.html";
