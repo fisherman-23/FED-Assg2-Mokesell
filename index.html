@@ -19,13 +19,13 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="productPage.html">Products</a></li>
                 <li><a href="rewards.html">Rewards</a></li>
-                <li><a href="profile.html"><img src="profile-icon.svg" style="height:50px"></a></li>
+                <button id="profile-btn"> <img src="profile-icon.svg" style="height:50px"></button>
 
             </ul>
         </nav>
 
     </header>
-    <div class="landing-section">
+    <section class="landing-section">
         <div class="landing-text">
             <h1>Buy and sell with Mokesell</h1>
             <p>Welcome to Mokesell, the ultimate destination for second-hand personal computing hardware! Whether you’re
@@ -39,7 +39,7 @@
         <div class="landing-3d">
             <canvas id="canvas"></canvas>
         </div>
-    </div>
+    </section>
     <div class="marquee">
         <div class="marquee-content">
             <span>1.1 SALE UP TO 30% OFF 🎉</span>
@@ -54,10 +54,27 @@
 
         </div>
     </div>
-    <div class="home-section">
-        
-    </div>
+    <section class="home-section">
+        <div class="featured-card">
+            <h2>FEATURED</h2>
+            <p>newly refurbished</p>
+            <ol>
+                <li>Ryzen 5600x</li>
+                <li>NVIDIA RTX 3070ti</li>
+                <li>32 GB DDR4 CL18 Corsair RAM</li>
+                <li>2TB SSD</li>
+            </ol>
+        </div>
+        <section class="trending-section">
+            <h2>Trending Products</h2>
+            <p>based on number of offers made</p>
+
+        </section>
+    </section>
+
+    <script type="module" src="three.js"></script>
     <script type="module" src="script.js"></script>
+
 </body>
 
 </html>

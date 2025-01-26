@@ -121,6 +121,8 @@ header {
     /* Centers text within the button */
     transition: all 0.3s ease;
     /* Smooth transition for hover effects */
+    cursor: pointer;
+
 }
 
 .btn:hover {
@@ -145,9 +147,10 @@ header {
 .home-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     height: 100vh;
     background-color: #0A0A0A;
+    padding: 4rem 6rem;
 }
 
 .marquee {
@@ -160,7 +163,7 @@ header {
 .marquee-content {
     display: flex;
     white-space: nowrap;
-    animation: scroll 30s linear infinite;
+    animation: scroll 15s linear infinite;
 }
 
 .marquee-content span {
@@ -186,4 +189,66 @@ header {
 
 .marquee-content span {
     display: inline-flex;
+}
+
+.featured-card {
+    background-image: url('../featured-bg.png');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 50vh;
+    border-radius: 25px;
+    padding: 0.5rem 3rem;
+    padding-bottom: 10rem;
+
+}
+.featured-card h2 {
+    font-size: 2.5rem;
+    color: #E9E9E9;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: -0.5rem;
+    padding-bottom:0;
+
+}
+.featured-card p {
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.featured-card ol {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0rem;
+}
+.feature-card ol li {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#profile-btn {
+    display: inline-block;
+    border: none;
+    background-color: transparent;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.trending-section{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: #0A0A0A;
+    padding: 4rem 0rem;
+}
+
+.trending-section h2 {
+    font-weight: normal;
+    font-size: 2.5rem;
+    margin-bottom: 0rem;
 }
