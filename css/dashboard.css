@@ -1,0 +1,57 @@
+header {
+    position: relative;
+    padding: 0.8rem 6rem;
+}
+hr {
+    color: #474747;
+    margin: 0rem 5rem;
+}
+.back {
+
+    align-items: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    align-self: center;
+}
+.dashboard-section {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    height: 100vh;
+}
+.dashboard-sidebar {
+    flex: 1;
+    background-color: transparent;
+    padding: 1rem 3rem;
+    height: 100%;
+    border-right: 1.6px solid #474747;
+}
+.dashboard-sidebar ul, .dashboard-sidebar ul li, .dashboard-sidebar ul li a {
+    list-style: none;
+    padding: 0;
+    text-decoration: none;
+}
+.dashboard-sidebar ul li {
+    padding: 1rem 1rem;
+    margin: 1rem 0;
+}
+.dashboard-sidebar ul li.selected {
+    background-color: #474747;
+    border-radius: 0.5rem;
+
+}
+.dashboard-sidebar ul li a {
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+.dashboard-content {
+    flex: 10;
+    background-color: transparent;
+    padding: 1rem 2rem;
+    height: 100%;
+}
+
+.dashboard-content h1 {
+    font-size: 2.5rem;
+    font-weight: normal;
+}

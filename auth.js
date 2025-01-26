@@ -77,24 +77,29 @@ onAuthStateChanged(auth, (user) => {
 // Import necessary functions from Firebase SDK
 
 export const checkSignedIn = () => {
-  const auth = getAuth(); // Initialize Firebase Authentication
+  const auth = getAuth();
 
-  const user = auth.currentUser; // Get the current user
+  return new Promise((resolve, reject) => {
+    // Listen for authentication state changes
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log("User:", user); // Logs the user when the state changes (after Firebase sets the user)
 
-  if (user) {
-    // If a user is signed in, get the ID token
-    return getIdToken(user)
-      .then((token) => {
-        console.log("User is signed in, token:", token, user.uid);
-        return [user.uid, token];
-      })
-      .catch((error) => {
-        console.error("Error getting token:", error);
-        return null;
-      });
-  } else {
-    // No user is signed in
-    console.log("No user is signed in");
-    return null;
-  }
+      if (user) {
+        getIdToken(user)
+          .then((token) => {
+            console.log("User is signed in, token:", token, user.uid);
+            resolve([user.uid, token]); // Return user data and token when resolved
+          })
+          .catch((error) => {
+            console.error("Error getting token:", error);
+            resolve(null); // Resolve with null if there's an error
+          });
+      } else {
+        console.log("No user is signed in");
+        resolve(null); // Resolve with null if no user is signed in
+      }
+
+      unsubscribe(); // Unsubscribe after the state change is handled
+    });
+  });
 };

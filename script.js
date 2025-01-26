@@ -4,7 +4,6 @@ import { checkSignedIn } from "./auth";
 document.addEventListener("DOMContentLoaded", function () {
   const profileButton = document.getElementById("profile-btn");
   profileButton.addEventListener("click", function () {
-    let result = checkSignedIn();
     checkSignedIn()
       .then((result) => {
         if (result) {

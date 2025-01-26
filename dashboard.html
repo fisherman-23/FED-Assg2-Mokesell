@@ -3,9 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    
 </head>
 <body>
-    
+    <header>
+        <div class="brand">
+            <img src="mokesell2 2.png" alt="Mokesell Logo" style="height: 50px;">
+            <h1>mokesell</h1>
+        </div>
+        <a href="index.html" class="back">back</a>
+    </header>
+    <hr>
+    <section class="dashboard-section">
+        <div class="dashboard-sidebar">
+            <ul>
+                <li class="selected"><a href="dashboard.html">Overview</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="my-listings.html">Listings</a></li>
+                <li><a href="my-orders.html">Purchase</a></li>
+
+
+            </ul>
+        </div>
+        
+        <div class="dashboard-content">
+            <h1 id="dashboard-welcome">Welcome User,</h1>
+        </div>
+    </section>
+    <script type="module" src="dashboard.js"></script>
 </body>
 </html>
