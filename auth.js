@@ -25,6 +25,9 @@ export const signUp = async (email, password, username) => {
       createdAt: new Date(),
       uid: user.uid,
       username: username, // Adding the username to the Firestore document
+      listings: [], // Initialize an empty array for the user's listings
+      likes: [], // Initialize an empty array for the user's likes
+      chats: [], // Initialize an empty array for the user's chats
     });
 
     console.log("User signed up:", userCredential.user);

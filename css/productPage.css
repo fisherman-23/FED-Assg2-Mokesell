@@ -196,14 +196,24 @@ header {
     border-radius: 15px;
 }
 
-.load-more{
+.load-more {
     margin: 2rem 0;
     background: none;
-    font-size: 1.5rem;
-    border: white 1px solid;
-    background: none;
-    border-radius: 15px;
     padding: 0.5rem 1rem;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+    background-color: transparent;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.load-more:hover {
+    background-color: #ffffff4b;
+    color: white;
 }
 .product-card img{
     width: 100%;
@@ -221,10 +231,7 @@ header {
     border-radius: 15px;
 }
 
-
-
-
-.gradient-blur > div:nth-of-type(2) {
+.gradient-blur > div:nth-of-type(1) {
     z-index: 6;
     backdrop-filter: blur(3px); /* Decreased blur amount */
     mask: linear-gradient(
@@ -236,7 +243,7 @@ header {
     );
 }
 
-.gradient-blur > div:nth-of-type(3) {
+.gradient-blur > div:nth-of-type(2) {
     z-index: 7;
     backdrop-filter: blur(5px); /* Decreased blur amount */
     
