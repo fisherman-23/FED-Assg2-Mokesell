@@ -23,7 +23,7 @@ function loadProducts() {
                         </section>
                         <img src="/productIMG/product${
                           i + 1
-                        }.png" alt="Product Image">
+                        }.jpg" alt="Product Image">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -45,7 +45,7 @@ function loadProducts() {
                         </section>
                         <img src="/productIMG/product${
                           i + 1
-                        }.png" alt="Product Image">
+                        }.jpg" alt="Product Image">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -63,9 +63,7 @@ function loadProducts() {
       console.error("Error loading products:", error);
     });
 }
-document.addEventListener("DOMContentLoaded", function () {
-  loadProducts();
-});
+loadProducts();
 document.querySelector(".load-more").addEventListener("click", function () {
   loadProducts();
 });
