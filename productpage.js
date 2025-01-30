@@ -1,3 +1,4 @@
+import { doc } from "firebase/firestore";
 import { createListing } from "./services";
 import { initializeApp } from "firebase/app";
 
@@ -99,6 +100,52 @@ function testUploadBatchListing() {
     });
 }
 
+const popup = document.getElementById("popup");
+const closeButton = document.getElementById("close-btn");
 document.querySelector(".upload").addEventListener("click", function () {
-  testUploadBatchListing();
+  // testUploadBatchListing();
+  popup.style.opacity = 1;
+  popup.style.visibility  = "visible";
 });
+closeButton.addEventListener("click", () => {
+  popup.style.opacity = 0;
+  popup.style.visibility  = "hidden";
+});
+
+
+
+const uploadLeft = document.querySelector('.uploadLeft');
+const fileInput = document.getElementById('imageUpload');
+const imagePreview = document.getElementById('imagePreview');
+
+uploadLeft.addEventListener('click', function() {
+    fileInput.click();
+});
+
+fileInput.addEventListener('change', function() {
+    const file = fileInput.files[0]; 
+    const reader = new FileReader();
+    if (file) {
+        reader.readAsDataURL(file);
+        reader.onload = function(e) {
+          imagePreview.src = e.target.result;
+      };
+        document.querySelector('.uploadLeft h2').style.display = 'none';
+    }
+});
+
+function product(name,price,desc,condition,category,img){
+  this.name = name;
+  this.price = price;
+  this.desc = desc;
+  this.condition = condition;
+  this.category = category;
+  this.img = img;
+}
+
+const form = document.querySelector('.uploadForm');
+form.addEventListener('submit', function(event) {
+  // event.preventDefault();
+  let newListing = new product(document.getElementById("productName").value,document.getElementById("productPrice").value,document.getElementById("Description").value,document.getElementById("condition").value,document.getElementById("category").value, fileInput.files[0]);
+  //Do your thingy here
+  });

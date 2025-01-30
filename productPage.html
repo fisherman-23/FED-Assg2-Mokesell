@@ -43,6 +43,59 @@
             <h1 class="end">End of products</h1>
         </div>
     </section>
+    <div id="popup" class="popup">
+        <div class="popup-content"> 
+            <button id="close-btn" class="close-btn">&times;</button>
+            <div class="uploadContainer">
+                <div class="uploadLeft">
+                    <img id="imagePreview" src="camera.png" alt="Camera" class="uploadImage">
+                    <h2>Upload a picture of your product</h2>
+                </div>
+                <div class="uploadRight">
+                    <form class="uploadForm">
+                        <input type="file" id="imageUpload" class="uploadInput" accept="image/*" style="display: none;">
+                        <div>
+                            <label>Product Name</label><br>
+                            <input id ="productName" type="text"  class="uploadInput"><br>
+                        </div>
+                        <div>
+                            <label>Listing Price</label><br>
+                            <input id ="productPrice" type="text"  class="uploadInput"><br>
+                        </div>
+                        <div>
+                            <label>Product Description</label><br>
+                            <textarea id="Description" class = "uploadInput" cols="30" rows="10"></textarea><br>
+                        </div>
+                        <div>
+                            <label>Product Condition</label><br>
+                            <select id="condition">
+                                <option value="brand new">Brand new</option>
+                                <option value="good">Good</option>
+                                <option value="used">Used</option>
+                                <option value="Damaged">Damaged</option>
+                            </select><br>
+                        </div>
+                        <div>
+                            <label>Product Category</label><br>
+                            <select id = "category">
+                                <option value="cpu">CPU</option>
+                                <option value="gpu">GPU</option>
+                                <option value="ram">RAM</option>
+                                <option value="motherboard">Motherboard</option>
+                                <option value="psu">PSU</option>
+                                <option value="case">Case</option>
+                                <option value="storage">Storage</option>
+                                <option value="peripherals">Peripherals</option>
+                                <option value="other">Other</option>
+                            </select><br>
+                        </div>
+                        <input type="submit" value="List" class="uploadButton">
+                    </form>
+                </div>
+            </div>
+          <!-- <button id="close-btn">Close</button> -->
+        </div>
+      </div>
     <script type="module" src="firebase.js"></script>
     <script type="module" src="productPage.js"></script>
 </body>
