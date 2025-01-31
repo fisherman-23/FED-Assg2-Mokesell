@@ -1,5 +1,5 @@
 import { doc } from "firebase/firestore";
-import { createListing } from "./services";
+import { createListing, uploadImage } from "./services";
 import { initializeApp } from "firebase/app";
 
 var productcontainer = document.querySelector(".product-card-container");
@@ -105,36 +105,34 @@ const closeButton = document.getElementById("close-btn");
 document.querySelector(".upload").addEventListener("click", function () {
   // testUploadBatchListing();
   popup.style.opacity = 1;
-  popup.style.visibility  = "visible";
+  popup.style.visibility = "visible";
 });
 closeButton.addEventListener("click", () => {
   popup.style.opacity = 0;
-  popup.style.visibility  = "hidden";
+  popup.style.visibility = "hidden";
 });
 
+const uploadLeft = document.querySelector(".uploadLeft");
+const fileInput = document.getElementById("imageUpload");
+const imagePreview = document.getElementById("imagePreview");
 
-
-const uploadLeft = document.querySelector('.uploadLeft');
-const fileInput = document.getElementById('imageUpload');
-const imagePreview = document.getElementById('imagePreview');
-
-uploadLeft.addEventListener('click', function() {
-    fileInput.click();
+uploadLeft.addEventListener("click", function () {
+  fileInput.click();
 });
 
-fileInput.addEventListener('change', function() {
-    const file = fileInput.files[0]; 
-    const reader = new FileReader();
-    if (file) {
-        reader.readAsDataURL(file);
-        reader.onload = function(e) {
-          imagePreview.src = e.target.result;
-      };
-        document.querySelector('.uploadLeft h2').style.display = 'none';
-    }
+fileInput.addEventListener("change", function () {
+  const file = fileInput.files[0];
+  const reader = new FileReader();
+  if (file) {
+    reader.readAsDataURL(file);
+    reader.onload = function (e) {
+      imagePreview.src = e.target.result;
+    };
+    document.querySelector(".uploadLeft h2").style.display = "none";
+  }
 });
 
-function product(name,price,desc,condition,category,img){
+function product(name, price, desc, condition, category, img) {
   this.name = name;
   this.price = price;
   this.desc = desc;
@@ -143,9 +141,30 @@ function product(name,price,desc,condition,category,img){
   this.img = img;
 }
 
-const form = document.querySelector('.uploadForm');
-form.addEventListener('submit', function(event) {
-  // event.preventDefault();
-  let newListing = new product(document.getElementById("productName").value,document.getElementById("productPrice").value,document.getElementById("Description").value,document.getElementById("condition").value,document.getElementById("category").value, fileInput.files[0]);
+const form = document.querySelector(".uploadForm");
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  let newListing = new product(
+    document.getElementById("productName").value,
+    document.getElementById("productPrice").value,
+    document.getElementById("description").value,
+    document.getElementById("condition").value,
+    document.getElementById("category").value,
+    fileInput.files[0]
+  );
   //Do your thingy here
-  });
+  console.log(newListing);
+  if (fileInput.files[0]) {
+    // check for file size or not image
+    if (fileInput.files[0].size > 1000000) {
+      alert("File size too large. Please upload an image less than 1MB.");
+    } else if (
+      fileInput.files[0].type !== "image/jpeg" &&
+      fileInput.files[0].type !== "image/png"
+    ) {
+      alert("Please upload a valid image file. (JPG or PNG)");
+    } else {
+      createListing(newListing);
+    }
+  }
+});

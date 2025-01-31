@@ -310,6 +310,7 @@ header {
     padding: 1rem;
     width: 40%;
     height: 40%;
+    cursor: pointer;
 }
 .uploadImage{
     width: 20rem;
@@ -341,7 +342,7 @@ header {
     margin-top: 1rem;
     font-weight: bold;
 }
-#Description {
+#description {
     line-height: 1.2;
     text-align: left;
     height: 8rem;

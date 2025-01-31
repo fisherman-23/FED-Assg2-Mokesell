@@ -1,4 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { v4 as uuidv4 } from "uuid"; // For generating UUIDs
 import {
   getFirestore,
   doc,
@@ -6,8 +7,15 @@ import {
   addDoc,
   collection,
 } from "firebase/firestore";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 
 const db = getFirestore();
+const storage = getStorage();
 // this will contain all Firebase CRUD operations not related to authentication
 // get user data from Firestore with a given UID
 export const getUserData = async (uid) => {
@@ -68,12 +76,91 @@ export const getListingsByIds = async (listingIds) => {
 };
 
 export const createListing = async (listing) => {
-  // create a new listing in Firestore
-  try {
-    const docRef = await addDoc(collection(db, "listings"), listing);
-    console.log("Document written with ID: ", docRef.id);
-  } catch (error) {
-    console.error("Error adding document:", error);
-    throw error;
+  // get user uid
+  const user = getAuth().currentUser;
+  if (!user) {
+    console.error("User not logged in");
+    return;
   }
+
+  try {
+    let file = listing.img;
+    console.log("Uploading image:", file); // If upload is successful
+    const downloadURL = await uploadImage(file);
+    console.log("Download URL:", downloadURL); // If upload is successful
+
+    // create a new listing in Firestore
+    try {
+      let newListing = {
+        name: listing.name,
+        price: listing.price,
+        image: downloadURL,
+        description: listing.desc,
+        category: listing.category,
+        condition: listing.condition,
+        seller: user.uid,
+        likes: 0,
+        createdAt: new Date(),
+      };
+      const docRef = await addDoc(collection(db, "listings"), newListing);
+      console.log("Document written with ID: ", docRef.id);
+      // add to user's listing
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+      if (userSnap.exists()) {
+        const userData = userSnap.data();
+        const userListing = userData.listings || [];
+        userListing.push(docRef.id);
+        await setDoc(userRef, { listings: userListing }, { merge: true });
+      } else {
+        console.log("No such user document!");
+      }
+    } catch (error) {
+      console.error("Error adding document:", error);
+      throw error;
+    }
+  } catch (error) {
+    console.error("Error uploading image:", error); // If there is an error
+  }
+};
+
+// upload image to Firebase Cloud Storage
+// upload image to Firebase Cloud Storage
+export const uploadImage = (file) => {
+  return new Promise((resolve, reject) => {
+    const uniqueFileName = `${Date.now()}_${uuidv4()}_${file.name}`;
+    // Create a reference to the Firebase Storage location
+    const storageRef = ref(storage, "images/" + uniqueFileName);
+
+    // Create a file upload task
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    // Monitor upload progress and completion
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // Progress monitoring (optional)
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+      },
+      (error) => {
+        // Reject the promise with the error
+        console.error("Upload error:", error);
+        reject("Upload failed: " + error.message);
+      },
+      () => {
+        // Get download URL after successful upload
+        getDownloadURL(uploadTask.snapshot.ref)
+          .then((downloadURL) => {
+            console.log("File available at:", downloadURL);
+            resolve(downloadURL); // Resolve the promise with the download URL
+          })
+          .catch((error) => {
+            console.error("Error getting download URL:", error);
+            reject("Error getting download URL: " + error.message);
+          });
+      }
+    );
+  });
 };
