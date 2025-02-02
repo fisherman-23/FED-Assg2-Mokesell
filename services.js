@@ -6,6 +6,8 @@ import {
   getDoc,
   addDoc,
   collection,
+  updateDoc,
+  arrayUnion,
   setDoc,
 } from "firebase/firestore";
 import {
@@ -94,38 +96,33 @@ export const createListing = async (listing) => {
     try {
       let newListing = {
         name: listing.name,
-        price: listing.price,
+        price: parseFloat(listing.price),
         image: downloadURL,
         description: listing.desc,
         category: listing.category,
         condition: listing.condition,
         seller: user.uid,
         likes: 0,
+        bump: 0,
+        lastBump: null,
         createdAt: new Date(),
       };
+
+      // Add new listing document
       const docRef = await addDoc(collection(db, "listings"), newListing);
       console.log("Document written with ID: ", docRef.id);
-      // add to user's listing
-      const userRef = doc(db, "users", user.uid);
-      const userSnap = await getDoc(userRef);
-      if (userSnap.exists()) {
-        const userData = userSnap.data();
-        // Ensure the listings field exists, or initialize it as an empty array
-        const userListing = userData.listings || [];
-        userListing.push(docRef.id); // Add the new listing ID to the array
 
-        // Update the user document with the new listings array
-        try {
-          await setDoc(userRef, { listings: userListing }, { merge: true });
-          console.log("User document updated successfully with new listing ID");
-        } catch (error) {
-          console.error("Error updating user document:", error);
-        }
-      } else {
-        console.log("No such user document!");
-      }
+      // Reference to user document
+      const userRef = doc(db, "users", user.uid);
+
+      // Update user's listings array efficiently using arrayUnion
+      await updateDoc(userRef, {
+        listings: arrayUnion(docRef.id),
+      });
+
+      console.log("User document updated successfully with new listing ID");
     } catch (error) {
-      console.error("Error adding document:", error);
+      console.error("Error adding document or updating user:", error);
       throw error;
     }
   } catch (error) {
