@@ -44,7 +44,7 @@
         </div>
     </section>
     <div id="popup" class="popup">
-        <div class="popup-content"> 
+        <div class="popup-content">
             <button id="close-btn" class="close-btn">&times;</button>
             <div class="uploadContainer">
                 <div class="uploadLeft">
@@ -56,15 +56,15 @@
                         <input type="file" id="imageUpload" class="uploadInput" accept="image/*" style="display: none;">
                         <div>
                             <label>Product Name</label><br>
-                            <input id ="productName" type="text"  class="uploadInput"><br>
+                            <input id="productName" type="text" class="uploadInput"><br>
                         </div>
                         <div>
                             <label>Listing Price</label><br>
-                            <input id ="productPrice" type="text"  class="uploadInput"><br>
+                            <input id="productPrice" type="text" class="uploadInput"><br>
                         </div>
                         <div>
                             <label>Product Description</label><br>
-                            <textarea id="description" class = "uploadInput" cols="30" rows="10"></textarea><br>
+                            <textarea id="description" class="uploadInput" cols="30" rows="10"></textarea><br>
                         </div>
                         <div>
                             <label>Product Condition</label><br>
@@ -77,7 +77,7 @@
                         </div>
                         <div>
                             <label>Product Category</label><br>
-                            <select id = "category">
+                            <select id="category">
                                 <option value="cpu">CPU</option>
                                 <option value="gpu">GPU</option>
                                 <option value="ram">RAM</option>
@@ -93,9 +93,14 @@
                     </form>
                 </div>
             </div>
-          <!-- <button id="close-btn">Close</button> -->
+            <!-- <button id="close-btn">Close</button> -->
         </div>
-      </div>
+    </div>
+    <canvas id="dotlottie-canvas"></canvas>
+    <div class="dotlottie-container">
+        <svg id="dotlottie-animation"></svg>
+    </div>
+    
     <script type="module" src="firebase.js"></script>
     <script type="module" src="product-page.js"></script>
 </body>

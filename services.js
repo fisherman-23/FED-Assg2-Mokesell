@@ -1,5 +1,6 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { v4 as uuidv4 } from "uuid"; // For generating UUIDs
+import Compressor from "compressorjs";
 import {
   getFirestore,
   doc,
@@ -17,6 +18,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+import { float } from "three/tsl";
 
 const db = getFirestore();
 const storage = getStorage();
@@ -93,12 +95,16 @@ export const createListing = async (listing) => {
     const downloadURL = await uploadImage(file);
     console.log("Download URL:", downloadURL); // If upload is successful
 
+    const thumbnailURL = await uploadThumbnail(file);
+    console.log("Thumbnail URL:", thumbnailURL); // If upload is successful
+
     // create a new listing in Firestore
     try {
       let newListing = {
         name: listing.name,
         price: parseFloat(listing.price),
         image: downloadURL,
+        thumbnail: thumbnailURL,
         description: listing.desc,
         category: listing.category,
         condition: listing.condition,
@@ -131,7 +137,6 @@ export const createListing = async (listing) => {
   }
 };
 
-// upload image to Firebase Cloud Storage
 // upload image to Firebase Cloud Storage
 export const uploadImage = (file) => {
   return new Promise((resolve, reject) => {
@@ -169,5 +174,65 @@ export const uploadImage = (file) => {
           });
       }
     );
+  });
+};
+
+export const uploadThumbnail = (file) => {
+  return new Promise((resolve, reject) => {
+    const uniqueFileName = `${Date.now()}_${uuidv4()}_${file.name}`;
+
+    // Get size of original file
+    const fileSize = file.size;
+
+    // Determine quality of image compression based on file size
+    let quality = fileSize > 100 * 1024 ? 0.75 : 0.85;
+
+    // Compress the image
+    new Compressor(file, {
+      quality: quality,
+      maxWidth: 768, // Maximum width (resize to fit within this width)
+      maxHeight: 768, // Maximum height (resize to fit within this height)
+      success(result) {
+        file = result;
+
+        // Create reference to the Firebase Storage location
+        const storageRefThumb = ref(storage, "images/thumb_" + uniqueFileName);
+
+        // Create a file upload task for the compressed image
+        const uploadTaskThumb = uploadBytesResumable(storageRefThumb, file);
+
+        // Monitor upload progress and completion
+        uploadTaskThumb.on(
+          "state_changed",
+          (snapshot) => {
+            // Progress monitoring (optional)
+            const progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log("Upload is " + progress + "% done");
+          },
+          (error) => {
+            // Reject the promise with the error
+            console.error("Upload error:", error);
+            reject("Upload failed: " + error.message);
+          },
+          () => {
+            // Get download URL after successful upload
+            getDownloadURL(uploadTaskThumb.snapshot.ref)
+              .then((downloadURL) => {
+                console.log("Thumbnail available at:", downloadURL);
+                resolve(downloadURL); // Resolve the promise with the download URL
+              })
+              .catch((error) => {
+                console.error("Error getting thumbnail URL:", error);
+                reject("Error getting thumbnail URL: " + error.message);
+              });
+          }
+        );
+      },
+      error(error) {
+        console.error("Image compression error:", error);
+        reject("Image compression failed: " + error.message);
+      },
+    });
   });
 };

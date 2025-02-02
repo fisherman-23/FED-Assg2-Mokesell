@@ -2,6 +2,8 @@ import { doc } from "firebase/firestore";
 import { createListing, uploadImage } from "./services";
 import { initializeApp } from "firebase/app";
 import { getListings } from "./services";
+import lottie from "lottie-web";
+
 var productcontainer = document.querySelector(".product-card-container");
 let numberOfCards = 0;
 let increment = 8;
@@ -19,7 +21,7 @@ function loadProducts() {
                             <h2>${product.name}</h2>
                             <p>SGD ${product.price}</p>
                         </section>
-                        <img src="${product.image}" alt="Product Image">
+                        <img src="${product.thumbnail}" alt="Product Image">
                         <div></div>
                         <div></div>
 
@@ -38,7 +40,7 @@ function loadProducts() {
                             <h2>${product.name}</h2>
                             <p>SGD ${product.price}</p>
                         </section>
-                        <img src="${product.image}" alt="Product Image">
+                        <img src="${product.thumbnail}" alt="Product Image">
                         <div></div>
                         <div></div>
 
@@ -154,7 +156,31 @@ form.addEventListener("submit", function (event) {
     ) {
       alert("Please upload a valid image file. (JPG or PNG)");
     } else {
+      let uploadCanvas = document.getElementById("dotlottie-canvas");
+      let uploadAnimation = document.getElementById("dotlottie-animation");
+      uploadCanvas.style.display = "block";
+      uploadAnimation.style.display = "block";
+      dotLottie.playSegments([0, 70], true);
       createListing(newListing);
+      setTimeout(() => {
+        dotLottie.loop = false; // Stop looping
+        dotLottie.playSegments([70, 117], true); // Play tick animation
+
+        // Event listener to detect when the tick animation completes
+        dotLottie.addEventListener("complete", function onComplete() {
+          // refresh page
+          location.reload();
+          dotLottie.removeEventListener("complete", onComplete); // Remove listener after first trigger
+        });
+      }, 3000);
     }
   }
+});
+
+const dotLottie = lottie.loadAnimation({
+  autoplay: true,
+  loop: true,
+  container: document.getElementById("dotlottie-animation"),
+  renderer: "svg",
+  path: "test.json",
 });

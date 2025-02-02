@@ -358,3 +358,27 @@ header {
     font-size: 2.5rem;
     cursor: pointer;
 }
+#dotlottie-canvas {
+    position: fixed; /* Keeps it on top */
+    top: 50%;
+    left: 50%;
+    width: 100vw; /* Half of the viewport width */
+    height: 100vh; /* Half of the viewport height */
+    transform: translate(-50%, -50%); /* Centers it */
+    z-index: 1000; /* Ensures it appears above all elements */
+    background: rgba(255, 255, 255, 0.3); /* Optional: semi-transparent background */
+    backdrop-filter: blur(20px); /* Optional: blur the background */
+    border-radius: 10px; /* Optional: rounded corners */
+    display: none; /* Initially hidden */
+}
+#dotlottie-animation {
+    position: fixed;
+
+    width: 50vw; /* Half of screen width */
+    height: 50vh; /* Half of screen height */
+    z-index: 1001;
+    transform-origin: 50% 50%;
+    transform-box: fill-box;
+    display: none; /* Initially hidden */
+}
+
