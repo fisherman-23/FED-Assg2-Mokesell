@@ -1,18 +1,12 @@
 import { doc } from "firebase/firestore";
 import { createListing, uploadImage } from "./services";
 import { initializeApp } from "firebase/app";
-
+import { getListings } from "./services";
 var productcontainer = document.querySelector(".product-card-container");
 let numberOfCards = 0;
 let increment = 8;
 function loadProducts() {
-  fetch("products.json")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
+  getListings()
     .then((data) => {
       if (numberOfCards + increment <= data.length) {
         for (let i = numberOfCards; i < numberOfCards + increment; i++) {
@@ -25,9 +19,7 @@ function loadProducts() {
                             <h2>${product.name}</h2>
                             <p>SGD ${product.price}</p>
                         </section>
-                        <img src="/productIMG/product${
-                          i + 1
-                        }.jpg" alt="Product Image">
+                        <img src="${product.image}" alt="Product Image">
                         <div></div>
                         <div></div>
 
@@ -46,9 +38,7 @@ function loadProducts() {
                             <h2>${product.name}</h2>
                             <p>SGD ${product.price}</p>
                         </section>
-                        <img src="/productIMG/product${
-                          i + 1
-                        }.jpg" alt="Product Image">
+                        <img src="${product.image}" alt="Product Image">
                         <div></div>
                         <div></div>
 
