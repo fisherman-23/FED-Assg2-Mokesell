@@ -6,6 +6,7 @@ import {
   getDoc,
   addDoc,
   collection,
+  setDoc,
 } from "firebase/firestore";
 import {
   getStorage,
@@ -109,9 +110,17 @@ export const createListing = async (listing) => {
       const userSnap = await getDoc(userRef);
       if (userSnap.exists()) {
         const userData = userSnap.data();
+        // Ensure the listings field exists, or initialize it as an empty array
         const userListing = userData.listings || [];
-        userListing.push(docRef.id);
-        await setDoc(userRef, { listings: userListing }, { merge: true });
+        userListing.push(docRef.id); // Add the new listing ID to the array
+
+        // Update the user document with the new listings array
+        try {
+          await setDoc(userRef, { listings: userListing }, { merge: true });
+          console.log("User document updated successfully with new listing ID");
+        } catch (error) {
+          console.error("Error updating user document:", error);
+        }
       } else {
         console.log("No such user document!");
       }
