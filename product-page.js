@@ -192,7 +192,7 @@ form.addEventListener("submit", function (event) {
         }
       }
 
-      // ✅ Call the async function
+      // Call the async function
       handleListingCreation();
     }
   }

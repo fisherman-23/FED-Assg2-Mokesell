@@ -7,10 +7,12 @@ loginForm.addEventListener("submit", async (e) => {
   const password = loginForm["password"].value;
   try {
     await login(email, password);
+    showToast("Success", "Logged in successfully", "success");
     loginForm.reset();
     // go home screen
     window.location.href = "index.html";
   } catch (error) {
+    showToast("Error", error.message, "error");
     console.error(error.message);
   }
 });
@@ -24,12 +26,35 @@ signupForm.addEventListener("submit", async (e) => {
   const username = signupForm["username"].value;
   try {
     await signUp(email, password, username);
+    showToast("Success", "Account created successfully", "success");
     signupForm.reset();
     // go home screen
     window.location.href = "index.html";
   } catch (error) {
+    showToast("Error", error.message, "error");
     console.error(error.message);
   }
 });
 
 console.log("Signup function called");
+
+// Call toast
+
+const toast = document.querySelector(".toast");
+const toastHeader = document.querySelector(".toast-content h2");
+const toastMessage = document.querySelector(".toast-content p");
+const toastIcon = document.querySelector(".toast-icon img");
+
+function showToast(header, message, type) {
+  if (type === "error") {
+    toastIcon.src = "cross.svg";
+  } else {
+    toastIcon.src = "tick.svg";
+  }
+  toastHeader.textContent = header;
+  toastMessage.textContent = message;
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 4000);
+}

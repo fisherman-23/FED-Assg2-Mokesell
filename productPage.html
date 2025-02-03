@@ -5,15 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page</title>
+    <link rel="stylesheet" href="css/styles.css">
+
     <link rel="stylesheet" href="css/productPage.css">
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- PNG Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+
+    <!-- Apple Touch Icon (For iOS devices) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon/android-chrome-512x512.png">
+
+    <!-- Web App Manifest (For PWA support) -->
+    <link rel="manifest" href="favicon/site.webmanifest">
 </head>
 
 <body>
     <header>
-        <div class="brand">
-            <img src="mokesell2 2.png" alt="Mokesell Logo" style="height: 50px;">
-            <h1>mokesell</h1>
-        </div>
+        <a href="index.html">
+            <div class="brand">
+                <img src="mokesell2 2.png" alt="Mokesell Logo" style="height: 50px;">
+                <h1>mokesell</h1>
+            </div>
+        </a>
         <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -106,29 +126,29 @@
             <form>
                 <form id="category-form">
                     <input type="checkbox" value="prebuilts">
-                    <label class="sidepanel-cat" >Prebuilts</label><br>
-        
+                    <label class="sidepanel-cat">Prebuilts</label><br>
+
                     <input type="checkbox" value="gpu">
-                    <label class="sidepanel-cat" >Graphics Card</label><br>
-        
+                    <label class="sidepanel-cat">Graphics Card</label><br>
+
                     <input type="checkbox" value="cpu">
-                    <label class="sidepanel-cat" >CPU</label><br>
-        
+                    <label class="sidepanel-cat">CPU</label><br>
+
                     <input type="checkbox" value="ram">
                     <label class="sidepanel-cat">RAM</label><br>
-        
+
                     <input type="checkbox" value="motherboard">
                     <label class="sidepanel-cat">Motherboard</label><br>
-        
+
                     <input type="checkbox" value="storage">
                     <label class="sidepanel-cat">Storage</label><br>
-        
+
                     <input type="checkbox" value="psu">
                     <label class="sidepanel-cat">PSU</label><br>
-        
+
                     <input type="checkbox" value="case">
                     <label class="sidepanel-cat">Case</label><br>
-        
+
                     <input type="checkbox" value="peripherals">
                     <label class="sidepanel-cat">Peripherals</label><br>
                 </form>
@@ -139,12 +159,7 @@
             <h2 class="sidepanel-cat">Price</h2>
             <span class="price-display">$0 - $1000</span>
             <div class="range-input">
-                <input type="range" 
-                       class="price-range" 
-                       min="0" 
-                       max="1000" 
-                       value="1000" 
-                       step="1">
+                <input type="range" class="price-range" min="0" max="1000" value="1000" step="1">
             </div>
         </div>
         <hr>

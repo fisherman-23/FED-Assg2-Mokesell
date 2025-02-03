@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/dashboard.css">
-    
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- PNG Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+
+    <!-- Apple Touch Icon (For iOS devices) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon/android-chrome-512x512.png">
+
+    <!-- Web App Manifest (For PWA support) -->
+    <link rel="manifest" href="favicon/site.webmanifest">
+
 </head>
+
 <body>
     <header>
-        <div class="brand">
-            <img src="mokesell2 2.png" alt="Mokesell Logo" style="height: 50px;">
-            <h1>mokesell</h1>
-        </div>
+        <a href="index.html">
+            <div class="brand">
+                <img src="mokesell2 2.png" alt="Mokesell Logo" style="height: 50px;">
+                <h1>mokesell</h1>
+            </div>
+        </a>
         <a href="index.html" class="back">back</a>
     </header>
     <hr>
@@ -24,16 +44,17 @@
                 <li><a href="profile.html">Profile</a></li>
                 <li><a href="my-listings.html">Listings</a></li>
                 <li><a href="my-orders.html">Purchase</a></li>
-                <li id="logout-btn"> <a >Log Out</a></li>
+                <li id="logout-btn"> <a>Log Out</a></li>
 
             </ul>
         </div>
-        
+
         <div class="dashboard-content">
             <h1 id="dashboard-welcome">Welcome, User</h1>
         </div>
     </section>
     <script type="module" src="dashboard.js"></script>
-    
+
 </body>
+
 </html>
