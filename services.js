@@ -141,37 +141,37 @@ export const createListing = async (listing) => {
 export const uploadImage = (file) => {
   return new Promise((resolve, reject) => {
     const uniqueFileName = `${Date.now()}_${uuidv4()}_${file.name}`;
-    // Create a reference to the Firebase Storage location
     const storageRef = ref(storage, "images/" + uniqueFileName);
 
-    // Create a file upload task
-    const uploadTask = uploadBytesResumable(storageRef, file);
+    // Define metadata with a 2-day cache control
+    const metadata = {
+      cacheControl: "public, max-age=172800", // 2 days (172800 seconds)
+    };
 
-    // Monitor upload progress and completion
+    // Create a file upload task with metadata
+    const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        // Progress monitoring (optional)
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log("Upload is " + progress + "% done");
       },
       (error) => {
-        // Reject the promise with the error
         console.error("Upload error:", error);
         reject("Upload failed: " + error.message);
       },
-      () => {
-        // Get download URL after successful upload
-        getDownloadURL(uploadTask.snapshot.ref)
-          .then((downloadURL) => {
-            console.log("File available at:", downloadURL);
-            resolve(downloadURL); // Resolve the promise with the download URL
-          })
-          .catch((error) => {
-            console.error("Error getting download URL:", error);
-            reject("Error getting download URL: " + error.message);
-          });
+      async () => {
+        try {
+          // Get the download URL
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          console.log("File available at:", downloadURL);
+          resolve(downloadURL);
+        } catch (error) {
+          console.error("Error getting download URL:", error);
+          reject("Error getting download URL: " + error.message);
+        }
       }
     );
   });
@@ -198,34 +198,42 @@ export const uploadThumbnail = (file) => {
         // Create reference to the Firebase Storage location
         const storageRefThumb = ref(storage, "images/thumb_" + uniqueFileName);
 
-        // Create a file upload task for the compressed image
-        const uploadTaskThumb = uploadBytesResumable(storageRefThumb, file);
+        // Define metadata with a 2-day cache control
+        const metadata = {
+          cacheControl: "public, max-age=172800", // Cache for 2 days (172800 seconds)
+        };
+
+        // Create a file upload task for the compressed image with metadata
+        const uploadTaskThumb = uploadBytesResumable(
+          storageRefThumb,
+          file,
+          metadata
+        );
 
         // Monitor upload progress and completion
         uploadTaskThumb.on(
           "state_changed",
           (snapshot) => {
-            // Progress monitoring (optional)
             const progress =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log("Upload is " + progress + "% done");
           },
           (error) => {
-            // Reject the promise with the error
             console.error("Upload error:", error);
             reject("Upload failed: " + error.message);
           },
-          () => {
-            // Get download URL after successful upload
-            getDownloadURL(uploadTaskThumb.snapshot.ref)
-              .then((downloadURL) => {
-                console.log("Thumbnail available at:", downloadURL);
-                resolve(downloadURL); // Resolve the promise with the download URL
-              })
-              .catch((error) => {
-                console.error("Error getting thumbnail URL:", error);
-                reject("Error getting thumbnail URL: " + error.message);
-              });
+          async () => {
+            try {
+              // Get download URL after successful upload
+              const downloadURL = await getDownloadURL(
+                uploadTaskThumb.snapshot.ref
+              );
+              console.log("Thumbnail available at:", downloadURL);
+              resolve(downloadURL);
+            } catch (error) {
+              console.error("Error getting thumbnail URL:", error);
+              reject("Error getting thumbnail URL: " + error.message);
+            }
           }
         );
       },

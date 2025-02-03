@@ -158,21 +158,32 @@ form.addEventListener("submit", function (event) {
     } else {
       let uploadCanvas = document.getElementById("dotlottie-canvas");
       let uploadAnimation = document.getElementById("dotlottie-animation");
+
       uploadCanvas.style.display = "block";
       uploadAnimation.style.display = "block";
       dotLottie.playSegments([0, 70], true);
-      createListing(newListing);
-      setTimeout(() => {
-        dotLottie.loop = false; // Stop looping
-        dotLottie.playSegments([70, 117], true); // Play tick animation
 
-        // Event listener to detect when the tick animation completes
-        dotLottie.addEventListener("complete", function onComplete() {
-          // refresh page
-          location.reload();
-          dotLottie.removeEventListener("complete", onComplete); // Remove listener after first trigger
-        });
-      }, 3000);
+      async function handleListingCreation() {
+        try {
+          await createListing(newListing); // ✅ Wait for the listing to be created
+
+          setTimeout(() => {
+            dotLottie.loop = false; // Stop looping
+            dotLottie.playSegments([70, 117], true); // Play tick animation
+
+            // Event listener to detect when the tick animation completes
+            dotLottie.addEventListener("complete", function onComplete() {
+              location.reload(); // Refresh page
+              dotLottie.removeEventListener("complete", onComplete); // Remove listener after first trigger
+            });
+          }, 3000);
+        } catch (error) {
+          console.error("Error creating listing:", error);
+        }
+      }
+
+      // ✅ Call the async function
+      handleListingCreation();
     }
   }
 });
