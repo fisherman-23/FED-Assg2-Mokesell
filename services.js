@@ -116,8 +116,10 @@ export const createListing = async (listing) => {
       };
 
       // Add new listing document
-      const docRef = await addDoc(collection(db, "listings"), newListing);
-      console.log("Document written with ID: ", docRef.id);
+      const docRef = doc(collection(db, "listings")); // Generate a new document reference
+      newListing.id = docRef.id; // Assign the generated ID to the object
+
+      await setDoc(docRef, newListing); // Add the document with the custom ID
 
       // Reference to user document
       const userRef = doc(db, "users", user.uid);

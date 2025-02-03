@@ -24,6 +24,7 @@ function loadProducts(data) {
       const product = data[i];
       const productdiv = document.createElement("div");
       productdiv.className = "product-card";
+      productdiv.onclick = () => productDetail(product.id);
       productdiv.innerHTML = `
                     <div class="gradient-blur">
                         <section class="product-info-section">
@@ -43,6 +44,7 @@ function loadProducts(data) {
       const product = data[i];
       const productdiv = document.createElement("div");
       productdiv.className = "product-card";
+      productdiv.onclick = () => productDetail(product.id);
       productdiv.innerHTML = `
                     <div class="gradient-blur">
                         <section class="product-info-section">
@@ -66,6 +68,10 @@ function loadProducts(data) {
 document.querySelector(".load-more").addEventListener("click", function () {
   loadProducts(products);
 });
+function productDetail(id) {
+  console.log(`"Product Clicked ${id}"`);
+  window.location.href = `product-detail.html?id=${id}`;
+}
 
 function testUploadBatchListing() {
   fetch("products.json")
