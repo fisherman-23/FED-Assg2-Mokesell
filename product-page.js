@@ -197,7 +197,7 @@ form.addEventListener("submit", function (event) {
 });
 
 const dotLottie = lottie.loadAnimation({
-  autoplay: true,
+  autoplay: false,
   loop: true,
   container: document.getElementById("dotlottie-animation"),
   renderer: "svg",
