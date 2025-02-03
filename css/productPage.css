@@ -382,3 +382,60 @@ header {
     display: none; /* Initially hidden */
 }
 
+.sidepanel {
+    z-index: 100;
+    position: fixed;  
+    top: 0;
+    left: -100%;  
+    background-color: white;
+    width: 20vw;
+    height: 100vh;
+    padding: 1rem;
+    transition: left 0.5s ease; 
+  }
+  
+
+  .sidepanel-cat {
+    color: black;
+  }
+  
+  .sidepanel-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 30px;
+    background: transparent;
+    border: none;
+    color: black;
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+  
+
+  .sidepanel.open {
+    left: 0;  
+  }
+  
+.sidepanel-cat{
+    color: black;
+}
+.sidepanel-close{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 30px;
+    background: transparent;
+    border: none;
+    color: black;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+.range-input input{
+    width: 70%;
+}
+.range-input{
+    margin-top: 1rem;
+}
+.price-display{
+    color: black;
+}

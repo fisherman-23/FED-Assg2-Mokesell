@@ -93,14 +93,63 @@
                     </form>
                 </div>
             </div>
-            <!-- <button id="close-btn">Close</button> -->
         </div>
     </div>
     <canvas id="dotlottie-canvas"></canvas>
     <div class="dotlottie-container">
         <svg id="dotlottie-animation"></svg>
     </div>
-    
+    <div class="sidepanel">
+        <button id="sidepanel-close" class="sidepanel-close">&times;</button>
+        <h1 class="sidepanel-cat">Filter</h1>
+        <div>
+            <h2 class="sidepanel-cat">Category</h2>
+            <form>
+                <form id="category-form">
+                    <input type="checkbox" value="prebuilts">
+                    <label class="sidepanel-cat" >Prebuilts</label><br>
+        
+                    <input type="checkbox" value="gpu">
+                    <label class="sidepanel-cat" >Graphics Card</label><br>
+        
+                    <input type="checkbox" value="cpu">
+                    <label class="sidepanel-cat" >CPU</label><br>
+        
+                    <input type="checkbox" value="ram">
+                    <label class="sidepanel-cat">RAM</label><br>
+        
+                    <input type="checkbox" value="motherboard">
+                    <label class="sidepanel-cat">Motherboard</label><br>
+        
+                    <input type="checkbox" value="storage">
+                    <label class="sidepanel-cat">Storage</label><br>
+        
+                    <input type="checkbox" value="psu">
+                    <label class="sidepanel-cat">PSU</label><br>
+        
+                    <input type="checkbox" value="case">
+                    <label class="sidepanel-cat">Case</label><br>
+        
+                    <input type="checkbox" value="peripherals">
+                    <label class="sidepanel-cat">Peripherals</label><br>
+                </form>
+            </form>
+        </div>
+        <hr>
+        <div>
+            <h2 class="sidepanel-cat">Price</h2>
+            <span class="price-display">$0 - $1000</span>
+            <div class="range-input">
+                <input type="range" 
+                       class="price-range" 
+                       min="0" 
+                       max="1000" 
+                       value="1000" 
+                       step="1">
+            </div>
+        </div>
+        <hr>
+    </div>
     <script type="module" src="firebase.js"></script>
     <script type="module" src="product-page.js"></script>
 </body>

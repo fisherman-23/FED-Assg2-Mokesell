@@ -7,9 +7,12 @@ import lottie from "lottie-web";
 var productcontainer = document.querySelector(".product-card-container");
 let numberOfCards = 0;
 let increment = 8;
+let products = [];
+let filterCategory = [];
 function loadProducts() {
   getListings()
     .then((data) => {
+      products = data;
       if (numberOfCards + increment <= data.length) {
         for (let i = numberOfCards; i < numberOfCards + increment; i++) {
           const product = data[i];
@@ -103,7 +106,12 @@ closeButton.addEventListener("click", () => {
   popup.style.opacity = 0;
   popup.style.visibility = "hidden";
 });
-
+popup.addEventListener('click' ,(e) => {
+  if(e.target === popup){
+    popup.style.opacity = 0;
+    popup.style.visibility = "hidden";
+  }
+});
 const uploadLeft = document.querySelector(".uploadLeft");
 const fileInput = document.getElementById("imageUpload");
 const imagePreview = document.getElementById("imagePreview");
@@ -194,4 +202,101 @@ const dotLottie = lottie.loadAnimation({
   container: document.getElementById("dotlottie-animation"),
   renderer: "svg",
   path: "test.json",
+});
+
+
+function displayProducts(products) { //Takes in a the list of search results and displays them
+  productcontainer.innerHTML = "";
+  document.querySelector(".load-more").style.display = "none";
+  products.forEach((product, i) => {
+    console.log(product);
+    const productdiv = document.createElement("div");
+    productdiv.className = "product-card";
+    productdiv.innerHTML = `
+    <div class="gradient-blur">
+        <section class="product-info-section">
+            <h2>${product.name}</h2>
+            <p>SGD ${product.price}</p>
+        </section>
+        <img src="${product.thumbnail}" alt="Product Image"> <!--The image source is hardcoded based on index so it will be fixed when using thumbnails-->
+        <div></div>
+        <div></div>
+    
+    </div>
+    `;
+    productcontainer.appendChild(productdiv);
+  });
+}
+
+
+//Search Function
+document.querySelector(".search").addEventListener("input", function () { //Listen for search input
+  const searchQuery = this.value.toLowerCase();
+  const filteredProducts = products.filter(product => //Filter products based on input, then return an array of products that match
+    product.name.toLowerCase().includes(searchQuery)
+  );
+  displayProducts(filteredProducts); //Display the filtered products
+});
+
+
+
+//Filter sidepanel
+document.querySelector(".filter").addEventListener("click", ()=>{
+  document.querySelector(".sidepanel").classList.add('open');
+})
+document.querySelector(".sidepanel-close").addEventListener("click", ()=>{
+  document.querySelector(".sidepanel").classList.remove('open');
+})
+let filtered = [];
+const priceRange = document.querySelector(".price-range");
+const priceDisplay = document.querySelector(".price-display");
+
+//Filter for pricing
+priceRange.addEventListener("input", ()=>{
+  let priceValue = priceRange.value; 
+  priceDisplay.textContent = `$0 - $${priceValue}`;
+  if(filterCategory.length != 0){
+      filtered = products.filter(item =>  {
+      return filterCategory.includes(item.category) && item.price <= priceRange.value
+    })
+  }else{
+      filtered = products.filter(item =>  {
+      return item.price <= priceRange.value
+    })
+  }
+  if(filterCategory.length != 0){
+    displayProducts(filtered)
+  }else{
+    productcontainer.innerHTML = ""; 
+    numberOfCards = 0
+    loadProducts()
+    document.querySelector(".load-more").style.display = "block";
+  }
+});
+
+
+//Filter for categories
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', ()=>{
+    if(checkbox.checked){
+      filterCategory.push(checkbox.value)
+    }
+    else{
+      filterCategory = filterCategory.filter(value => value !== checkbox.value);
+    }
+    const filtered = products.filter(item =>  {
+      return filterCategory.includes(item.category) && item.price <= priceRange.value
+    })
+    console.log(filtered)
+    if(filterCategory.length != 0){
+      displayProducts(filtered)
+    }else{
+      productcontainer.innerHTML = ""; 
+      numberOfCards = 0
+      loadProducts()
+      document.querySelector(".load-more").style.display = "block";
+    }
+    
+  });
 });
