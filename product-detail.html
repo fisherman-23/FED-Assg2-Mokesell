@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="css/product-detail.css">
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- PNG Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+
+    <!-- Apple Touch Icon (For iOS devices) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon/android-chrome-512x512.png">
+
+    <!-- Web App Manifest (For PWA support) -->
+    <link rel="manifest" href="favicon/site.webmanifest">
+
+</head>
+<body>
+    <div class="loading">
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+        <dotlottie-player src="https://lottie.host/763953fb-bd5f-41b4-8fe5-8725d02c3733/XLkcMgdgmN.lottie" 
+            background="transparent" 
+            speed="1" 
+            style="width: 300px; height: 300px" 
+            loop autoplay>
+        </dotlottie-player>
+    </div>
+    <header>
+        <a href="index.html">
+            <div class="brand">
+                <img src="mokesell2 2.png" alt="Mokesell Logo" style="height: 50px;">
+                <h1>mokesell</h1>
+            </div>
+        </a>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="profile.html"><img src="profile-icon.svg" style="height:50px"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="product-detail">
+        <div class="product-detail-container">
+            <div class="left">
+                <img src="" class="product-img">
+            </div>
+            <div class="right">
+                <h1 class="product-name"></h1>
+                <div class="price-container">
+                    <img class="dollar-icon" src="/dollar.png">
+                    <h2 class="product-price"></h2>
+                </div>
+                <h2 class="product-condition"></h2>
+                <h2 class="header">Description:</h2>
+                <p class="product-description"></p>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section>
+        <div class="user-info">
+            <div class="user-left">
+                <img src="/testPFP.png" class="user-pfp">
+                <div class="user-profile">
+                    <h2 class="user-name">BigBoyGamer123</h2>
+                    <p class="user-datejoin">joined 2 mth ago</p>
+                    <p class="user-ratings">4.7 ⭐</p>
+                </div>
+                <div class="actions">
+                    <button class="chat-btn"><img src="/ChatTeardropDots.png"></button>
+                    <button class="dislike-btn"><img src="/ThumbsDown.png"></button>
+                </div>
+            </div>
+            <div class="user-right">
+                <button>Make Offer</button>
+                <p>4 offers have already been made</p>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section>
+        <div class="review-section">
+            <h1>Reviews</h1>
+            <div class="review-container">
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-user">
+                            <img src="/testPFP.png" class="review-pfp">
+                            <h2 class="user-name">Razorbird360</h2>
+                        </div>
+                        <div class="review-rating">
+                            <img src="/gold-star.svg">
+                            <img src="/gold-star.svg">
+                            <img src="/gold-star.svg">
+                            <img src="/gold-star.svg">
+                            <img src="/star-02.svg">
+                        </div>
+                    </div>
+                    <p class="review-text">Seller is very responsive and helps out with my problems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="product-detail.js"></script>
+</body>
+</html>
