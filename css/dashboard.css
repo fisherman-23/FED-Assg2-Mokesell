@@ -69,3 +69,21 @@ hr {
     color: #ffffff;
     text-decoration: none;
 }
+.dashboard-stats-container {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    margin: 2rem 2rem 0 0rem;
+}
+
+.stat-card {
+    flex: 1;
+    background-color: #0B192C;
+    padding: 2rem 2rem;
+    border-radius: 15px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

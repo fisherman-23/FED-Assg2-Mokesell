@@ -14,6 +14,9 @@ let logout_button = document.getElementById("logout-btn");
 logout_button.addEventListener("click", logOut);
 
 let welcome_string = document.getElementById("dashboard-welcome");
+let listing_count = document.getElementById("listing-count");
+let purchase_count = document.getElementById("purchase-count");
+let like_count = document.getElementById("like-count");
 document.addEventListener("DOMContentLoaded", function () {
   // Ensure checkSignedIn returns a resolved promise, even if it's null
   const signedInPromise = checkSignedIn() || Promise.resolve(null);
@@ -28,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // Handle user data
             console.log("User data:", userData.username);
             welcome_string.innerHTML = `Welcome, ${userData.username}!`;
+            listing_count.innerHTML = `${userData.listings.length}`;
+            purchase_count.innerHTML = `${userData.purchases.length}`;
+            like_count.innerHTML = `${userData.likes.length}`;
           })
           .catch((error) => {
             // Handle error
