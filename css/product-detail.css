@@ -1,0 +1,244 @@
+/* Define fonts */
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    background-color: #0A0A0A;
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+    color: #ffffff;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 6rem;
+}
+header a {
+    text-decoration: none;
+    color: #ffffff;
+}
+.brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+.brand h1 {
+    font-weight: normal;
+    background: linear-gradient(90deg, #FFFFFF 0%, #628150 45.9%, #82C35C 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 2.2rem;
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+
+.main-nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    list-style: none;
+    align-items: center;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+.product-detail{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+.product-detail-container{
+    width: 100%;
+    display: flex;
+    gap: 10rem;
+    padding: 1.5rem 6rem;
+}
+.left img{
+    width: 31vw;
+    border-radius: 15px;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+}
+.right{
+    padding: 0;
+    margin: 0;
+}
+.right h1{
+    margin: 0;
+    font-size: 3.2vw;
+}
+
+.header{
+    margin: 0;
+    font-size: 1.2vw;
+}
+.price-container{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.dollar-icon{
+    width: 3vw;
+    height: 3vw;
+}
+.product-price{
+    font-size: 1.8vw;
+}
+.product-condition{
+    font-size: 1.5vw;
+}
+.product-description{
+    font-size: 1vw;
+}
+hr{
+    margin: 1.5rem 6rem;
+}
+.user-info{
+    width: 100%;
+    display: flex;
+    padding: 1.5rem 6rem;
+    justify-content: space-between;
+}
+.user-name{
+    margin: 0;
+    font-size: 1.5rem;
+}
+.user-datejoin{
+    margin: 0;
+}
+.user-ratings{
+    margin: 0;
+}
+.user-profile{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+.actions button{
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0 1rem;
+}
+.actions button img{
+    width: 3.5vw;
+    height: auto;
+}
+.user-left{
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+}
+.user-pfp{
+    width: 7vw;
+    height: 7vw;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.user-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.user-right button{
+    background-color: rgb(234, 229, 229);
+    padding: 1.5rem 3rem;
+    color: black;
+    font-size: 2vw;
+    border-radius: 20px;
+    font-weight: 700;
+}
+.user-right button:hover{
+    background-color: grey;
+}
+.review-card{
+    display: flex;
+    background-color: #0B192C;
+    width: 30vw;
+    height: fit-content;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 15px;
+}
+.review-user{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.review-pfp{
+    width: 3.5vw;
+    height: 3.5vw;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.review-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.review-section{
+    width: 100%;
+    display: flex;
+    padding: 1.5rem 6rem;
+    flex-direction: column;
+}
+.review-section h1{
+    font-size: 1.5vw;
+}
+.review-card p{
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+.review-rating{
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+}
+.review-rating img{
+    width: 1.2vw;
+}
+.loading {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    transition: opacity 0.5s ease-in-out;
+}
