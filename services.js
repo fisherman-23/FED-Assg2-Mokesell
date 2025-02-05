@@ -20,6 +20,7 @@ import {
 } from "firebase/storage";
 import { float } from "three/tsl";
 
+// Initialize Firebase services
 const db = getFirestore();
 const storage = getStorage();
 // this will contain all Firebase CRUD operations not related to authentication
@@ -245,4 +246,22 @@ export const uploadThumbnail = (file) => {
       },
     });
   });
+};
+
+export const getChats = async (id) => {
+  // id is a list of chat IDs
+  try {
+    const chatRef = collection(db, "chats");
+    const querySnapshot = await getDocs(chatRef);
+    const chats = [];
+    querySnapshot.forEach((doc) => {
+      if (id.includes(doc.id)) {
+        chats.push(doc);
+      }
+    });
+    return chats;
+  } catch (error) {
+    console.error("Error getting chats:", error);
+    throw error;
+  }
 };

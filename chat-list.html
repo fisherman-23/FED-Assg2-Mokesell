@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
     <link rel="stylesheet" href="css/dashboard.css">
+
     <!-- Standard Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
@@ -40,34 +42,50 @@
     <section class="dashboard-section">
         <div class="dashboard-sidebar">
             <ul>
-                <li class="selected"><a href="dashboard.html">Overview</a></li>
-                <li><a href="chat-list.html">Chats</a></li>
+                <li><a href="dashboard.html">Overview</a></li>
+                <li class="selected"><a href="chat-list.html">Chats</a></li>
                 <li><a href="my-listings.html">Listings</a></li>
                 <li><a href="my-orders.html">Purchases</a></li>
                 <li id="logout-btn"> <a>Log Out</a></li>
 
             </ul>
         </div>
-
         <div class="dashboard-content">
-            <h1 id="dashboard-welcome">Welcome, User</h1>
-            <div class="dashboard-stats-container">
-                <div class="stat-card">
-                    <h2 id="listing-count">0</h2>
-                    <p>Number of listings</p>
+            <h1 id="dashboard-welcome">Chats</h1>
+            <div class="chat-list">
+                <!-- <div class="chat-item">
+                    <img src="profile-icon.svg" alt="Profile Picture" class="profile-pic">
+                    <div class="chat-info">
+                        <h2>Username</h2>
+                        <p>Last Message</p>
+                        <p>Time</p>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h2 id="purchase-count">0</h2>
-                    <p>Number of purchases</p>
+                <div class="chat-item">
+                    <img src="profile-icon.svg" alt="Profile Picture" class="profile-pic">
+                    <div class="chat-info">
+                        <h2>Username</h2>
+                        <p>Last Message</p>
+                        <p>Time</p>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h2 id="like-count">0</h2>
-                    <p>Number of likes</p>
-                </div>
+                <div class="chat-item">
+                    <img src="profile-icon.svg" alt="Profile Picture" class="profile-pic">
+                    <div class="chat-info">
+                        <h2>Username</h2>
+                        <p>Last Message
+
+                        </p>
+                        <p>Time</p>
+                    </div>
+                </div> -->
             </div>
         </div>
+
     </section>
-    <script type="module" src="dashboard.js"></script>
+    <script type="module" src="firebase.js"></script>
+
+    <script type="module" src="chat-list.js"></script>
 
 </body>
 
