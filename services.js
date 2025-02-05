@@ -265,3 +265,18 @@ export const getChats = async (id) => {
     throw error;
   }
 };
+
+export const getMessagesById = async (chatId) => {
+  try {
+    const messagesRef = collection(db, `chats/${chatId}/messages`);
+    const querySnapshot = await getDocs(messagesRef);
+    const messages = [];
+    querySnapshot.forEach((doc) => {
+      messages.push(doc.data());
+    });
+    return messages;
+  } catch (error) {
+    console.error("Error getting messages:", error);
+    throw error;
+  }
+};

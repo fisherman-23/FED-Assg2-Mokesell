@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let chatItemElement = document.createElement("div");
             chatItemElement.classList.add("chat-item");
+            chatItemElement.onclick = () => {
+              window.location.href = `chat-view.html?id=${data.id}`;
+            };
             chatItemElement.innerHTML = `
               <div class="chat-info">
                 <h2>${data.id}</h2>
