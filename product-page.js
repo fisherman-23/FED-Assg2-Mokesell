@@ -3,7 +3,7 @@ import { createListing, uploadImage } from "./services";
 import { initializeApp } from "firebase/app";
 import { getListings } from "./services";
 import lottie from "lottie-web";
-
+import { checkSignedIn } from "./auth";
 var productcontainer = document.querySelector(".product-card-container");
 let numberOfCards = 0;
 let increment = 8;
@@ -108,9 +108,24 @@ function testUploadBatchListing() {
 const popup = document.getElementById("popup");
 const closeButton = document.getElementById("close-btn");
 document.querySelector(".upload").addEventListener("click", function () {
-  // testUploadBatchListing();
-  popup.style.opacity = 1;
-  popup.style.visibility = "visible";
+  // check if user is signed in
+
+  const signedInPromise = checkSignedIn() || Promise.resolve(null);
+
+  signedInPromise
+    .then((result) => {
+      if (result !== null) {
+        // Handle the case where the user is signed in
+        popup.style.opacity = 1;
+        popup.style.visibility = "visible";
+      } else {
+        // redirect to login
+        window.location.href = "login.html";
+      }
+    })
+    .catch((error) => {
+      console.error("Error checking sign-in status:", error);
+    });
 });
 closeButton.addEventListener("click", () => {
   popup.style.opacity = 0;
@@ -219,7 +234,7 @@ function displayProducts(products) {
   productcontainer.innerHTML = "";
   document.querySelector(".load-more").style.display = "none";
   document.querySelector(".end").style.display = "none";
-  if(products.length > 0){
+  if (products.length > 0) {
     products.forEach((product, i) => {
       const productdiv = document.createElement("div");
       productdiv.className = "product-card";
@@ -237,14 +252,13 @@ function displayProducts(products) {
       </div>
       `;
       productcontainer.appendChild(productdiv);
-    
     });
     document.querySelector(".end").style.display = "block";
     document.querySelector(".end").innerHTML = "End of products";
-  }
-  else{
+  } else {
     document.querySelector(".end").style.display = "block";
-    document.querySelector(".end").innerHTML = "There are no avaliable products for your search";
+    document.querySelector(".end").innerHTML =
+      "There are no avaliable products for your search";
   }
 }
 
@@ -262,9 +276,9 @@ document.querySelector(".search").addEventListener("input", function () {
 
 //Filter sidepanel
 document.querySelector(".filter").addEventListener("click", () => {
-  if(document.querySelector(".sidepanel").classList.contains("open")){
+  if (document.querySelector(".sidepanel").classList.contains("open")) {
     document.querySelector(".sidepanel").classList.remove("open");
-  }else{
+  } else {
     document.querySelector(".sidepanel").classList.add("open");
   }
 });
@@ -327,3 +341,11 @@ checkboxes.forEach((checkbox) => {
     }
   });
 });
+function toggleMobileMenu(menu) {
+  menu.classList.toggle("open");
+}
+const hamburger = document.querySelector(".hamburger-button");
+hamburger.onclick = () => {
+  console.log("clicked");
+  toggleMobileMenu(hamburger.nextElementSibling);
+};

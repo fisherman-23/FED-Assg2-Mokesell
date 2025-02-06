@@ -113,3 +113,13 @@ form div {
 .input-group {
     width: 100%;
 }
+
+@media screen and (max-width: 768px) {
+    .login-3d {
+        display: none;
+    }
+    .login-section {
+        padding-left: 2rem;
+        padding-top: 6rem;
+    }
+}

@@ -39,6 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // Handle error
           });
       } else {
+        // redirect to login
+        window.location.href = "login.html";
       }
     })
     .catch((error) => {

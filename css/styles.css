@@ -244,7 +244,7 @@ header a {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#profile-btn {
+.profile-btn {
     display: inline-block;
     border: none;
     background-color: transparent;
@@ -505,7 +505,61 @@ header a {
     padding-right: 0px;
 }
 
+footer {
+    background-color: #1b1b1b;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
 
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-brand a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer-brand h2 {
+    margin-left: 10px;
+    font-size: 1.5rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-social a {
+    margin: 0 10px;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #ccc;
+}
 @media screen and (max-width: 768px) {
     header {
         padding: 0.8rem 2rem;
@@ -546,5 +600,29 @@ header a {
         height: 30vh;
         flex: none;
     }
-    
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-links ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-brand h2 {
+        font-size: 1.2rem;
+    }
+
+    .footer-links a {
+        font-size: 0.8rem;
+    }
+
+    .footer-social {
+        margin-top: 10px;
+    }
+
+    .footer-bottom {
+        font-size: 0.7rem;
+    }
 }
