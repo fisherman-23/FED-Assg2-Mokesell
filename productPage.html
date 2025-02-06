@@ -73,18 +73,18 @@
                 </div>
                 <div class="uploadRight">
                     <form class="uploadForm">
-                        <input type="file" id="imageUpload" class="uploadInput" accept="image/*" style="display: none;">
+                        <input type="file" id="imageUpload" class="uploadInput" accept="image/*" style="display: none;" required>
                         <div>
                             <label>Product Name</label><br>
-                            <input id="productName" type="text" class="uploadInput"><br>
+                            <input id="productName" type="text" class="uploadInput" required><br>
                         </div>
                         <div>
                             <label>Listing Price</label><br>
-                            <input id="productPrice" type="text" class="uploadInput"><br>
+                            <input id="productPrice" type="text" class="uploadInput" required><br>
                         </div>
                         <div>
                             <label>Product Description</label><br>
-                            <textarea id="description" class="uploadInput" cols="30" rows="10"></textarea><br>
+                            <textarea id="description" class="uploadInput" cols="30" rows="10" required></textarea><br>
                         </div>
                         <div>
                             <label>Product Condition</label><br>
@@ -123,35 +123,31 @@
         <h1 class="sidepanel-cat">Filter</h1>
         <div>
             <h2 class="sidepanel-cat">Category</h2>
-            <form>
-                <form id="category-form">
-                    <input type="checkbox" value="prebuilts">
-                    <label class="sidepanel-cat">Prebuilts</label><br>
+            <form id="category-form">
 
-                    <input type="checkbox" value="gpu">
-                    <label class="sidepanel-cat">Graphics Card</label><br>
+                <input type="checkbox" value="gpu">
+                <label class="sidepanel-cat">Graphics Card</label><br>
 
-                    <input type="checkbox" value="cpu">
-                    <label class="sidepanel-cat">CPU</label><br>
+                <input type="checkbox" value="cpu">
+                <label class="sidepanel-cat">CPU</label><br>
 
-                    <input type="checkbox" value="ram">
-                    <label class="sidepanel-cat">RAM</label><br>
+                <input type="checkbox" value="ram">
+                <label class="sidepanel-cat">RAM</label><br>
 
-                    <input type="checkbox" value="motherboard">
-                    <label class="sidepanel-cat">Motherboard</label><br>
+                <input type="checkbox" value="motherboard">
+                <label class="sidepanel-cat">Motherboard</label><br>
 
-                    <input type="checkbox" value="storage">
-                    <label class="sidepanel-cat">Storage</label><br>
+                <input type="checkbox" value="storage">
+                <label class="sidepanel-cat">Storage</label><br>
 
-                    <input type="checkbox" value="psu">
-                    <label class="sidepanel-cat">PSU</label><br>
+                <input type="checkbox" value="psu">
+                <label class="sidepanel-cat">PSU</label><br>
 
-                    <input type="checkbox" value="case">
-                    <label class="sidepanel-cat">Case</label><br>
+                <input type="checkbox" value="case">
+                <label class="sidepanel-cat">Case</label><br>
 
-                    <input type="checkbox" value="peripherals">
-                    <label class="sidepanel-cat">Peripherals</label><br>
-                </form>
+                <input type="checkbox" value="peripherals">
+                <label class="sidepanel-cat">Peripherals</label><br>
             </form>
         </div>
         <hr>
