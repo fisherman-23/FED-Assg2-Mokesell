@@ -24,14 +24,13 @@
     <link rel="manifest" href="favicon/site.webmanifest">
 
 </head>
+
 <body>
     <div class="loading">
-        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-        <dotlottie-player src="https://lottie.host/763953fb-bd5f-41b4-8fe5-8725d02c3733/XLkcMgdgmN.lottie" 
-            background="transparent" 
-            speed="1" 
-            style="width: 300px; height: 300px" 
-            loop autoplay>
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"></script>
+        <dotlottie-player src="https://lottie.host/763953fb-bd5f-41b4-8fe5-8725d02c3733/XLkcMgdgmN.lottie"
+            background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay>
         </dotlottie-player>
     </div>
     <header>
@@ -44,9 +43,9 @@
         <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
+                <li><a href="productPage.html">Products</a></li>
                 <li><a href="rewards.html">Rewards</a></li>
-                <li><a href="profile.html"><img src="profile-icon.svg" style="height:50px"></a></li>
+                <li><a href="dashboard.html"><img src="profile-icon.svg" style="height:50px"></a></li>
             </ul>
         </nav>
     </header>
@@ -71,11 +70,11 @@
     <section>
         <div class="user-info">
             <div class="user-left">
-                <img src="/testPFP.png" class="user-pfp">
+                <img src="/profile-icon.svg" class="user-pfp">
                 <div class="user-profile">
-                    <h2 class="user-name">BigBoyGamer123</h2>
+                    <h2 class="user-name">Username</h2>
                     <p class="user-datejoin">joined 2 mth ago</p>
-                    <p class="user-ratings">4.7 ⭐</p>
+                    <p class="user-ratings">5.0 ⭐</p>
                 </div>
                 <div class="actions">
                     <button class="chat-btn"><img src="/ChatTeardropDots.png"></button>
@@ -83,7 +82,7 @@
                 </div>
             </div>
             <div class="user-right">
-                <button>Make Offer</button>
+                <button id="make-offer">Make Offer</button>
                 <p>4 offers have already been made</p>
             </div>
         </div>
@@ -96,7 +95,7 @@
                 <div class="review-card">
                     <div class="review-top">
                         <div class="review-user">
-                            <img src="/testPFP.png" class="review-pfp">
+                            <img src="/profile-icon.svg" class="review-pfp">
                             <h2 class="user-name">Razorbird360</h2>
                         </div>
                         <div class="review-rating">
@@ -112,7 +111,15 @@
             </div>
         </div>
     </section>
+    <div id="popup" class="popup">
+
+        <div class="popup-content">
+            <button id="close-btn" class="close-btn">&times;</button>
+
+        </div>
+    </div>
     <script type="module" src="firebase.js"></script>
     <script type="module" src="product-detail.js"></script>
 </body>
+
 </html>

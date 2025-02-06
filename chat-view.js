@@ -13,6 +13,7 @@ import {
   getDoc,
   addDoc,
   getFirestore,
+  setDoc,
   onSnapshot,
 } from "firebase/firestore";
 import { checkSignedIn } from "./auth.js";
@@ -94,6 +95,16 @@ function sendMessage(id, msg, userId) {
 
   sendMessageToFirestore(id, newMessage, userId);
   msg.push(newMessage);
+
+  // also update the chat object with the last message and time
+  const chatRef = doc(db, "chats", id);
+  const chatSnap = getDoc(chatRef);
+  chatSnap.then((doc) => {
+    const chatData = doc.data();
+    chatData.lastMessage = text;
+    chatData.lastMessageTime = newMessage.timeSent;
+    setDoc(chatRef, chatData);
+  });
 
   // Render the updated messages
   renderMessages(msg, userId);

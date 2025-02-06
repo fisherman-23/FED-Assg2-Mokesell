@@ -325,3 +325,14 @@ export const getUsernameById = async (uid) => {
     throw error;
   }
 };
+
+export const createChat = async (chat) => {
+  try {
+    const chatRef = collection(db, "chats");
+    const docRef = await addDoc(chatRef, chat);
+    return docRef.id;
+  } catch (error) {
+    console.error("Error creating chat:", error);
+    throw error;
+  }
+};

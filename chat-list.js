@@ -1,4 +1,4 @@
-import { getChats, getUserData } from "./services.js";
+import { getChats, getUserData, getUsernameById } from "./services.js";
 import { checkSignedIn } from "./auth.js";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -27,9 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
             chatItemElement.onclick = () => {
               window.location.href = `chat-view.html?id=${data.id}`;
             };
+            let oppId = data.participants.find((id) => id !== result[0]);
+            let oppUsername = await getUsernameById(oppId);
             chatItemElement.innerHTML = `
               <div class="chat-info">
-                <h2>${data.id}</h2>
+                <h2>Chat with ${oppUsername}</h2>
                 <p>Last message: ${data.lastMessage}</p>
                 <p>${formattedTime}</p>
               </div>
