@@ -39,7 +39,6 @@ let model = null;
 
 // Track mouse movement
 function onMouseMove(event) {
-  // Calculate mouse position in normalized device coordinates (-1 to +1)
   const rect = canvas.getBoundingClientRect();
   mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
   mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
@@ -64,7 +63,6 @@ scene.add(ambientLight);
 const mainLight = new THREE.DirectionalLight(0xffffff, 1);
 mainLight.position.set(5, 5, 5);
 mainLight.castShadow = true;
-
 mainLight.shadow.mapSize.width = 2048;
 mainLight.shadow.mapSize.height = 2048;
 mainLight.shadow.camera.near = 0.1;
@@ -74,7 +72,6 @@ mainLight.shadow.camera.right = 5;
 mainLight.shadow.camera.top = 5;
 mainLight.shadow.camera.bottom = -5;
 mainLight.shadow.bias = -0.0001;
-
 scene.add(mainLight);
 
 const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
@@ -91,14 +88,12 @@ loader.load(
   "very_cute_retro_pc_looking_mascot_for_mokesell.glb",
   (gltf) => {
     model = gltf.scene;
-
     model.traverse((node) => {
       if (node.isMesh) {
         node.castShadow = true;
         node.receiveShadow = true;
       }
     });
-
     scene.add(model);
     model.position.set(0, 0, 0);
     camera.lookAt(model.position);
@@ -120,43 +115,78 @@ const ground = new THREE.Mesh(groundGeometry, groundMaterial);
 ground.rotation.x = -Math.PI / 2;
 ground.position.y = -0.5;
 ground.receiveShadow = true;
-//scene.add(ground);
+// scene.add(ground);
 
 // Animation parameters
-const rotationSpeed = 0.1;
-var XmaxRotation = Math.PI / 12; // 30 degrees
-var YmaxRotation = Math.PI / 6;
-var rotationSpeedX = 0.1; // Smoothing factor for X rotation
-var rotationSpeedY = 0.1; // Smoothing factor for Y rotation;
+const rotationSpeedX = 0.1;
+const rotationSpeedY = 0.1;
+const XmaxRotation = Math.PI / 12; // 30 degrees
+const YmaxRotation = Math.PI / 6;
 
-// Render Loop with smooth animation
+// Render Loop
+let isRendering = true;
+
 function animate() {
+  if (!isRendering) return; // Stop rendering when paused
+
   requestAnimationFrame(animate);
 
   if (model) {
-    // Calculate target rotation based on mouse position
-    target.x = -mouse.y * YmaxRotation; // Invert Y-axis for correct orientation
+    target.x = -mouse.y * YmaxRotation;
     target.y = mouse.x * XmaxRotation;
-    let targetXmaxRotation = Math.PI / 12;
-    // Smoothly adjust XmaxRotation based on condition
-    if (target.y > -0.3) {
-      targetXmaxRotation = Math.PI / 1.5;
-    } else {
-      targetXmaxRotation = Math.PI / 12;
-    }
-    XmaxRotation += (targetXmaxRotation - XmaxRotation) * 0.05; // Smooth transition
 
-    // Smoothly interpolate current rotation to target rotation
-    if (model.rotation.y > 1) {
-      target.x = -target.x;
-    }
     model.rotation.x += (target.x - model.rotation.x) * rotationSpeedX;
     model.rotation.y += (target.y - model.rotation.y) * rotationSpeedY;
-    // Optional: Add a gentle floating animation
+
+    // Floating animation
     model.position.y = Math.sin(Date.now() * 0.001) * 0.05;
   }
 
   renderer.render(scene, camera);
 }
 
+function checkDisplay() {
+  const style = window.getComputedStyle(canvas);
+  const display = style.display;
+
+  if (display === "none") {
+    if (isRendering) {
+      isRendering = false;
+      console.log("Canvas hidden. Rendering paused.");
+    }
+  } else {
+    if (!isRendering) {
+      console.log("Canvas visible. Rendering resumed.");
+      isRendering = true; // Set *before* calling animate
+      animate(); // Ensure animation starts if it was paused
+    }
+  }
+}
+
+// Initial check
+checkDisplay();
+
+// Start animation loop (but it might not run immediately if isRendering is false)
 animate();
+
+// Observe parent elements (including canvas itself)
+const observer = new MutationObserver(checkDisplay);
+
+function observeParents(element) {
+  if (!element) return;
+  observer.observe(element, {
+    attributes: true,
+    attributeFilter: ["style", "class"],
+  });
+  observeParents(element.parentElement);
+}
+
+observeParents(canvas); // Start observing from the canvas itself
+
+// Periodically check the display property
+function periodicCheck() {
+  checkDisplay();
+  setTimeout(periodicCheck, 5000); // Check every 2000ms
+}
+
+periodicCheck();

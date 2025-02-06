@@ -267,6 +267,8 @@ header {
     margin-bottom: 0rem;
     margin-top: 0.5rem;
     font-weight: normal;
+    color: white; /* Default color */
+    mix-blend-mode: difference;
 }
 
 .popup {
@@ -444,3 +446,4 @@ header {
 .price-display{
     color: black;
 }
+
