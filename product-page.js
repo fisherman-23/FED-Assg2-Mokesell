@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 function loadProducts(data) {
   products = data;
+  document.querySelector(".end").style.display = "none";
   if (numberOfCards + increment <= data.length) {
     for (let i = numberOfCards; i < numberOfCards + increment; i++) {
       const product = data[i];
@@ -61,6 +62,7 @@ function loadProducts(data) {
     }
     document.querySelector(".load-more").style.display = "none";
     document.querySelector(".end").style.display = "block";
+    document.querySelector(".end").innerHTML = "End of products";
   }
   numberOfCards = numberOfCards + increment;
 }
@@ -216,23 +218,34 @@ function displayProducts(products) {
   //Takes in a the list of search results and displays them
   productcontainer.innerHTML = "";
   document.querySelector(".load-more").style.display = "none";
-  products.forEach((product, i) => {
-    const productdiv = document.createElement("div");
-    productdiv.className = "product-card";
-    productdiv.innerHTML = `
-    <div class="gradient-blur">
-        <section class="product-info-section">
-            <h2>${product.name}</h2>
-            <p>SGD ${product.price}</p>
-        </section>
-        <img src="${product.thumbnail}" alt="Product Image"> <!--The image source is hardcoded based on index so it will be fixed when using thumbnails-->
-        <div></div>
-        <div></div>
+  document.querySelector(".end").style.display = "none";
+  if(products.length > 0){
+    products.forEach((product, i) => {
+      const productdiv = document.createElement("div");
+      productdiv.className = "product-card";
+      productdiv.onclick = () => productDetail(product.id);
+      productdiv.innerHTML = `
+      <div class="gradient-blur">
+          <section class="product-info-section">
+              <h2>${product.name}</h2>
+              <p>SGD ${product.price}</p>
+          </section>
+          <img src="${product.thumbnail}" alt="Product Image"> <!--The image source is hardcoded based on index so it will be fixed when using thumbnails-->
+          <div></div>
+          <div></div>
+      
+      </div>
+      `;
+      productcontainer.appendChild(productdiv);
     
-    </div>
-    `;
-    productcontainer.appendChild(productdiv);
-  });
+    });
+    document.querySelector(".end").style.display = "block";
+    document.querySelector(".end").innerHTML = "End of products";
+  }
+  else{
+    document.querySelector(".end").style.display = "block";
+    document.querySelector(".end").innerHTML = "There are no avaliable products for your search";
+  }
 }
 
 //Search Function
@@ -249,7 +262,11 @@ document.querySelector(".search").addEventListener("input", function () {
 
 //Filter sidepanel
 document.querySelector(".filter").addEventListener("click", () => {
-  document.querySelector(".sidepanel").classList.add("open");
+  if(document.querySelector(".sidepanel").classList.contains("open")){
+    document.querySelector(".sidepanel").classList.remove("open");
+  }else{
+    document.querySelector(".sidepanel").classList.add("open");
+  }
 });
 document.querySelector(".sidepanel-close").addEventListener("click", () => {
   document.querySelector(".sidepanel").classList.remove("open");
@@ -273,7 +290,7 @@ priceRange.addEventListener("input", () => {
       return item.price <= priceRange.value;
     });
   }
-  if (filterCategory.length != 0) {
+  if (filterCategory.length != 0 || priceValue < 1000) {
     displayProducts(filtered);
   } else {
     productcontainer.innerHTML = "";
