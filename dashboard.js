@@ -45,3 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error checking sign-in status:", error);
     });
 });
+function toggleMobileMenu(menu) {
+  menu.classList.toggle("open");
+}
+const hamburger = document.querySelector(".hamburger-button");
+hamburger.onclick = () => {
+  console.log("clicked");
+  toggleMobileMenu(hamburger.nextElementSibling);
+};

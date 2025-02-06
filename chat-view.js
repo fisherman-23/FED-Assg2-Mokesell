@@ -65,7 +65,6 @@ function renderMessages(messages, userId) {
     }
 
     messageElement.innerHTML = `
-        <div class="sender">${message.senderId}</div>
         <div class="text">${message.text}</div>
         <div class="time">${formattedTime}</div>
       `;
@@ -173,3 +172,11 @@ function setupFirestoreListener(collectionPath, userId) {
     renderMessages(msg, userId);
   });
 }
+function toggleMobileMenu(menu) {
+  menu.classList.toggle("open");
+}
+const hamburger = document.querySelector(".hamburger-button");
+hamburger.onclick = () => {
+  console.log("clicked");
+  toggleMobileMenu(hamburger.nextElementSibling);
+};

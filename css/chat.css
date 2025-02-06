@@ -92,8 +92,18 @@
         flex-direction: column;
     }
 
-    .chat-item {
-        flex: 0 0 100%;
+    #send-btn {
+        padding: 0rem;
+        margin: 0rem;
+        flex: 1;
+    }
+    .chat-input {
+        flex: 3;
+    }
+    .dashboard-section {
+        flex-direction: column;
+        height: 85vh;
+
     }
 
 }
