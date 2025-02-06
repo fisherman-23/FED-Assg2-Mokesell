@@ -298,7 +298,7 @@ header {
     flex-direction: row;
     justify-content: center;
     /* align-items: center; */
-    gap: 10rem;
+    gap: 9%;
 }
 .uploadLeft{
     display: flex;
@@ -314,7 +314,7 @@ header {
     cursor: pointer;
 }
 .uploadImage{
-    width: 20rem;
+    width: 15rem;
 }
 .uploadInput, select, option{
     background-color: #FFFFFF;
@@ -446,4 +446,60 @@ header {
 .price-display{
     color: black;
 }
+.hamburger{
+    display: none;
+}
 
+
+@media screen and (max-width: 768px) {
+    .main-nav{
+        display: none;
+    }
+    .hamburger{
+        display: block;
+    }
+    header{
+        padding: 1rem 3rem;
+    }
+    .banner h1{
+        font-size: 4.5rem;
+    }
+    .search{
+        width: 16rem;
+    }
+    .product-card-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .sidepanel{
+        width: 35vw;
+    }
+    .popup-content{
+        height: 90vh;
+    }
+    .uploadContainer{
+        flex-direction: column;
+        align-items: center;
+        padding: 0 2rem;
+    }
+    .uploadImage{
+        width: 6rem;
+    }
+    .uploadLeft{
+        width: 45vw;
+        height: 45vw;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+    .uploadRight form{
+        gap: 1rem;
+    }
+    #description{
+        height: 2rem;
+    }
+    .uploadInput{
+        height: 2rem;
+    }
+    .end{
+        font-size: 1.5em;
+    }
+}
