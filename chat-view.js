@@ -5,8 +5,19 @@ import {
   getUsernameById,
   sendMessageToFirestore,
 } from "./services.js";
+
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  addDoc,
+  getFirestore,
+  onSnapshot,
+} from "firebase/firestore";
 import { checkSignedIn } from "./auth.js";
 
+const db = getFirestore();
 // Sample JSON data for messages (assuming timeSent is a Firebase Timestamp)
 let messages = [
   {
@@ -125,5 +136,29 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const username = await getUsernameById(otherUserId);
   document.getElementById("chat-header").textContent = `Chat with ${username}`;
+
+  setupFirestoreListener(`chats/${id}/messages`, userId);
 });
 // create listen snapshot to update messages in real time
+// Function to set up Firestore real-time listener
+function setupFirestoreListener(collectionPath, userId) {
+  const messagesRef = collection(db, collectionPath); // Reference to the Firestore collection
+
+  // Set up the onSnapshot listener
+  onSnapshot(messagesRef, (snapshot) => {
+    const updatedMessages = [];
+    snapshot.forEach((doc) => {
+      const messageData = doc.data();
+      updatedMessages.push({
+        id: doc.id, // Optional: Include the document ID if needed
+        senderId: messageData.senderId,
+        text: messageData.text,
+        timeSent: messageData.timeSent, // Assuming timeSent is a Firebase Timestamp
+      });
+    });
+
+    // Update the messages array and re-render
+    msg = updatedMessages;
+    renderMessages(msg, userId);
+  });
+}

@@ -7,6 +7,7 @@ body {
 header {
     position: relative;
     padding: 0.8rem 6rem;
+    height: 13%;
 }
 
 hr {
@@ -26,7 +27,7 @@ hr {
     display: flex;
     flex-direction: row;
     gap: 0rem;
-    flex-grow: 1;
+    height: 85vh;
 }
 
 .dashboard-sidebar {
