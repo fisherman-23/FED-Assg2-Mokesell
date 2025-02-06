@@ -49,7 +49,9 @@
     font-family: 'Poppins', sans-serif;
 
 }
-
+.message {
+    margin-bottom: 1rem;
+}
 .message .text {
     background-color: #465542;
     padding: 1rem;

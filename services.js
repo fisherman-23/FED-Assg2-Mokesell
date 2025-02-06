@@ -266,6 +266,23 @@ export const getChats = async (id) => {
   }
 };
 
+export const getChatById = async (chatId) => {
+  try {
+    const docRef = doc(db, "chats", chatId);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return docSnap.data();
+    } else {
+      console.log("No such document!");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting chat:", error);
+    throw error;
+  }
+};
+
 export const getMessagesById = async (chatId) => {
   try {
     const messagesRef = collection(db, `chats/${chatId}/messages`);
@@ -277,6 +294,34 @@ export const getMessagesById = async (chatId) => {
     return messages;
   } catch (error) {
     console.error("Error getting messages:", error);
+    throw error;
+  }
+};
+
+export const sendMessageToFirestore = async (chatId, message) => {
+  try {
+    const messagesRef = collection(db, `chats/${chatId}/messages`);
+    await addDoc(messagesRef, message);
+  } catch (error) {
+    console.error("Error sending message:", error);
+    throw error;
+  }
+};
+
+export const getUsernameById = async (uid) => {
+  try {
+    const docRef = doc(db, "users", uid);
+    console.log(docRef);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return docSnap.data().username;
+    } else {
+      console.log("No such document!");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting username:", error);
     throw error;
   }
 };

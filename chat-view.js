@@ -1,38 +1,54 @@
-import { getMessagesById } from "./services.js";
+import {
+  getMessagesById,
+  getUserData,
+  getChatById,
+  getUsernameById,
+  sendMessageToFirestore,
+} from "./services.js";
+import { checkSignedIn } from "./auth.js";
 
-// Sample JSON data for messages
+// Sample JSON data for messages (assuming timeSent is a Firebase Timestamp)
 let messages = [
   {
     senderId: "user1",
     text: "Hello! How are you?",
-    timeSent: "10:00 AM",
+    timeSent: { seconds: 1696161600, nanoseconds: 0 }, // Example Firebase Timestamp
   },
   {
     senderId: "user2",
     text: "I'm good, thanks! How about you?",
-    timeSent: "10:02 AM",
+    timeSent: { seconds: 1696161720, nanoseconds: 0 }, // Example Firebase Timestamp
   },
   {
     senderId: "user1",
     text: "I'm doing great, thanks for asking!",
-    timeSent: "10:05 AM",
+    timeSent: { seconds: 1696161900, nanoseconds: 0 }, // Example Firebase Timestamp
   },
 ];
 
+let id;
+let msg;
+let userId;
+
 // Function to render messages
-function renderMessages(messages) {
+function renderMessages(messages, userId) {
+  console.log(userId);
   const chatMessages = document.getElementById("chat-messages");
   chatMessages.innerHTML = ""; // Clear existing messages
 
+  // Sort messages by timeSent (Firebase Timestamp)
+  messages.sort((a, b) => a.timeSent.seconds - b.timeSent.seconds);
+
   messages.forEach((message) => {
-    const lastMessageTime = new Date(message.timeSent.seconds * 1000);
-    const formattedTime = lastMessageTime.toLocaleString(); // You can customize the format as needed
+    // Convert Firebase Timestamp to JavaScript Date
+    const messageTime = new Date(message.timeSent.seconds * 1000);
+    const formattedTime = messageTime.toLocaleString(); // Customize the format as needed
 
     const messageElement = document.createElement("div");
     messageElement.classList.add("message");
 
     // Align messages to the right if the sender is the current user
-    if (message.senderId === "user1") {
+    if (message.senderId === userId) {
       messageElement.classList.add("right");
     }
 
@@ -50,47 +66,64 @@ function renderMessages(messages) {
 }
 
 // Function to send a new message
-function sendMessage() {
+function sendMessage(id, msg, userId) {
+  console.log(id, msg);
+
   const messageInput = document.getElementById("chat-input");
   const text = messageInput.value.trim();
 
   if (text === "") return; // Don't send empty messages
 
-  // Create a new message object
+  // Create a new message object with Firebase Timestamp
   const newMessage = {
-    senderId: "user1", // Assume the current user is "user1"
+    senderId: userId,
     text: text,
-    timeSent: new Date().toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    }),
+    timeSent: { seconds: Math.floor(Date.now() / 1000), nanoseconds: 0 }, // Current time as Firebase Timestamp
   };
 
-  // Add the new message to the messages array
-  messages.push(newMessage);
+  sendMessageToFirestore(id, newMessage, userId);
+  msg.push(newMessage);
 
   // Render the updated messages
-  renderMessages(messages);
+  renderMessages(msg, userId);
 
   // Clear the input field
   messageInput.value = "";
 }
 
 // Event listener for the send button
-document.getElementById("send-btn").addEventListener("click", sendMessage);
+document.getElementById("send-btn").addEventListener("click", function () {
+  sendMessage(id, msg, userId);
+});
 
 // Event listener for the Enter key
 document.getElementById("chat-input").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    sendMessage();
+    sendMessage(id, msg, userId);
   }
 });
 
 // Render messages on page load
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-  const msg = await getMessagesById([id]);
-  console.log(msg);
-  renderMessages(msg);
+  id = params.get("id");
+  msg = await getMessagesById([id]);
+  const signedInPromise = checkSignedIn() || Promise.resolve(null);
+
+  userId = await signedInPromise.then((result) => {
+    if (result !== null) {
+      return result[0];
+    }
+  });
+  console.log(userId);
+  renderMessages(msg, userId);
+
+  // Get the username of the other user in the chat
+  const chat = await getChatById(id);
+  const otherUserId = chat.participants.find((user) => user !== userId);
+  console.log(otherUserId);
+
+  const username = await getUsernameById(otherUserId);
+  document.getElementById("chat-header").textContent = `Chat with ${username}`;
 });
+// create listen snapshot to update messages in real time
