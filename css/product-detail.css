@@ -99,7 +99,7 @@ header a {
     font-size: 3.2vw;
 }
 
-.header{
+.product-description-name{
     margin: 0;
     font-size: 1.2vw;
 }
@@ -280,4 +280,83 @@ hr{
     color: white;
     font-size: 2.5rem;
     cursor: pointer;
+}
+.hamburger{
+    display: none;
+}
+@media screen and (max-width: 768px) {
+    .main-nav{
+        display: none;
+    }
+    .hamburger{
+        display: block;
+    }
+    header{
+        padding: 1rem 3rem;
+    }
+    .product-detail-container{
+        flex-direction: column;
+        align-items: center;
+        gap: 8vh;
+        padding: 1rem 3rem;
+    }
+    .left img{
+        width: 100%;
+    }
+    .right h1{
+        font-size: 2em;
+    }
+    .dollar-icon{
+        width: 10vw;
+        height: 10vw;
+    }
+    .product-price{
+        font-size: 2em;
+    }
+    .product-condition{
+        font-size: 1.5em;
+    }
+    .product-description-name{
+        font-size: 1.5em;
+    }
+    .product-description{
+        font-size: 1em;
+    }
+    hr{
+        margin: 1rem 3rem;
+    }
+    .user-info{
+        flex-direction: column;
+        padding: 1rem 3rem;
+        gap: 1.5rem;
+    }
+    .user-pfp{
+        width: 10vw;
+        height: 10vw;
+    }
+    .user-left{
+        justify-content: space-around;
+    }
+    .actions button img{
+        width: 10vw;
+    }
+    .user-right button{
+        font-size: 1.5rem;
+    }
+    .review-section{
+        padding: 1rem 3rem;
+    }
+    .review-section h1{
+        font-size: 1.5rem;
+    }
+    .review-card{
+        width: 100%;
+    }
+    .review-rating img{
+        width: 1rem;
+    }
+    .review-pfp{
+        width: 7vw;
+        height: 7vw;
+    }
 }
