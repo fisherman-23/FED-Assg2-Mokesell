@@ -101,7 +101,8 @@
             </div>
             <div class="user-right">
                 <button id="make-offer">Make Offer</button>
-                <p>4 offers have already been made</p>
+                <button id="view-offer">View Offer</button>
+                <p id="offer-count">0 offer(s) made</p>
             </div>
         </div>
     </section>
@@ -137,11 +138,22 @@
                 <h1>Make Offer</h1>
                 <form id="offer-form">
                     <label for="offer-price">Price:</label>
-                    <input type="number" id="offer-price" name="offer-price" required min="1" required step="any"> 
+                    <input type="number" id="offer-price" name="offer-price" required min="1" required step="any">
                     <label for="offer-message">Message:</label>
                     <textarea id="offer-message" name="offer-message" required></textarea>
                     <button type="submit">Submit</button>
                 </form>
+            </div>
+        </div>
+    </div>
+    <div id="popup-seller" class="popup-seller">
+
+        <div class="popup-content-seller">
+            <button id="close-btn-seller" class="close-btn">&times;</button>
+            <div>
+                <h1>View Offers</h1>
+                <div id="offer-list">
+                </div>
             </div>
         </div>
     </div>
@@ -153,7 +165,7 @@
                     <h2>mokesell</h2>
                 </a>
             </div>
-    
+
             <div class="footer-links">
                 <ul>
                     <li><a href="about.html">About Us</a></li>
@@ -163,7 +175,7 @@
                     <li><a href="terms.html">Terms of Service</a></li>
                 </ul>
             </div>
-    
+
             <div class="footer-social">
                 <a href="https://facebook.com/mokesell" target="_blank">
                     <img src="facebook-logo.svg" alt="Facebook" style="height: 24px;">
@@ -176,7 +188,7 @@
                 </a>
             </div>
         </div>
-    
+
         <div class="footer-bottom">
             <p>&copy; 2025 mokesell. All rights reserved.</p>
         </div>

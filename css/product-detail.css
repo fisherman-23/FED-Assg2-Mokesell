@@ -261,13 +261,44 @@ hr{
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+.popup-seller {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px); /* Blurs the background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
 .popup-content {
     width: 40vw;
     height: 80vh;
     background-color: #1a1b1c;
     border-radius: 20px;
 }
+.popup-content-seller {
+    width: 40vw;
+    height: 80vh;
+    background-color: #1a1b1c;
+    border-radius: 20px;
+}
 .popup-content div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    height: 800%;
+    overflow-y: scroll;
+}
+.popup-content-seller>div {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -314,6 +345,9 @@ hr{
     margin-top: 5rem;
 }
 #make-offer {
+    cursor: pointer;
+}
+#view-offer {
     cursor: pointer;
 }
 .close-btn {
@@ -487,6 +521,48 @@ footer {
     align-items: center;
     justify-content: center;
 }
+.offer-list {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 0.5rem; /* Space between rows */
+    padding: 1rem;
+  }
+  
+  .offer-item {
+    display: flex;
+    flex-direction: row; /* Align content in a single row */
+    align-items: center; /* Center content vertically */
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    margin: 0rem, 5rem, 5rem, 5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem; /* Compact font size */
+    flex-wrap: wrap;
+  }
+  
+  .offer-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .offer-price {
+    font-weight: bold;
+    color: #ffffff;
+    margin-right: 1rem; /* Space between columns */
+  }
+  
+  .offer-username {
+    color: #dedede;
+    margin-right: 1rem; /* Space between columns */
+  }
+  
+  .offer-status {
+    color: #cccccc;
+    font-style: italic;
+    margin-left: auto; /* Pushes status to the right edge */
+    text-align: right;
+  }
+  
 @media screen and (max-width: 900px) {
     .main-nav{
         display: none;
@@ -595,5 +671,7 @@ footer {
     .popup-content {
         width: 80%;
     }
-
+    .popup-content-seller {
+        width: 80%;
+    }
 }

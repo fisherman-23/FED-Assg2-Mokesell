@@ -628,13 +628,16 @@ footer {
         padding: 0 2rem;
     }
     .uploadImage{
-        width: 6rem;
+        width: 4.5rem;
     }
     .uploadLeft{
         width: 50vw;
         height: 50vw;
         text-align: center;
         font-size: 0.9rem;
+    }
+    .uploadLeft h2 {
+        margin-top: 0rem;
     }
     .uploadRight form{
         gap: 1rem;

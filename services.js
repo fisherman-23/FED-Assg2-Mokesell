@@ -340,8 +340,8 @@ export const createChat = async (chat) => {
 export const uploadOffer = async (listingId, offer) => {
   try {
     const offersRef = collection(db, `listings/${listingId}/offers`); // Create a reference to the offers subcollection
-    const docRef = await addDoc(offersRef, offer); // Add the offer document
-    offer.id = docRef.id; // Set the offer ID from the created document reference
+    const docRef = doc(db, `listings/${listingId}/offers`, offer.buyerId); // Create a new document reference
+    await setDoc(docRef, offer); // Set the document with the custom ID
     return docRef; // Return the document reference for further use if needed
   } catch (error) {
     console.error("Error creating offer:", error);
@@ -349,16 +349,21 @@ export const uploadOffer = async (listingId, offer) => {
   }
 };
 
-export const getOffersByListingId = async (listingId) => {
+export const getAllOffers = async (listingId) => {
   try {
+    console.log("Listing ID:", listingId);
+    // Reference the 'offers' subcollection within the given listing
     const offersRef = collection(db, `listings/${listingId}/offers`);
+
+    // Fetch all documents in the 'offers' subcollection
     const querySnapshot = await getDocs(offersRef);
-    const offers = [];
-    querySnapshot.forEach((doc) => {
-      if (doc.data().listingId === listingId) {
-        offers.push(doc.data());
-      }
-    });
+
+    // Map the documents to an array of their data
+    const offers = querySnapshot.docs.map((doc) => ({
+      id: doc.id, // Include the document ID
+      ...doc.data(), // Spread the document data
+    }));
+
     return offers;
   } catch (error) {
     console.error("Error getting offers:", error);

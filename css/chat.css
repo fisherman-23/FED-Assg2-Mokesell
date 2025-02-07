@@ -29,6 +29,7 @@
     width: 100%;
     flex-direction: row;
     gap: 2rem;
+    flex-wrap: wrap;
 }
 
 header a {
@@ -96,6 +97,7 @@ header a {
 @media screen and (max-width: 900px) {
     .chat-list {
         flex-direction: column;
+        flex-wrap: nowrap;
     }
 
     #send-btn {
