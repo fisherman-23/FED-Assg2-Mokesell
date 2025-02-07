@@ -356,8 +356,21 @@ header a {
     color: white; /* Default color */
     mix-blend-mode: difference;
     font-size: 1.7rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
 }
-
+.product-info-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2); 
+    filter: blur(5px);
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    z-index: 19;
+  }
 
 .explore-sell-section {
     display: flex;
@@ -532,6 +545,7 @@ header a {
     font-family: "Poppins", sans-serif;
     overflow: hidden;
     font-size: 1vw;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 #cards{
     display: flex;
@@ -688,7 +702,10 @@ footer {
     margin: 0 10px;
     text-decoration: none;
 }
-
+.explore-text{
+    font-size: 2.5rem;
+    font-weight: normal;
+}
 .footer-bottom {
     margin-top: 20px;
     font-size: 0.8rem;

@@ -75,35 +75,6 @@ function productDetail(id) {
   window.location.href = `product-detail.html?id=${id}`;
 }
 
-function testUploadBatchListing() {
-  fetch("products.json")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      for (let i = 0; i < data.length; i++) {
-        const product = data[i];
-        const listing = {
-          name: product.name,
-          price: product.price,
-          image: `productIMG/product${i + 1}.jpg`,
-          description: product.description,
-          category: product.category,
-          condition: product.condition,
-          seller: product.seller_id,
-          likes: 0,
-          createdAt: new Date(),
-        };
-        createListing(listing);
-      }
-    })
-    .catch((error) => {
-      console.error("Error uploading batch:", error);
-    });
-}
 
 const popup = document.getElementById("popup");
 const closeButton = document.getElementById("close-btn");
