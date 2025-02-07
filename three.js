@@ -118,10 +118,11 @@ ground.receiveShadow = true;
 // scene.add(ground);
 
 // Animation parameters
-const rotationSpeedX = 0.1;
-const rotationSpeedY = 0.1;
-const XmaxRotation = Math.PI / 12; // 30 degrees
-const YmaxRotation = Math.PI / 6;
+const rotationSpeed = 0.1;
+var XmaxRotation = Math.PI / 12; // 30 degrees
+var YmaxRotation = Math.PI / 6;
+var rotationSpeedX = 0.1; // Smoothing factor for X rotation
+var rotationSpeedY = 0.1; // Smoothing factor for Y rotation;
 
 // Render Loop
 let isRendering = true;
@@ -132,16 +133,27 @@ function animate() {
   requestAnimationFrame(animate);
 
   if (model) {
-    target.x = -mouse.y * YmaxRotation;
+    // Calculate target rotation based on mouse position
+    target.x = -mouse.y * YmaxRotation; // Invert Y-axis for correct orientation
     target.y = mouse.x * XmaxRotation;
+    let targetXmaxRotation = Math.PI / 12;
+    // Smoothly adjust XmaxRotation based on condition
+    if (target.y > -0.3) {
+      targetXmaxRotation = Math.PI / 1.5;
+    } else {
+      targetXmaxRotation = Math.PI / 12;
+    }
+    XmaxRotation += (targetXmaxRotation - XmaxRotation) * 0.05; // Smooth transition
 
+    // Smoothly interpolate current rotation to target rotation
+    if (model.rotation.y > 1) {
+      target.x = -target.x;
+    }
     model.rotation.x += (target.x - model.rotation.x) * rotationSpeedX;
     model.rotation.y += (target.y - model.rotation.y) * rotationSpeedY;
-
-    // Floating animation
+    // Optional: Add a gentle floating animation
     model.position.y = Math.sin(Date.now() * 0.001) * 0.05;
   }
-
   renderer.render(scene, camera);
 }
 

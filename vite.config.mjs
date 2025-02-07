@@ -1,6 +1,10 @@
 import { defineConfig } from "vite";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
 
 export default defineConfig({
+  plugins: [
+    nodePolyfills(), // Adds Node.js polyfills for the browser
+  ],
   build: {
     target: "esnext", // Use 'esnext' to ensure full compatibility with top-level await
     rollupOptions: {
@@ -14,9 +18,6 @@ export default defineConfig({
         productDetail: "product-detail.html",
         rewards: "rewards.html",
       },
-    },
-    esbuild: {
-      target: "esnext", // Ensures support for the latest JS features, including top-level await
     },
   },
 });

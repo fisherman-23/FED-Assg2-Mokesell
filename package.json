@@ -1,21 +1,53 @@
 {
   
   "name": "my-vite-project",
+  
   "version": "1.0.0",
+  
   "scripts": {
-    "dev": "vite",          
-    "build": "vite build",   
-    "serve": "vite preview"  
+  
+    
+  "dev": "vite",
+  
+    
+  "build": "vite build",
+  
+    
+  "serve": "vite preview"
+  
   },
+  
   "dependencies": {
-    "compressorjs": "^1.2.1",
-    "dotenv": "^16.4.7",
-    "firebase": "^11.2.0",
-    "lottie-web": "^5.12.2",
-    "three": "^0.172.0",
-    "uuid": "^11.0.5"
+  
+    
+  "compressorjs": "^1.2.1",
+  
+    
+  "dotenv": "^16.4.7",
+  
+    
+  "firebase": "^11.2.0",
+  
+    
+  "lottie-web": "^5.12.2",
+  
+    
+  "three": "^0.172.0",
+  
+    
+  "uuid": "^11.0.5",
+  
+    
+  "vite-plugin-node-polyfills": "^0.23.0"
+  
   },
+  
   "devDependencies": {
-    "vite": "^6.0.9"
-  }
+  
+    
+  "vite": "^6.0.9"
+  
+  },
+  
+  "type": "module"
 }

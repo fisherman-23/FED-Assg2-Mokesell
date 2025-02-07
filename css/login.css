@@ -24,7 +24,7 @@
 
 }
 .login-3d {
-    background-image: url('../landing-bg.png');
+    background-image: url('/landing-bg.png');
     background-size: cover;
     background-position: center;
     flex: 5;

@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16" # Set the Node.js version (adjust as necessary)
+          node-version: "18" # Set the Node.js version (adjust as necessary)s
 
       - name: Install dependencies
         run: npm install # Install dependencies using npm
@@ -35,7 +35,5 @@ jobs:
       - name: Build with Vite
         run: npm run build # Run the build script defined in your package.json
 
-      - name: Deploy (optional)
-        run: |
-          # Add any deployment steps here
-          echo "Deploying the app..."
+      - name: Deploy on Pages
+        uses: actions/deploy-pages@v4
