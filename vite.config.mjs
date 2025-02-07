@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [
     nodePolyfills(), // Adds Node.js polyfills for the browser
   ],
+  base: process.env.NODE_ENV === "production" ? "/FED-Assg2-Mokesell/" : "/",
   build: {
     target: "esnext", // Use 'esnext' to ensure full compatibility with top-level await
     rollupOptions: {
