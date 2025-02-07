@@ -43,7 +43,7 @@ jobs:
 
       # Upload the build output as an artifact
       - name: Upload build output
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v1
         with:
           name: github-pages
           path: dist # Adjust this if your build output is in a different folder
