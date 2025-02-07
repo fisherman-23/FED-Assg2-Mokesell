@@ -31,6 +31,12 @@
     gap: 2rem;
 }
 
+header a {
+    /* center the brand */
+    display: flex;
+    align-items: center;
+    
+}
 /* Existing styles... */
 
 .chat-input {
@@ -104,6 +110,17 @@
         flex-direction: column;
         height: 85vh;
 
+    }
+    #chat-header {
+        font-size: 2rem;
+        margin: 1rem 0;
+    }
+    .dashboard-section {
+        flex-direction: column;
+        max-height: 90vh;
+    }
+    body {
+        height: 100vh;
     }
 
 }

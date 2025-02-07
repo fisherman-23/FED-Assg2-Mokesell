@@ -388,6 +388,8 @@ footer {
 
 .footer-social a {
     margin: 0 10px;
+    text-decoration: none;
+
 }
 
 .footer-bottom {
@@ -463,6 +465,10 @@ footer {
     }
     .review-card{
         width: 100%;
+    }
+    .review-top {
+        flex-direction: column;
+        gap: 0.5rem;
     }
     .review-rating img{
         width: 1rem;

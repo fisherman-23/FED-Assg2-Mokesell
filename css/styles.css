@@ -381,9 +381,11 @@ header a {
     bottom: 0rem;
     font-size: 2.5rem;
 }
-
-.explore-card {
+.explore-sell-section a {
     flex: 1;
+
+}
+.explore-card {
     /* Ensures both cards take up equal space */
     height: 40vh;
     background-color: hsla(188, 87%, 16%, 1);
@@ -419,7 +421,6 @@ header a {
 }
 
 .sell-card {
-    flex: 1;
     /* Ensures both cards take up equal space */
     height: 40vh;
     background-color: #eb99ff;
@@ -623,6 +624,7 @@ header a {
     padding: 8rem 1rem;
     opacity: 1;
     transform: translateX(0);
+    z-index: 30;
 }
 .mobile-menu li {
     list-style: none;
@@ -684,6 +686,7 @@ footer {
 
 .footer-social a {
     margin: 0 10px;
+    text-decoration: none;
 }
 
 .footer-bottom {
@@ -697,6 +700,10 @@ footer {
     }
     .landing-text   {
         padding: 2rem;
+    }
+    .landing-text p {
+        font-size: 1rem;
+        line-height: 1.5rem;
     }
     .landing-3d {
         display: none;
@@ -724,11 +731,11 @@ footer {
         flex-direction: column;
     }
     .explore-card {
-        height: 30vh;
+        height: 40vh;
         flex: none;
     }
     .sell-card {
-        height: 30vh;
+        height: 40vh;
         flex: none;
     }
     .footer-content {
