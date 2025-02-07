@@ -7,7 +7,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/dashboard.css">
-    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/my-listings.css">
 
     <!-- Standard Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -55,25 +55,22 @@
         <div class="dashboard-sidebar">
             <ul>
                 <li><a href="dashboard.html">Overview</a></li>
-                <li class="selected"><a href="chat-list.html">Chats</a></li>
-                <li><a href="my-listings.html">Listings</a></li>
+                <li><a href="chat-list.html">Chats</a></li>
+                <li class="selected"><a href="my-listings.html">Listings</a></li>
                 <li class="logout-btn"> <a>Log Out</a></li>
 
             </ul>
         </div>
         <div class="dashboard-content">
-            <h1 id="chat-header">Chat</h1>
-            <div class="chat-messages" id="chat-messages"></div>
-            <div class="chat-input">
-                <input type="text" id="chat-input" placeholder="Type a message...">
-                <button id="send-btn">Send</button>
+            <h1 id="chat-header">My listings</h1>
+            <div class="product-container">
+
             </div>
- 
         </div>
 
     </section>
     <script type="module" src="firebase.js"></script>
-    <script type="module" src="chat-view.js"></script>
+    <script type="module" src="my-listings.js"></script>
 
 </body>
 
