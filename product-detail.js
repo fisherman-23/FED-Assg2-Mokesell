@@ -13,12 +13,40 @@ import {
   getFirestore,
   getDoc,
 } from "firebase/firestore";
+import { checkSignedIn } from "./auth";
 
 const db = getFirestore();
 
 document.addEventListener("DOMContentLoaded", async function () {
   console.log("Document loaded");
+  // Ensure checkSignedIn returns a resolved promise, even if it's null
+  const signedInPromise = checkSignedIn() || Promise.resolve(null);
 
+  signedInPromise
+    .then((result) => {
+      if (result !== null) {
+        // Handle the case where the user is signed in
+
+        getUserData(result[0])
+          .then((userData) => {
+            // Handle user data
+            console.log("User data:", userData.username);
+            welcome_string.innerHTML = `Welcome, ${userData.username}!`;
+            listing_count.innerHTML = `${userData.listings.length}`;
+            purchase_count.innerHTML = `${userData.purchases.length}`;
+            like_count.innerHTML = `${userData.likes.length}`;
+          })
+          .catch((error) => {
+            // Handle error
+          });
+      } else {
+        // redirect to login
+        window.location.href = "login.html";
+      }
+    })
+    .catch((error) => {
+      console.error("Error checking sign-in status:", error);
+    });
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
 
@@ -128,9 +156,11 @@ function setupPopupAndEvents() {
     const offerData = {
       offerPrice: offer,
       buyerId: user.uid,
-      sellerId: product[0].seller,
       status: "pending",
     };
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
     uploadOffer(id, offerData);
     document.getElementById("offer-price").value = "";
 
