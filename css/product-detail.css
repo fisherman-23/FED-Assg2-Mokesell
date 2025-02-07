@@ -394,7 +394,7 @@ footer {
     font-size: 0.8rem;
     color: #ccc;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
     .main-nav{
         display: none;
     }
