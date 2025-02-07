@@ -262,6 +262,7 @@ header a {
     align-items: start;
     background-color: #0A0A0A;
     padding: 4rem 0rem;
+    width: 100%;
 }
 
 .trending-section h2 {
@@ -269,6 +270,94 @@ header a {
     font-size: 2.5rem;
     margin-bottom: 0rem;
 }
+.products {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    flex-direction: column;
+}
+.product-card-container {
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+    width: 100%;
+}
+.gradient-blur img {
+    max-width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.gradient-blur {
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
+    border-radius: 15px;
+}
+.product-card {
+    flex: 1;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.product-card img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    aspect-ratio: 5/5;
+    object-fit: cover;
+}
+.gradient-blur > div,
+.gradient-blur::before,
+.gradient-blur::after {
+    
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+}
+
+.gradient-blur > div:nth-of-type(1) {
+    z-index: 6;
+    backdrop-filter: blur(3px); /* Decreased blur amount */
+    mask: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 62.5%,
+      rgba(0, 0, 0, 1) 75%,
+      rgba(0, 0, 0, 1) 87.5%,
+      rgba(0, 0, 0, 0) 100%
+    );
+}
+
+.gradient-blur > div:nth-of-type(2) {
+    z-index: 7;
+    backdrop-filter: blur(5px); /* Decreased blur amount */
+    
+    mask: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 75%,
+      rgba(0, 0, 0, 1) 87.5%,
+      rgba(0, 0, 0, 1) 100%
+    );
+}
+
+.product-info-section {
+    position: absolute;
+    z-index: 20;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+.product-info-section h2, .product-info-section p{
+    margin-bottom: 0rem;
+    margin-top: 0.5rem;
+    font-weight: normal;
+    color: white; /* Default color */
+    mix-blend-mode: difference;
+    font-size: 1.7rem;
+}
+
 
 .explore-sell-section {
     display: flex;
@@ -402,15 +491,58 @@ header a {
     font-weight: normal;
     font-size: 2.5rem;
 }
-
-.review-section div {
-    flex: 1;
-    background-color: #4E3737;
-    padding: 4rem 6rem;
-    height: 100vh;
-    width: 100%;
-    border-radius: 25px;
+.reviewCard{
+    flex-basis: 30%;
+    background: #A73689;
+    background: linear-gradient(135deg, #A73689, #4168FD);
+    border-radius: 15px;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 10px 15px;
+    border: solid;
+    box-shadow: rgba(90, 69, 228, 0.4) -5px 5px, rgba(90, 69, 228, 0.3) -10px 10px, rgba(90, 69, 228, 0.2) -15px 15px, rgba(90, 69, 228, 0.1) -20px 20px, rgba(90, 69, 228, 0.05) -25px 25px;
 }
+#cards::-webkit-scrollbar {
+    display: none;
+}
+.profilePicture{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Review Card design that is split into top part (Profile picture and name) and bottom part (review) */
+.topCard{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.topCard h3{
+    font-family: "Poppins", sans-serif;
+    font-size: 1.3vw;
+    overflow: hidden;
+}
+.botCard p{
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+    font-size: 1vw;
+}
+#cards{
+    display: flex;
+    gap: 2.5rem;
+    justify-content: space-between;
+}
+.reviews{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
 
 
 
@@ -624,5 +756,29 @@ footer {
 
     .footer-bottom {
         font-size: 0.7rem;
+    }
+    #cards{
+        display: flex;
+        flex-direction: column;
+        padding: 20px 30px;
+        gap: 30px;
+        justify-content: center;
+    }
+    .topCard h3{
+        font-family: "Poppins", sans-serif;
+        font-size: 1em;
+        overflow: hidden;
+    }
+    .botCard p{
+        font-family: "Poppins", sans-serif;
+        overflow: hidden;
+        font-size: 1em;
+    }
+    #Reviews h1{
+        font-size: 2rem;
+    }
+    .product-card-container{
+        display: flex;
+        flex-direction: column;
     }
 }
