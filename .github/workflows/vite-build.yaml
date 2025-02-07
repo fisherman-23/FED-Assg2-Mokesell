@@ -37,3 +37,7 @@ jobs:
 
       - name: Deploy on Pages
         uses: actions/deploy-pages@v4
+        with:
+          branch: gh-pages # The branch where you want to deploy
+          folder: dist # The folder where the build output is located
+          token: ${{ secrets.GITHUB_TOKEN }} # Use the GitHub token for authentication
