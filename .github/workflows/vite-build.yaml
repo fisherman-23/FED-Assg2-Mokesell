@@ -9,6 +9,7 @@ on:
 permissions:
   contents: write # Allows workflow to push changes to the repository
   id-token: write # Ensure this permission is included
+  pages: write # Required for deploying to GitHub Pages
 
 jobs:
   build:
@@ -40,8 +41,15 @@ jobs:
       - name: Build with Vite
         run: npm run build # Run the build script defined in your package.json
 
+      # Upload the build output as an artifact
+      - name: Upload build output
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: dist # Adjust this if your build output is in a different folder
+
+      # Deploy the build output to GitHub Pages
       - name: Deploy on Pages
         uses: actions/deploy-pages@v4
         with:
-          folder: dist # The folder where the build output is located
           token: ${{ secrets.GITHUB_TOKEN }} # Use the GitHub token for authentication
