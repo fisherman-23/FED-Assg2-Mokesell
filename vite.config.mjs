@@ -18,6 +18,7 @@ export default defineConfig({
         productPage: "productPage.html",
         productDetail: "product-detail.html",
         rewards: "rewards.html",
+        userListings: "my-listings.html",
       },
     },
   },

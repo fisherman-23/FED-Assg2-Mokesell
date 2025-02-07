@@ -69,6 +69,43 @@ document.addEventListener("DOMContentLoaded", async function () {
     const userData = await getUserData(seller);
     const username = userData.username;
     const dateJoined = userData.createdAt;
+    document
+      .querySelector(".chat-btn")
+      .addEventListener("click", async function () {
+        if (!getAuth().currentUser) {
+          window.location.href = "login.html";
+          return;
+        } else if (getAuth().currentUser.uid === seller) {
+          showToast("Error", "You cannot chat with yourself", "error");
+          return;
+        }
+        const user = getAuth().currentUser;
+        const messageCollection = collection(db, "messages");
+        // create chat object
+        let chat = {
+          lastMessage: "",
+          lastMessageTime: new Date(),
+          participants: [seller, user.uid],
+        };
+        const docRef = doc(collection(db, "chats"));
+        chat.id = docRef.id;
+
+        await setDoc(docRef, chat);
+        // update the chat field for both users
+
+        const userRef = doc(db, "users", user.uid);
+        const sellerRef = doc(db, "users", seller);
+        const userSnap = await getDoc(userRef);
+        const sellerSnap = await getDoc(sellerRef);
+        let userChats = userSnap.data().chats;
+        let sellerChats = sellerSnap.data().chats;
+        userChats.push(chat.id);
+        sellerChats.push(chat.id);
+        await setDoc(userRef, { chats: userChats }, { merge: true });
+        await setDoc(sellerRef, { chats: sellerChats }, { merge: true });
+
+        window.location.href = `chat-view.html?id=${chat.id}`;
+      });
 
     document.querySelector(
       ".user-datejoin"
