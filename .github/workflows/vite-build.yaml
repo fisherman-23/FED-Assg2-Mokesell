@@ -5,6 +5,9 @@ on:
     branches:
       - main # Trigger on push to the main branch
 
+permissions:
+  id-token: write # Ensure this permission is included
+
 jobs:
   build:
     runs-on: ubuntu-latest # Use the latest Ubuntu runner for your job
@@ -16,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # Set the Node.js version (adjust as necessary)s
+          node-version: "18" # Set the Node.js version (adjust as necessary)
 
       - name: Install dependencies
         run: npm install # Install dependencies using npm
@@ -38,6 +41,5 @@ jobs:
       - name: Deploy on Pages
         uses: actions/deploy-pages@v4
         with:
-          branch: gh-pages # The branch where you want to deploy
           folder: dist # The folder where the build output is located
           token: ${{ secrets.GITHUB_TOKEN }} # Use the GitHub token for authentication
