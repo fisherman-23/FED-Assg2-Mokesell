@@ -14,7 +14,7 @@ let product = [];
 product = await getListingsByIds([id]);
 console.log(product);
 function loadContent(product) {
-  document.querySelector(".product-img").src = product.thumbnail;
+  document.querySelector(".product-img").src = product.image;
   document.querySelector(".product-name").textContent = product.name;
   document.querySelector(
     ".product-price"
