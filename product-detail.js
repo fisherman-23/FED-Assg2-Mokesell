@@ -37,7 +37,7 @@ document.querySelector(".user-datejoin").textContent = `Created on ${new Date(
 document.querySelector(".user-name").textContent = username;
 setTimeout(() => {
   document.querySelector(".loading").style.display = "none";
-}, 1000);
+}, 1300);
 
 const popup = document.getElementById("popup");
 const closeButton = document.getElementById("close-btn");

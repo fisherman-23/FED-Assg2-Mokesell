@@ -180,7 +180,7 @@ header a {
 .end{
     background: none;
     font-size: 1.8rem;
-    margin: 2rem 0;
+    margin: 3rem 0;
     display: none;
     text-align: center;
 }
@@ -204,7 +204,7 @@ header a {
 }
 
 .load-more {
-    margin: 2rem 0;
+    margin: 3rem 0;
     background: none;
     padding: 0.5rem 1rem;
     border: 2px solid #ffffff;
@@ -279,8 +279,8 @@ header a {
     color: white; /* Default color */
     mix-blend-mode: difference;
     font-size: 1.5rem !important;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
-    z-index: 8;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
+    z-index: 21;
 }
 .product-info-section::after {
     content: '';
@@ -290,9 +290,10 @@ header a {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.2); 
-    filter: blur(10px);
+    filter: blur(5px);
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
+    z-index: 19;
   }
 .popup {
     position: fixed;
@@ -581,7 +582,7 @@ footer {
         display: block;
     }
     header{
-        padding: 1rem 3rem;
+        padding: 0.8rem 2rem;
     }
     .banner h1{
         font-size: 4.5rem;
@@ -596,10 +597,11 @@ footer {
         font-size: 1rem !important;
     }
     .sidepanel{
-        width: 35vw;
+        width: 40vw;
     }
     .popup-content{
         height: 90vh;
+        width: 90vw;
     }
     .uploadContainer{
         flex-direction: column;
@@ -610,8 +612,8 @@ footer {
         width: 6rem;
     }
     .uploadLeft{
-        width: 45vw;
-        height: 45vw;
+        width: 50vw;
+        height: 50vw;
         text-align: center;
         font-size: 0.9rem;
     }

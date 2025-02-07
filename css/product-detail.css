@@ -214,6 +214,7 @@ hr{
     display: flex;
     padding: 1.5rem 6rem;
     flex-direction: column;
+    margin-bottom: 3rem;
 }
 .review-section h1{
     font-size: 1.5vw;
@@ -403,13 +404,13 @@ footer {
         display: block;
     }
     header{
-        padding: 1rem 3rem;
+        padding: 0.8rem 2rem;
     }
     .product-detail-container{
         flex-direction: column;
         align-items: center;
         gap: 8vh;
-        padding: 1rem 3rem;
+        padding: 0.8rem 2rem;
     }
     .left img{
         width: 100%;
@@ -438,7 +439,7 @@ footer {
     }
     .user-info{
         flex-direction: column;
-        padding: 1rem 3rem;
+        padding: 0.8rem 2rem;
         gap: 1.5rem;
     }
     .user-pfp{
@@ -455,7 +456,7 @@ footer {
         font-size: 1.5rem;
     }
     .review-section{
-        padding: 1rem 3rem;
+        padding: 0.8rem 2rem;
     }
     .review-section h1{
         font-size: 1.5rem;
