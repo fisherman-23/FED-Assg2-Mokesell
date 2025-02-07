@@ -17,6 +17,7 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { checkSignedIn } from "./auth.js";
+import { logout } from "./auth.js";
 
 const db = getFirestore();
 // Sample JSON data for messages (assuming timeSent is a Firebase Timestamp)
@@ -180,3 +181,17 @@ hamburger.onclick = () => {
   console.log("clicked");
   toggleMobileMenu(hamburger.nextElementSibling);
 };
+
+function logOut() {
+  logout()
+    .then(() => {
+      window.location.href = "/login.html";
+    })
+    .catch((error) => {
+      console.error("Error logging out:", error);
+    });
+}
+let logout_button = document.querySelectorAll(".logout-btn");
+logout_button.forEach((button) => {
+  button.addEventListener("click", logOut);
+});

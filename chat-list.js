@@ -1,6 +1,6 @@
 import { getChats, getUserData, getUsernameById } from "./services.js";
 import { checkSignedIn } from "./auth.js";
-
+import { logout } from "./auth.js";
 document.addEventListener("DOMContentLoaded", function () {
   const signedInPromise = checkSignedIn() || Promise.resolve(null);
 
@@ -57,3 +57,17 @@ hamburger.onclick = () => {
   console.log("clicked");
   toggleMobileMenu(hamburger.nextElementSibling);
 };
+
+function logOut() {
+  logout()
+    .then(() => {
+      window.location.href = "/login.html";
+    })
+    .catch((error) => {
+      console.error("Error logging out:", error);
+    });
+}
+let logout_button = document.querySelectorAll(".logout-btn");
+logout_button.forEach((button) => {
+  button.addEventListener("click", logOut);
+});

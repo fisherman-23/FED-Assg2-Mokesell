@@ -1,4 +1,9 @@
-import { getListingsByIds, getUserData, getUsernameById } from "./services";
+import {
+  getListingsByIds,
+  getUserData,
+  getUsernameById,
+  uploadOffer,
+} from "./services";
 import { getAuth } from "firebase/auth";
 import {
   doc,
@@ -95,3 +100,39 @@ hamburger.onclick = () => {
   console.log("clicked");
   toggleMobileMenu(hamburger.nextElementSibling);
 };
+
+document.getElementById("offer-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const user = getAuth().currentUser;
+  const offer = document.getElementById("offer-price").value;
+  const offerData = {
+    listingId: id,
+    offerPrice: offer,
+    buyerId: user.uid,
+    sellerId: seller,
+    status: "pending",
+  };
+  uploadOffer(id, offerData);
+  document.getElementById("offer-price").value = "";
+
+  showToast("Success", "Offer sent successfully", "success");
+});
+
+const toast = document.querySelector(".toast");
+const toastHeader = document.querySelector(".toast-content h2");
+const toastMessage = document.querySelector(".toast-content p");
+const toastIcon = document.querySelector(".toast-icon img");
+
+function showToast(header, message, type) {
+  if (type === "error") {
+    toastIcon.src = "cross.svg";
+  } else {
+    toastIcon.src = "tick.svg";
+  }
+  toastHeader.textContent = header;
+  toastMessage.textContent = message;
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 4000);
+}

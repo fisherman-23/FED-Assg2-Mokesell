@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from "uuid"; // For generating UUIDs
 import Compressor from "compressorjs";
 import {
   getFirestore,
-  doc,
   getDoc,
   addDoc,
   collection,
@@ -11,6 +10,7 @@ import {
   arrayUnion,
   setDoc,
   getDocs,
+  doc,
 } from "firebase/firestore";
 import {
   getStorage,
@@ -333,6 +333,35 @@ export const createChat = async (chat) => {
     return docRef.id;
   } catch (error) {
     console.error("Error creating chat:", error);
+    throw error;
+  }
+};
+
+export const uploadOffer = async (listingId, offer) => {
+  try {
+    const offersRef = collection(db, `listings/${listingId}/offers`); // Create a reference to the offers subcollection
+    const docRef = await addDoc(offersRef, offer); // Add the offer document
+    offer.id = docRef.id; // Set the offer ID from the created document reference
+    return docRef; // Return the document reference for further use if needed
+  } catch (error) {
+    console.error("Error creating offer:", error);
+    throw error; // Re-throw the error so the caller can handle it
+  }
+};
+
+export const getOffersByListingId = async (listingId) => {
+  try {
+    const offersRef = collection(db, `listings/${listingId}/offers`);
+    const querySnapshot = await getDocs(offersRef);
+    const offers = [];
+    querySnapshot.forEach((doc) => {
+      if (doc.data().listingId === listingId) {
+        offers.push(doc.data());
+      }
+    });
+    return offers;
+  } catch (error) {
+    console.error("Error getting offers:", error);
     throw error;
   }
 };

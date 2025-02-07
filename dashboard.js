@@ -4,14 +4,16 @@ import { getUserData } from "./services";
 function logOut() {
   logout()
     .then(() => {
-      window.location.href = "login.html";
+      window.location.href = "/login.html";
     })
     .catch((error) => {
       console.error("Error logging out:", error);
     });
 }
-let logout_button = document.getElementById("logout-btn");
-logout_button.addEventListener("click", logOut);
+let logout_button = document.querySelectorAll(".logout-btn");
+logout_button.forEach((button) => {
+  button.addEventListener("click", logOut);
+});
 
 let welcome_string = document.getElementById("dashboard-welcome");
 let listing_count = document.getElementById("listing-count");

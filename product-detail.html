@@ -59,6 +59,15 @@
             </ul>
         </nav>
     </header>
+    <div class="toast">
+        <div class="toast-icon">
+            <img src="tick.svg">
+        </div>
+        <div class="toast-content">
+            <h2>Success!</h2>
+            <p>Your account has been created successfully.</p>
+        </div>
+    </div>
     <section class="product-detail">
         <div class="product-detail-container">
             <div class="left">
@@ -124,7 +133,16 @@
 
         <div class="popup-content">
             <button id="close-btn" class="close-btn">&times;</button>
-
+            <div>
+                <h1>Make Offer</h1>
+                <form id="offer-form">
+                    <label for="offer-price">Price:</label>
+                    <input type="number" id="offer-price" name="offer-price" required min="1" required step="any"> 
+                    <label for="offer-message">Message:</label>
+                    <textarea id="offer-message" name="offer-message" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
     <footer>
