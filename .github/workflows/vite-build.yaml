@@ -7,6 +7,7 @@ on:
   workflow_dispatch: # Allow manual trigger
 
 permissions:
+  contents: write # Allows workflow to push changes to the repository
   id-token: write # Ensure this permission is included
 
 jobs:
