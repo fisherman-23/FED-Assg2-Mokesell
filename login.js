@@ -3,8 +3,8 @@ import { signUp, login, logout } from "./auth";
 const loginForm = document.getElementById("login-form");
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const email = loginForm["email"].value;
-  const password = loginForm["password"].value;
+  const email = loginForm["email-login"].value;
+  const password = loginForm["password-login"].value;
   try {
     await login(email, password);
     showToast("Success", "Logged in successfully", "success");
@@ -21,8 +21,8 @@ loginForm.addEventListener("submit", async (e) => {
 const signupForm = document.getElementById("signup-form");
 signupForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const email = signupForm["email"].value;
-  const password = signupForm["password"].value;
+  const email = signupForm["email-signup"].value;
+  const password = signupForm["password-signup"].value;
   const username = signupForm["username"].value;
   try {
     await signUp(email, password, username);
