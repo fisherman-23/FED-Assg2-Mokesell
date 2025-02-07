@@ -10,7 +10,7 @@ function logOut() {
       console.error("Error logging out:", error);
     });
 }
-let logout_button = document.getElementById("logout-btn");
+let logout_button = document.querySelector(".logout-btn");
 logout_button.addEventListener("click", logOut);
 
 let welcome_string = document.getElementById("dashboard-welcome");

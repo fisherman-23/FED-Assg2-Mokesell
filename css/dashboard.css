@@ -77,7 +77,7 @@ hr {
     font-weight: normal;
 }
 
-#logout-btn {
+.logout-btn {
     background-color: #e44141;
     color: #ffffff;
     padding: 1rem 1rem;
@@ -87,7 +87,7 @@ hr {
     cursor: pointer;
 }
 
-#logout-btn a {
+.logout-btn a {
     color: #ffffff;
     text-decoration: none;
 }
