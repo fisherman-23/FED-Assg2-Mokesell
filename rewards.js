@@ -1,3 +1,6 @@
+
+/* card game */
+
 const gridContainer = document.querySelector(".grid-container");
 let cards = [];
 let firstCard, secondCard;
