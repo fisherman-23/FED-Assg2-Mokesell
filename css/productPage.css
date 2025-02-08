@@ -129,6 +129,7 @@ header a {
     font-size: 1.2rem;
     background: none;
     border: white 1px solid;
+    font-family: 'Poppins', sans-serif;
 }
 .filter{
     display: flex;

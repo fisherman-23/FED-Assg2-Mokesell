@@ -200,6 +200,7 @@ function setupPopupAndEvents() {
 
     uploadOffer(id, offerData);
     document.getElementById("offer-price").value = "";
+    document.getElementById("offer-form").reset();
 
     showToast("Success", "Offer sent successfully", "success");
   });
@@ -279,10 +280,51 @@ function loadOffers(offers) {
     statusElement.classList.add("offer-status");
     statusElement.textContent = `Status: ${offer.status}`;
 
+    const chatButton = document.createElement("button");
+    chatButton.classList.add("chat-btn");
+    chatButton.innerHTML = '<img src="/ChatTeardropDots.svg" alt="chat icon">';
+    chatButton.addEventListener("click", async () => {
+      if (!getAuth().currentUser) {
+        window.location.href = "login.html";
+        return;
+      }
+      if (getAuth().currentUser.uid === offer.buyerId) {
+        showToast("Error", "You cannot chat with yourself", "error");
+        return;
+      }
+      const user = getAuth().currentUser;
+      const messageCollection = collection(db, "messages");
+      // create chat object
+      let chat = {
+        lastMessage: "",
+        lastMessageTime: new Date(),
+        participants: [offer.buyerId, user.uid],
+      };
+      const docRef = doc(collection(db, "chats"));
+      chat.id = docRef.id;
+
+      await setDoc(docRef, chat);
+      // update the chat field for both users
+
+      const userRef = doc(db, "users", user.uid);
+      const buyerRef = doc(db, "users", offer.buyerId);
+      const userSnap = await getDoc(userRef);
+      const buyerSnap = await getDoc(buyerRef);
+      let userChats = userSnap.data().chats;
+      let buyerChats = buyerSnap.data().chats;
+      userChats.push(chat.id);
+      buyerChats.push(chat.id);
+      await setDoc(userRef, { chats: userChats }, { merge: true });
+      await setDoc(buyerRef, { chats: buyerChats }, { merge: true });
+
+      window.location.href = `chat-view.html?id=${chat.id}`;
+    });
+
     // Append elements to the offer item
     offerItem.appendChild(priceElement);
     offerItem.appendChild(usernameElement);
     offerItem.appendChild(statusElement);
+    offerItem.appendChild(chatButton);
 
     // Append the offer item to the list
     offerList.appendChild(offerItem);

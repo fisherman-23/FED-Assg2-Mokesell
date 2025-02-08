@@ -21,6 +21,7 @@ hr {
     font-size: 1.5rem;
     text-decoration: none;
     align-self: center;
+    cursor: pointer;
 }
 
 .dashboard-section {
