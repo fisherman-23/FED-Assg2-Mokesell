@@ -5,8 +5,19 @@ let firstCard, secondCard;
 let lockBoard = false;
 let score = 0;
 let tries = 16;
+let totalScore = 0; // Declare totalScore outside the if block
+
+// Fetch total score from local storage
+if (localStorage.getItem("totalScore")) {
+  totalScore = parseInt(localStorage.getItem("totalScore"));
+} else {
+  localStorage.setItem("totalScore", score);
+  totalScore = score;
+}
+
 document.querySelector(".tries").textContent = tries;
 document.querySelector(".score").textContent = score;
+document.querySelector(".total-score").textContent = totalScore;
 
 fetch("cards.json")
   .then((res) => res.json())
@@ -15,6 +26,35 @@ fetch("cards.json")
     shuffleCards();
     generateCards();
   });
+
+// Reward buttons logic
+const reward20Button = document.getElementById("reward-20");
+const reward50Button = document.getElementById("reward-50");
+const reward100Button = document.getElementById("reward-100");
+
+reward20Button.addEventListener("click", () => {
+  if (totalScore >= 20) {
+    alert("Congrats! Use promo code PROMO20 for your reward.");
+  } else {
+    alert("You need at least 20 points to claim this reward.");
+  }
+});
+
+reward50Button.addEventListener("click", () => {
+  if (totalScore >= 50) {
+    alert("Congrats! Use promo code PROMO50 for your reward.");
+  } else {
+    alert("You need at least 50 points to claim this reward.");
+  }
+});
+
+reward100Button.addEventListener("click", () => {
+  if (totalScore >= 100) {
+    alert("Congrats! Use promo code PROMO100 for your reward.");
+  } else {
+    alert("You need at least 100 points to claim this reward.");
+  }
+});
 
 function shuffleCards() {
   let currentIndex = cards.length,
@@ -76,11 +116,15 @@ function checkForMatch() {
 
   if (isMatch) {
     score++;
+    totalScore++;
     document.querySelector(".score").textContent = score;
+    document.querySelector(".total-score").textContent = totalScore;
+
     disableCards();
     if (tries === 0) {
       document.querySelector(".tries").textContent =
         "Game Over! You have no more tries left.";
+      localStorage.setItem("totalScore", totalScore);
       return;
     }
   } else {
@@ -88,6 +132,7 @@ function checkForMatch() {
     if (tries === 0) {
       document.querySelector(".tries").textContent =
         "Game Over! You have no more tries left.";
+      localStorage.setItem("totalScore", totalScore);
       return;
     }
   }
@@ -115,18 +160,23 @@ function resetBoard() {
 }
 
 function restart() {
+  // Save total score to local storage
+  localStorage.setItem("totalScore", totalScore);
+
   resetBoard();
   shuffleCards();
   score = 0;
-  tries = 10;
+  tries = 16;
   document.querySelector(".score").textContent = score;
   document.querySelector(".tries").textContent = tries;
   gridContainer.innerHTML = "";
   generateCards();
 }
+
 function toggleMobileMenu(menu) {
   menu.classList.toggle("open");
 }
+
 const hamburger = document.querySelector(".hamburger-button");
 hamburger.onclick = () => {
   console.log("clicked");
@@ -135,6 +185,7 @@ hamburger.onclick = () => {
 
 const restartButton = document.getElementById("restart");
 restartButton.onclick = restart;
+
 document.addEventListener("DOMContentLoaded", function () {
   const profileButtons = document.querySelectorAll(".profile-btn");
   profileButtons.forEach((profileButton) => {
@@ -142,11 +193,11 @@ document.addEventListener("DOMContentLoaded", function () {
       checkSignedIn()
         .then((result) => {
           if (result) {
-            // go to profile screen
+            // Go to profile screen
             console.log("User is signed in: ", result[0], result[1]);
             window.location.href = "dashboard.html";
           } else {
-            // go to login screen
+            // Go to login screen
             window.location.href = "login.html";
           }
         })

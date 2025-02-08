@@ -215,6 +215,11 @@ button {
 .landing-text{
     padding: 2rem;
 }
+.total-score {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
 @media screen and (max-width: 900px) {
 .grid-container {
     grid-template-columns: repeat(4, 15%);
