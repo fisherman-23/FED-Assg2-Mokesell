@@ -1,3 +1,12 @@
+/**
+ * @fileoverview
+ * This script provides Firebase CRUD operations for managing user data, listings, chats, messages, and offers.
+ * It includes functions to create and fetch listings, upload images and thumbnails, manage user information,
+ * and handle chat messages and offers for listings. Firebase Firestore and Storage are used for data storage.
+ *
+ * @author Jing Shun
+ */
+
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { v4 as uuidv4 } from "uuid"; // For generating UUIDs
 import Compressor from "compressorjs";
@@ -23,9 +32,11 @@ import { float } from "three/tsl";
 // Initialize Firebase services
 const db = getFirestore();
 const storage = getStorage();
+
 // this will contain all Firebase CRUD operations not related to authentication
-// get user data from Firestore with a given UID
+
 export const getUserData = async (uid) => {
+  // get user data from Firestore with a given UID
   try {
     const docRef = doc(db, "users", uid);
     const docSnap = await getDoc(docRef);
@@ -83,6 +94,7 @@ export const getListingsByIds = async (listingIds) => {
 };
 
 export const createListing = async (listing) => {
+  // create a new listing in Firestore, takes a listing object as input
   // get user uid
   const user = getAuth().currentUser;
   if (!user) {
@@ -146,14 +158,14 @@ export const uploadImage = (file) => {
     const uniqueFileName = `${Date.now()}_${uuidv4()}_${file.name}`;
     const storageRef = ref(storage, "images/" + uniqueFileName);
 
-    // Define metadata with a 2-day cache control
+    // Define metadata with a 2-day cache control, this allows for image caching
     const metadata = {
-      cacheControl: "public, max-age=172800", // 2 days (172800 seconds)
+      cacheControl: "public, max-age=172800", // 172800 seconds which is 2 days
     };
 
     // Create a file upload task with metadata
     const uploadTask = uploadBytesResumable(storageRef, file, metadata);
-
+    // Monitor upload progress and completion
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -193,8 +205,8 @@ export const uploadThumbnail = (file) => {
     // Compress the image
     new Compressor(file, {
       quality: quality,
-      maxWidth: 768, // Maximum width (resize to fit within this width)
-      maxHeight: 768, // Maximum height (resize to fit within this height)
+      maxWidth: 768, // Maximum width
+      maxHeight: 768, // Maximum height
       success(result) {
         file = result;
 
@@ -267,6 +279,7 @@ export const getChats = async (id) => {
 };
 
 export const getChatById = async (chatId) => {
+  // get chat data from Firestore with a given chat ID
   try {
     const docRef = doc(db, "chats", chatId);
     const docSnap = await getDoc(docRef);
@@ -284,6 +297,7 @@ export const getChatById = async (chatId) => {
 };
 
 export const getMessagesById = async (chatId) => {
+  // get messages from Firestore with a given chat ID
   try {
     const messagesRef = collection(db, `chats/${chatId}/messages`);
     const querySnapshot = await getDocs(messagesRef);
@@ -299,6 +313,7 @@ export const getMessagesById = async (chatId) => {
 };
 
 export const sendMessageToFirestore = async (chatId, message) => {
+  // send a message to Firestore with a given chat ID and message object
   try {
     const messagesRef = collection(db, `chats/${chatId}/messages`);
     await addDoc(messagesRef, message);
@@ -309,6 +324,7 @@ export const sendMessageToFirestore = async (chatId, message) => {
 };
 
 export const getUsernameById = async (uid) => {
+  // get username from Firestore with a given UID
   try {
     const docRef = doc(db, "users", uid);
     console.log(docRef);
@@ -327,6 +343,7 @@ export const getUsernameById = async (uid) => {
 };
 
 export const createChat = async (chat) => {
+  // create a new chat in Firestore, takes a chat object as input
   try {
     const chatRef = collection(db, "chats");
     const docRef = await addDoc(chatRef, chat);
@@ -338,6 +355,7 @@ export const createChat = async (chat) => {
 };
 
 export const uploadOffer = async (listingId, offer) => {
+  // Create a new offer in Firestore for the given listing
   try {
     const offersRef = collection(db, `listings/${listingId}/offers`); // Create a reference to the offers subcollection
     const docRef = doc(db, `listings/${listingId}/offers`, offer.buyerId); // Create a new document reference
@@ -350,6 +368,7 @@ export const uploadOffer = async (listingId, offer) => {
 };
 
 export const getAllOffers = async (listingId) => {
+  // Fetch all offers for a given listing
   try {
     console.log("Listing ID:", listingId);
     // Reference the 'offers' subcollection within the given listing

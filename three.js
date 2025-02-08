@@ -1,3 +1,11 @@
+/**
+ * @fileoverview
+ * This script handles the rendering of a 3D model on the canvas element. It uses the Three.js library to load a GLB model, set up lighting, and handle mouse movement for rotation.
+ * The model rotates based on the mouse position, and the rotation is smoothed for a more visually appealing effect.
+ * The script also includes logic to pause rendering when the canvas is hidden and resume rendering when it becomes visible again.
+ * @author Jing Shun, Rafe
+ */
+
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
