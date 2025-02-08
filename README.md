@@ -102,6 +102,8 @@ Responsible for setting up the database and authentication system, ensuring seam
 - **Performance Optimization**:  
   Implemented image caching and compression to enhance website performance, reducing load times and ensuring that the latest content is served quickly and efficiently.
 
+<hr>
+
 ### Rafe Chan Rui An (S10266058G)
 
 ### Role: Frontend Developer
@@ -125,6 +127,8 @@ Responsible for developing and implementing the frontend of the website using HT
 
 - **UI Implementation**:  
   Collaborated with the design team to implement the website’s UI, ensuring a visually engaging, user-friendly layout. Utilized CSS and JavaScript to bring the design elements to life and maintain consistent branding and aesthetics throughout the site.
+
+<hr>
 
 ### Ng Sao Keat (S10270586)
 
@@ -161,10 +165,17 @@ Focused on developing and optimizing the rewards page, ensuring it was both func
 7. **Unique User Interface using Three.js and Lottie Animations**
 
 ## Mokesell Web Pages
+### Home Page:
+![home-page](https://github.com/user-attachments/assets/f7ee888e-925d-446b-b7a2-c4e14e699963)
 
-### Landing Page:
+### Product Page:
+![product-list](https://github.com/user-attachments/assets/241ae4d7-42dd-4988-8b75-17fc52de04d5)
 
-(to be included)
+### Product Details Page:
+![product-detail](https://github.com/user-attachments/assets/91e9a603-aa73-41f3-80fc-24adc92d579b)
+
+### Chat Page:
+![chat](https://github.com/user-attachments/assets/c75ee535-db14-4b41-bff7-42dc3cd84823)
 
 ## Technology Usage
 
