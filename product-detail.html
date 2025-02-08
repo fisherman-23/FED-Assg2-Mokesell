@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="css/product-detail.css">
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- PNG Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+
+    <!-- Apple Touch Icon (For iOS devices) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon/android-chrome-512x512.png">
+
+    <!-- Web App Manifest (For PWA support) -->
+    <link rel="manifest" href="favicon/site.webmanifest">
+
+</head>
+
+<body>
+    <div class="loading">
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"></script>
+        <dotlottie-player src="https://lottie.host/763953fb-bd5f-41b4-8fe5-8725d02c3733/XLkcMgdgmN.lottie"
+            background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay>
+        </dotlottie-player>
+    </div>
+    <header>
+        <a href="index.html">
+            <div class="brand">
+                <img src="mokesell.png" alt="Mokesell Logo" style="height: 50px;">
+                <h1>mokesell</h1>
+            </div>
+        </a>
+        <button class="hamburger-button">
+            <img src="hamburger-icon.svg" width="45" alt="Hamburger Icon">
+
+        </button>
+        <ul class="mobile-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="productPage.html">Products</a></li>
+            <li><a href="rewards.html">Rewards</a></li>
+            <li><a href="dashboard.html"><img src="profile-icon.svg" style="height:50px" alt="profile"></a></li>
+        </ul>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="productPage.html">Products</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="dashboard.html"><img src="profile-icon.svg" style="height:50px" alt="profile"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="toast">
+        <div class="toast-icon">
+            <img src="tick.svg" alt="tick">
+        </div>
+        <div class="toast-content">
+            <h2>Success!</h2>
+            <p>Your account has been created successfully.</p>
+        </div>
+    </div>
+    <section class="product-detail">
+        <div class="product-detail-container">
+            <div class="left">
+                <img src="about:blank" class="product-img" alt="product image">
+            </div>
+            <div class="right">
+                <h1 class="product-name"></h1>
+                <div class="price-container">
+                    <img class="dollar-icon" src="/dollar.png" alt="dollar icon">
+                    <h2 class="product-price"></h2>
+                </div>
+                <h2 class="product-condition"></h2>
+                <h2 class="product-description-name">Description:</h2>
+                <p class="product-description"></p>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section>
+        <div class="user-info">
+            <div class="user-left">
+                <img src="/profile-icon.svg" class="user-pfp" alt="profile icon">
+                <div class="user-profile">
+                    <h2 class="user-name">Username</h2>
+                    <p class="user-datejoin">joined 2 mth ago</p>
+                    <p class="user-ratings">5.0 ⭐</p>
+                </div>
+                <div class="actions">
+                    <button class="chat-btn"><img src="/ChatTeardropDots.svg" alt="chat icon"></button>
+                </div>
+            </div>
+            <div class="user-right">
+                <button id="make-offer">Make Offer</button>
+                <button id="view-offer">View Offer</button>
+                <p id="offer-count">0 offer(s) made</p>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section>
+        <div class="review-section">
+            <h1>Reviews</h1>
+            <div class="review-container">
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="review-user">
+                            <img src="/profile-icon.svg" class="review-pfp" alt="profile icon">
+                            <h2 class="user-name">Razorbird360</h2>
+                        </div>
+                        <div class="review-rating">
+                            <img src="/gold-star.svg" alt="gold star">
+                            <img src="/gold-star.svg" alt="gold star">
+                            <img src="/gold-star.svg" alt="gold star">
+                            <img src="/gold-star.svg" alt="gold star">
+                            <img src="/star-02.svg" alt="gold star">
+                        </div>
+                    </div>
+                    <p class="review-text">Seller is very responsive and helps out with my problems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="popup" class="popup">
+
+        <div class="popup-content">
+            <button id="close-btn" class="close-btn">&times;</button>
+            <div>
+                <h1>Make Offer</h1>
+                <form id="offer-form">
+                    <label for="offer-price">Price:</label>
+                    <input type="number" id="offer-price" name="offer-price" required min="1" required step="any">
+                    <label for="offer-message">Message:</label>
+                    <textarea id="offer-message" name="offer-message" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="popup-seller" class="popup-seller">
+
+        <div class="popup-content-seller">
+            <button id="close-btn-seller" class="close-btn">&times;</button>
+            <div>
+                <h1>View Offers</h1>
+                <div id="offer-list">
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html">
+                    <img src="mokesell.png" alt="Mokesell Logo" style="height: 40px;">
+                    <h2>mokesell</h2>
+                </a>
+            </div>
+
+            <div class="footer-links">
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://facebook.com/mokesell" target="_blank">
+                    <img src="facebook-logo.svg" alt="Facebook" style="height: 24px;">
+                </a>
+                <a href="https://instagram.com/mokesell" target="_blank">
+                    <img src="instagram-logo.svg" alt="Instagram" style="height: 24px;">
+                </a>
+                <a href="https://github.com/fisherman-23/FED-Assg2-Mokesell" target="_blank">
+                    <img src="github-logo.svg" alt="GitHub" style="height: 24px;">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 mokesell. All rights reserved.</p>
+        </div>
+    </footer>
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="product-detail.js"></script>
+</body>
+
+</html>

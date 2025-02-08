@@ -1,11 +1,16 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { v4 as uuidv4 } from "uuid"; // For generating UUIDs
+import Compressor from "compressorjs";
 import {
   getFirestore,
-  doc,
   getDoc,
   addDoc,
   collection,
+  updateDoc,
+  arrayUnion,
+  setDoc,
+  getDocs,
+  doc,
 } from "firebase/firestore";
 import {
   getStorage,
@@ -13,7 +18,9 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+import { float } from "three/tsl";
 
+// Initialize Firebase services
 const db = getFirestore();
 const storage = getStorage();
 // this will contain all Firebase CRUD operations not related to authentication
@@ -89,34 +96,43 @@ export const createListing = async (listing) => {
     const downloadURL = await uploadImage(file);
     console.log("Download URL:", downloadURL); // If upload is successful
 
+    const thumbnailURL = await uploadThumbnail(file);
+    console.log("Thumbnail URL:", thumbnailURL); // If upload is successful
+
     // create a new listing in Firestore
     try {
       let newListing = {
         name: listing.name,
-        price: listing.price,
+        price: parseFloat(listing.price),
         image: downloadURL,
+        thumbnail: thumbnailURL,
         description: listing.desc,
         category: listing.category,
         condition: listing.condition,
         seller: user.uid,
         likes: 0,
+        bump: 0,
+        lastBump: null,
         createdAt: new Date(),
       };
-      const docRef = await addDoc(collection(db, "listings"), newListing);
-      console.log("Document written with ID: ", docRef.id);
-      // add to user's listing
+
+      // Add new listing document
+      const docRef = doc(collection(db, "listings")); // Generate a new document reference
+      newListing.id = docRef.id; // Assign the generated ID to the object
+
+      await setDoc(docRef, newListing); // Add the document with the custom ID
+
+      // Reference to user document
       const userRef = doc(db, "users", user.uid);
-      const userSnap = await getDoc(userRef);
-      if (userSnap.exists()) {
-        const userData = userSnap.data();
-        const userListing = userData.listings || [];
-        userListing.push(docRef.id);
-        await setDoc(userRef, { listings: userListing }, { merge: true });
-      } else {
-        console.log("No such user document!");
-      }
+
+      // Update user's listings array efficiently using arrayUnion
+      await updateDoc(userRef, {
+        listings: arrayUnion(docRef.id),
+      });
+
+      console.log("User document updated successfully with new listing ID");
     } catch (error) {
-      console.error("Error adding document:", error);
+      console.error("Error adding document or updating user:", error);
       throw error;
     }
   } catch (error) {
@@ -125,42 +141,232 @@ export const createListing = async (listing) => {
 };
 
 // upload image to Firebase Cloud Storage
-// upload image to Firebase Cloud Storage
 export const uploadImage = (file) => {
   return new Promise((resolve, reject) => {
     const uniqueFileName = `${Date.now()}_${uuidv4()}_${file.name}`;
-    // Create a reference to the Firebase Storage location
     const storageRef = ref(storage, "images/" + uniqueFileName);
 
-    // Create a file upload task
-    const uploadTask = uploadBytesResumable(storageRef, file);
+    // Define metadata with a 2-day cache control
+    const metadata = {
+      cacheControl: "public, max-age=172800", // 2 days (172800 seconds)
+    };
 
-    // Monitor upload progress and completion
+    // Create a file upload task with metadata
+    const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        // Progress monitoring (optional)
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log("Upload is " + progress + "% done");
       },
       (error) => {
-        // Reject the promise with the error
         console.error("Upload error:", error);
         reject("Upload failed: " + error.message);
       },
-      () => {
-        // Get download URL after successful upload
-        getDownloadURL(uploadTask.snapshot.ref)
-          .then((downloadURL) => {
-            console.log("File available at:", downloadURL);
-            resolve(downloadURL); // Resolve the promise with the download URL
-          })
-          .catch((error) => {
-            console.error("Error getting download URL:", error);
-            reject("Error getting download URL: " + error.message);
-          });
+      async () => {
+        try {
+          // Get the download URL
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          console.log("File available at:", downloadURL);
+          resolve(downloadURL);
+        } catch (error) {
+          console.error("Error getting download URL:", error);
+          reject("Error getting download URL: " + error.message);
+        }
       }
     );
   });
+};
+
+export const uploadThumbnail = (file) => {
+  return new Promise((resolve, reject) => {
+    const uniqueFileName = `${Date.now()}_${uuidv4()}_${file.name}`;
+
+    // Get size of original file
+    const fileSize = file.size;
+
+    // Determine quality of image compression based on file size
+    let quality = fileSize > 100 * 1024 ? 0.75 : 0.85;
+
+    // Compress the image
+    new Compressor(file, {
+      quality: quality,
+      maxWidth: 768, // Maximum width (resize to fit within this width)
+      maxHeight: 768, // Maximum height (resize to fit within this height)
+      success(result) {
+        file = result;
+
+        // Create reference to the Firebase Storage location
+        const storageRefThumb = ref(storage, "images/thumb_" + uniqueFileName);
+
+        // Define metadata with a 2-day cache control
+        const metadata = {
+          cacheControl: "public, max-age=172800", // Cache for 2 days (172800 seconds)
+        };
+
+        // Create a file upload task for the compressed image with metadata
+        const uploadTaskThumb = uploadBytesResumable(
+          storageRefThumb,
+          file,
+          metadata
+        );
+
+        // Monitor upload progress and completion
+        uploadTaskThumb.on(
+          "state_changed",
+          (snapshot) => {
+            const progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log("Upload is " + progress + "% done");
+          },
+          (error) => {
+            console.error("Upload error:", error);
+            reject("Upload failed: " + error.message);
+          },
+          async () => {
+            try {
+              // Get download URL after successful upload
+              const downloadURL = await getDownloadURL(
+                uploadTaskThumb.snapshot.ref
+              );
+              console.log("Thumbnail available at:", downloadURL);
+              resolve(downloadURL);
+            } catch (error) {
+              console.error("Error getting thumbnail URL:", error);
+              reject("Error getting thumbnail URL: " + error.message);
+            }
+          }
+        );
+      },
+      error(error) {
+        console.error("Image compression error:", error);
+        reject("Image compression failed: " + error.message);
+      },
+    });
+  });
+};
+
+export const getChats = async (id) => {
+  // id is a list of chat IDs
+  try {
+    const chatRef = collection(db, "chats");
+    const querySnapshot = await getDocs(chatRef);
+    const chats = [];
+    querySnapshot.forEach((doc) => {
+      if (id.includes(doc.id)) {
+        chats.push(doc);
+      }
+    });
+    return chats;
+  } catch (error) {
+    console.error("Error getting chats:", error);
+    throw error;
+  }
+};
+
+export const getChatById = async (chatId) => {
+  try {
+    const docRef = doc(db, "chats", chatId);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return docSnap.data();
+    } else {
+      console.log("No such document!");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting chat:", error);
+    throw error;
+  }
+};
+
+export const getMessagesById = async (chatId) => {
+  try {
+    const messagesRef = collection(db, `chats/${chatId}/messages`);
+    const querySnapshot = await getDocs(messagesRef);
+    const messages = [];
+    querySnapshot.forEach((doc) => {
+      messages.push(doc.data());
+    });
+    return messages;
+  } catch (error) {
+    console.error("Error getting messages:", error);
+    throw error;
+  }
+};
+
+export const sendMessageToFirestore = async (chatId, message) => {
+  try {
+    const messagesRef = collection(db, `chats/${chatId}/messages`);
+    await addDoc(messagesRef, message);
+  } catch (error) {
+    console.error("Error sending message:", error);
+    throw error;
+  }
+};
+
+export const getUsernameById = async (uid) => {
+  try {
+    const docRef = doc(db, "users", uid);
+    console.log(docRef);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return docSnap.data().username;
+    } else {
+      console.log("No such document!");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting username:", error);
+    throw error;
+  }
+};
+
+export const createChat = async (chat) => {
+  try {
+    const chatRef = collection(db, "chats");
+    const docRef = await addDoc(chatRef, chat);
+    return docRef.id;
+  } catch (error) {
+    console.error("Error creating chat:", error);
+    throw error;
+  }
+};
+
+export const uploadOffer = async (listingId, offer) => {
+  try {
+    const offersRef = collection(db, `listings/${listingId}/offers`); // Create a reference to the offers subcollection
+    const docRef = doc(db, `listings/${listingId}/offers`, offer.buyerId); // Create a new document reference
+    await setDoc(docRef, offer); // Set the document with the custom ID
+    return docRef; // Return the document reference for further use if needed
+  } catch (error) {
+    console.error("Error creating offer:", error);
+    throw error; // Re-throw the error so the caller can handle it
+  }
+};
+
+export const getAllOffers = async (listingId) => {
+  try {
+    console.log("Listing ID:", listingId);
+    // Reference the 'offers' subcollection within the given listing
+    const offersRef = collection(db, `listings/${listingId}/offers`);
+
+    // Fetch all documents in the 'offers' subcollection
+    const querySnapshot = await getDocs(offersRef);
+
+    // Map the documents to an array of their data
+    const offers = querySnapshot.docs.map((doc) => ({
+      id: doc.id, // Include the document ID
+      ...doc.data(), // Spread the document data
+    }));
+
+    return offers;
+  } catch (error) {
+    console.error("Error getting offers:", error);
+    throw error;
+  }
 };

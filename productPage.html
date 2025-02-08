@@ -5,23 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page</title>
+
     <link rel="stylesheet" href="css/productPage.css">
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- PNG Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+
+    <!-- Apple Touch Icon (For iOS devices) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon/android-chrome-512x512.png">
+
+    <!-- Web App Manifest (For PWA support) -->
+    <link rel="manifest" href="favicon/site.webmanifest">
 </head>
 
 <body>
     <header>
-        <div class="brand">
-            <img src="mokesell2 2.png" alt="Mokesell Logo" style="height: 50px;">
-            <h1>mokesell</h1>
-        </div>
+        <a href="index.html">
+            <div class="brand">
+                <img src="mokesell.png" alt="Mokesell Logo" style="height: 50px;">
+                <h1>mokesell</h1>
+            </div>
+        </a>
         <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
+                <li><a href="productPage.html">Products</a></li>
                 <li><a href="rewards.html">Rewards</a></li>
-                <li><a href="profile.html"><img src="profile-icon.svg" style="height:50px"></a></li>
+                <li><a href="dashboard.html"><img src="profile-icon.svg" style="height:50px" alt="profile icon"></a></li>
             </ul>
         </nav>
+        <button class="hamburger-button">
+            <img src="hamburger-icon.svg" width="45" alt="Hamburger Icon">
+
+        </button>
+        <ul class="mobile-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="productPage.html">Products</a></li>
+            <li><a href="rewards.html">Rewards</a></li>
+            <li><a href="dashboard.html"><img src="profile-icon.svg" style="height:50px" alt="profile icon"></a></li>
+        </ul>
     </header>
     <section class="top-banner">
         <div class="banner">
@@ -29,8 +58,8 @@
         </div>
         <div class="search-bar">
             <input class="search" type="text" placeholder="Search for products...">
-            <button class="filter"><img src="filter.png"></button>
-            <button class="upload"><img src="upload.png"></button>
+            <button class="filter"><img src="filter.png" alt="filter button"></button>
+            <button class="upload"><img src="upload.png" alt="filter button"></button>
         </div>
     </section>
     <section class="products">
@@ -44,7 +73,7 @@
         </div>
     </section>
     <div id="popup" class="popup">
-        <div class="popup-content"> 
+        <div class="popup-content">
             <button id="close-btn" class="close-btn">&times;</button>
             <div class="uploadContainer">
                 <div class="uploadLeft">
@@ -53,18 +82,20 @@
                 </div>
                 <div class="uploadRight">
                     <form class="uploadForm">
-                        <input type="file" id="imageUpload" class="uploadInput" accept="image/*" style="display: none;">
+                        <input type="file" id="imageUpload" class="uploadInput" accept="image/*" style="display: none;"
+                            required>
                         <div>
                             <label>Product Name</label><br>
-                            <input id ="productName" type="text"  class="uploadInput"><br>
+                            <input id="productName" type="text" class="uploadInput" required><br>
                         </div>
                         <div>
                             <label>Listing Price</label><br>
-                            <input id ="productPrice" type="text"  class="uploadInput"><br>
+                            <input id="productPrice" type="number" class="uploadInput" required step="any"><br>
                         </div>
+                        
                         <div>
                             <label>Product Description</label><br>
-                            <textarea id="description" class = "uploadInput" cols="30" rows="10"></textarea><br>
+                            <textarea id="description" class="uploadInput" cols="30" rows="10" required></textarea><br>
                         </div>
                         <div>
                             <label>Product Condition</label><br>
@@ -77,7 +108,7 @@
                         </div>
                         <div>
                             <label>Product Category</label><br>
-                            <select id = "category">
+                            <select id="category">
                                 <option value="cpu">CPU</option>
                                 <option value="gpu">GPU</option>
                                 <option value="ram">RAM</option>
@@ -93,9 +124,89 @@
                     </form>
                 </div>
             </div>
-          <!-- <button id="close-btn">Close</button> -->
         </div>
-      </div>
+    </div>
+    <canvas id="dotlottie-canvas"></canvas>
+    <div id="dotlottie-animation"></div>
+
+    <div class="sidepanel">
+        <button id="sidepanel-close" class="sidepanel-close">&times;</button>
+        <h1 class="sidepanel-cat">Filter</h1>
+        <div>
+            <h2 class="sidepanel-cat">Category</h2>
+            <form id="category-form">
+
+                <input type="checkbox" value="gpu">
+                <label class="sidepanel-cat">Graphics Card</label><br>
+
+                <input type="checkbox" value="cpu">
+                <label class="sidepanel-cat">CPU</label><br>
+
+                <input type="checkbox" value="ram">
+                <label class="sidepanel-cat">RAM</label><br>
+
+                <input type="checkbox" value="motherboard">
+                <label class="sidepanel-cat">Motherboard</label><br>
+
+                <input type="checkbox" value="storage">
+                <label class="sidepanel-cat">Storage</label><br>
+
+                <input type="checkbox" value="psu">
+                <label class="sidepanel-cat">PSU</label><br>
+
+                <input type="checkbox" value="case">
+                <label class="sidepanel-cat">Case</label><br>
+
+                <input type="checkbox" value="peripherals">
+                <label class="sidepanel-cat">Peripherals</label><br>
+            </form>
+        </div>
+        <hr>
+        <div>
+            <h2 class="sidepanel-cat">Price</h2>
+            <span class="price-display">$0 - $1000</span>
+            <div class="range-input">
+                <input type="range" class="price-range" min="0" max="1000" value="1000" step="1">
+            </div>
+        </div>
+        <hr>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html">
+                    <img src="mokesell.png" alt="Mokesell Logo" style="height: 40px;">
+                    <h2>mokesell</h2>
+                </a>
+            </div>
+    
+            <div class="footer-links">
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-social">
+                <a href="https://facebook.com/mokesell" target="_blank">
+                    <img src="facebook-logo.svg" alt="Facebook" style="height: 24px;">
+                </a>
+                <a href="https://instagram.com/mokesell" target="_blank">
+                    <img src="instagram-logo.svg" alt="Instagram" style="height: 24px;">
+                </a>
+                <a href="https://github.com/fisherman-23/FED-Assg2-Mokesell" target="_blank">
+                    <img src="github-logo.svg" alt="GitHub" style="height: 24px;">
+                </a>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; 2025 mokesell. All rights reserved.</p>
+        </div>
+    </footer>
     <script type="module" src="firebase.js"></script>
     <script type="module" src="product-page.js"></script>
 </body>

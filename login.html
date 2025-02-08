@@ -7,17 +7,45 @@
     <title>Login/Create Account</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/login.css">
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- PNG Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+
+    <!-- Apple Touch Icon (For iOS devices) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon/android-chrome-512x512.png">
+
+    <!-- Web App Manifest (For PWA support) -->
+    <link rel="manifest" href="favicon/site.webmanifest">
     <script type="module" src="login.js"></script>
 </head>
 
 <body>
     <header>
-        <div class="brand">
-            <img src="mokesell2 2.png" alt="Mokesell Logo" style="height: 50px;">
-            <h1>mokesell</h1>
-        </div>
+        <a href="index.html">
+            <div class="brand">
+                <img src="mokesell.png" alt="Mokesell Logo" style="height: 50px;">
+                <h1>mokesell</h1>
+            </div>
+        </a>
 
     </header>
+    <div class="toast">
+        <div class="toast-icon">
+            <img src="tick.svg" alt="tick">
+        </div>
+        <div class="toast-content">
+            <h2>Success!</h2>
+            <p>Your account has been created successfully.</p>
+        </div>
+    </div>
+
     <div class="login-container">
         <div class="login-section">
             <h2>Already a user?</h2>
@@ -25,37 +53,37 @@
             <form id="login-form">
                 <div>
                     <div class="input-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" required>
+                        <label for="email-login">Email</label>
+                        <input type="email" name="email-login" id="email-login" required>
                     </div>
                     <div class="input-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" required>
+                        <label for="password-login">Password</label>
+                        <input type="password" name="password-login" id="password-login" required>
                     </div>
                 </div>
-                <button id="login-button" type="submit" class="btn"><img src="caret-right.svg"></button>
+                <button id="login-button" type="submit" class="btn"><img src="caret-right.svg" alt="caret right"></button>
             </form>
             <h2>Not yet a user?</h2>
             <h1>Sign Up</h1>
             <form id="signup-form">
                 <div>
                     <div class="input-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" required>
+                        <label for="email-signup">Email</label>
+                        <input type="email" name="email-signup" id="email-signup" required>
                     </div>
                     <div class="input-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" required>
+                        <label for="password-signup">Password</label>
+                        <input type="password" name="password-signup" id="password-signup" required>
                     </div>
                     <div class="input-group">
                         <label for="username">Username</label>
-                        <input type="username" name="username" id="username" required>
+                        <input type="text" name="username" id="username" required>
                     </div>
                 </div>
-                <button type="submit" class="btn"><img src="caret-right.svg"></button>
+                <button type="submit" class="btn"><img src="caret-right.svg" alt="caret right"></button>
             </form>
             <h2>OR</h2>
-            <button id="signup-button" class="google-btn"><img src="google.svg">Continue with Google</button>
+            <button id="signup-button" class="google-btn"><img src="google.svg" alt="google signin">Continue with Google</button>
 
 
         </div>

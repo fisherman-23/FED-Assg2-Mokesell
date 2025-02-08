@@ -1,0 +1,128 @@
+.chat-item {
+    background-color: #3C3C3C;
+    border-radius: 15px;
+    padding: 2rem;
+    flex: 0 0 25%;
+    cursor: pointer;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    height: 100vh;
+    overflow-y: scroll;
+}
+.chat-messages::-webkit-scrollbar {
+    width: 0.2vw;
+    height: 5px;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #006400, #39FF14);
+    border-radius: 5px;
+}
+.chat-messages::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+  
+.chat-list {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+header a {
+    /* center the brand */
+    display: flex;
+    align-items: center;
+    
+}
+/* Existing styles... */
+
+.chat-input {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    background-color: transparent;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#chat-input {
+    flex: 1;
+    padding: 1rem;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+#send-btn {
+    margin-left: 10px;
+    padding: 1rem 2rem;
+    background-color: #477c42;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+
+}
+.message {
+    margin-bottom: 1rem;
+}
+.message .text {
+    background-color: #465542;
+    padding: 1rem;
+    border-radius: 15px;
+    margin-top: 0.2rem;
+    display: inline-block;
+    max-width: 70%;
+}
+
+.message.right {
+    text-align: right;
+}
+
+.message.right .text {
+    background-color: #747b72;
+    padding: 1rem;
+    border-radius: 15px;
+    margin-top: 0.2rem;
+    display: inline-block;
+    max-width: 70%;
+}
+
+@media screen and (max-width: 900px) {
+    .chat-list {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    #send-btn {
+        padding: 0rem;
+        margin: 0rem;
+        flex: 1;
+    }
+    .chat-input {
+        flex: 3;
+    }
+    .dashboard-section {
+        flex-direction: column;
+        height: 85vh;
+
+    }
+    #chat-header {
+        font-size: 2rem;
+        margin: 1rem 0;
+    }
+    .dashboard-section {
+        flex-direction: column;
+        max-height: 90vh;
+    }
+    body {
+        height: 100vh;
+    }
+
+}
