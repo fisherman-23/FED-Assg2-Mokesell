@@ -1,0 +1,26 @@
+[
+    {
+        "image": "product1.jpg",
+        "name": "prebuilt"
+    },
+    {
+        "image": "product2.jpg",
+        "name": "cpu"
+    },
+    {
+        "image": "product3.jpg",
+        "name": "gpu"
+    },
+    {
+        "image": "product4.jpg",
+        "name": "motherboard"
+    },
+    {
+        "image": "product5.jpg",
+        "name": "intelcpu"
+    },
+    {
+        "image": "product6.jpg",
+        "name": "ram"
+    }
+]

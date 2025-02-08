@@ -1,16 +1,14 @@
-
-/* card game */
-
+import { checkSignedIn } from "./auth.js";
 const gridContainer = document.querySelector(".grid-container");
 let cards = [];
 let firstCard, secondCard;
 let lockBoard = false;
 let score = 0;
 let tries = 16;
-document.querySelector(".tries").textContent = tries
+document.querySelector(".tries").textContent = tries;
 document.querySelector(".score").textContent = score;
 
-fetch("./cards.json")
+fetch("cards.json")
   .then((res) => res.json())
   .then((data) => {
     cards = [...data, ...data];
@@ -49,7 +47,8 @@ function generateCards() {
 
 function flipCard() {
   if (tries === 0) {
-    document.querySelector(".tries").textContent = ("Game Over! You have no more tries left.");
+    document.querySelector(".tries").textContent =
+      "Game Over! You have no more tries left.";
     return;
   }
   if (lockBoard) return;
@@ -72,22 +71,23 @@ function flipCard() {
   checkForMatch();
 }
 
-
 function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
 
-  if(isMatch){
-    score++
+  if (isMatch) {
+    score++;
     document.querySelector(".score").textContent = score;
-    disableCards()
+    disableCards();
     if (tries === 0) {
-      document.querySelector(".tries").textContent = ("Game Over! You have no more tries left.");
+      document.querySelector(".tries").textContent =
+        "Game Over! You have no more tries left.";
       return;
     }
-  }else{
+  } else {
     unflipCards();
     if (tries === 0) {
-      document.querySelector(".tries").textContent = ("Game Over! You have no more tries left.");
+      document.querySelector(".tries").textContent =
+        "Game Over! You have no more tries left.";
       return;
     }
   }
@@ -124,3 +124,36 @@ function restart() {
   gridContainer.innerHTML = "";
   generateCards();
 }
+function toggleMobileMenu(menu) {
+  menu.classList.toggle("open");
+}
+const hamburger = document.querySelector(".hamburger-button");
+hamburger.onclick = () => {
+  console.log("clicked");
+  toggleMobileMenu(hamburger.nextElementSibling);
+};
+
+const restartButton = document.getElementById("restart");
+restartButton.onclick = restart;
+document.addEventListener("DOMContentLoaded", function () {
+  const profileButtons = document.querySelectorAll(".profile-btn");
+  profileButtons.forEach((profileButton) => {
+    profileButton.addEventListener("click", function () {
+      checkSignedIn()
+        .then((result) => {
+          if (result) {
+            // go to profile screen
+            console.log("User is signed in: ", result[0], result[1]);
+            window.location.href = "dashboard.html";
+          } else {
+            // go to login screen
+            window.location.href = "login.html";
+          }
+        })
+        .catch((error) => {
+          console.error("Error checking sign-in status: ", error);
+          window.location.href = "login.html";
+        });
+    });
+  });
+});

@@ -1,7 +1,7 @@
 
 
 .title-section {
-    background-image: url('../landing-bg.png'); /*CHANGE TO ARCADE GAME BACKGROUND? (figma)*/
+    background-image: url('/landing-bg.png'); /*CHANGE TO ARCADE GAME BACKGROUND? (figma)*/
     height: 50vh;
     background-size: cover;
     background-position: center;
@@ -209,7 +209,12 @@ backface-visibility: hidden;
 .card .front {
 transform: rotateY(180deg);
 }
-
+button {
+    cursor: pointer;
+}
+.landing-text{
+    padding: 2rem;
+}
 @media screen and (max-width: 900px) {
 .grid-container {
     grid-template-columns: repeat(4, 15%);
