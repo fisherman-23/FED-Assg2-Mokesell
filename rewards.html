@@ -23,32 +23,40 @@
     
         <!-- Web App Manifest (For PWA support) -->
         <link rel="manifest" href="favicon/site.webmanifest">
-        <script type="module" src="dashboard.js"></script>
+
 </head>
 
 <body>
-    <!-- menu, no touchy -->
     <header>
-        <div class="brand">
-            <img src="mokesell2 2.png" alt="Mokesell Logo" style="height: 50px;">
-            <h1>mokesell</h1>
-        </div>
+        <a href="index.html">
+            <div class="brand">
+                <img src="mokesell.png" alt="Mokesell Logo" style="height: 50px;">
+                <h1>mokesell</h1>
+            </div>
+        </a>
+        <button class="hamburger-button">
+            <img src="hamburger-icon.svg" width="45" alt="Hamburger Icon">
+
+        </button>
+        <ul class="mobile-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="productPage.html">Products</a></li>
+            <li><a href="rewards.html">Rewards</a></li>
+            <li><button class="profile-btn"> <img src="profile-icon.svg" style="height:50px" alt="profile-icon"></button></li>
+        </ul>
         <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="productPage.html">Products</a></li>
                 <li><a href="rewards.html">Rewards</a></li>
-                <button id="profile-btn"> <img src="profile-icon.svg" style="height:50px"></button>
-
+                <li><button class="profile-btn"> <img src="profile-icon.svg" style="height:50px" alt="profile-icon"></button></li>
             </ul>
         </nav>
-
-    </header>
     </header>
     <section class="title-section">
         <div class="landing-text"> <!-- see css, text goes down -->
-            <h1>rewards</h1>
-            <p>play games, and exchange them with rewards!
+            <h1>Rewards</h1>
+            <p>Play games, and exchange them with rewards!
             </p>
         </div>
     </section>
@@ -58,15 +66,16 @@
       <div class="grid-container">
       </div>
       <p class="game-info">Score: <span class="score"></span></p>
+      <p class="total-score">Total Score: 0</p>
       <p class="game-info">Tries left: <span class="tries"></span></p>
       <div class="actions">
-          <button onclick="restart()">Restart</button>
+          <button id="restart" >Restart</button>
       </div>
     </section>
     <!-- Voucher portion -->
      <section class="landing-text">
         <h1>Vouchers</h1>
-        <h2>here, you can exchange points for vouchers.</h2>
+        <p>Here, you can redeem your points for vouchers.</p>
      </section>
         
     <section class="rewards-card-container-bg">
@@ -79,10 +88,10 @@
                     </section>
                 </div>
 
-                <img class="rewards-img" src="public/mokesell2 2.png"> 
+                <img class="rewards-img" src="mokesell.png"> 
 
                 <div class="rewards-voucher-bg">
-                    <button class="rewards-button">Redeem</button>
+                    <button class="rewards-button" id="reward-20">Redeem</button>
                 </div>
             </div>
             <div class="rewards-card">
@@ -93,10 +102,10 @@
                     </section> 
                 </div>
 
-                <img class="rewards-img" src="public/mokesell2 2.png"> 
+                <img class="rewards-img" src="mokesell.png"> 
 
                 <div class="rewards-voucher-bg">
-                    <button class="rewards-button">Redeem</button>
+                    <button class="rewards-button" id="reward-50">Redeem</button>
                 </div>
             </div>
             <div class="rewards-card">
@@ -107,17 +116,15 @@
                     </section>
                 </div>
                 
-                <img class="rewards-img" src="public/mokesell2 2.png"> 
+                <img class="rewards-img" src="mokesell.png"> 
 
                 <div class="rewards-voucher-bg">
-                    <button class="rewards-button">Redeem</button>
+                    <button class="rewards-button" id="reward-100">Redeem</button>
                 </div>
             </div>
         </section>
     </section>
 
-    
-    
-    <script src="rewards.js"></script>
+    <script src="rewards.js" type="module"></script>
 </body>
 </html>
