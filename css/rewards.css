@@ -2,28 +2,36 @@
 
 .title-section {
     background-image: url('/landing-bg.png'); /*CHANGE TO ARCADE GAME BACKGROUND? (figma)*/
-    height: 50vh;
+    height: 40vh;
     background-size: cover;
     background-position: center;
     width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: end;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .title-text {
-    flex: 5.5;
-    padding: 6rem;
+    text-align: center;
 }
 
 .title-text p {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     line-height: 2rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
-.langing-text{
-    text-align: left;
+.title-text h1{
+    font-size: 2rem;
+}
+.voucher-text{
+    width: 100%;
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+    font-size: 1.5rem;
 }
 
 .rewards-card-container-bg {
@@ -37,10 +45,10 @@
 .rewards-card-container {
     display: grid;
     place-items: center;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 1.5rem;
     width: 80vw;
-    margin-left: 18.5%;   /*not good?*/
+    margin: auto;
 }
 
 .rewards {
@@ -70,6 +78,7 @@
     bottom: 0px; /* Place the button near the bottom */
     left: 50%; /* Position it at the horizontal center */
     transform: translateX(-50%); /* Adjust for perfect centering */
+    border: white solid;
 }
 
 .rewards-section {
@@ -220,41 +229,34 @@ button {
     font-size: 2rem;
     font-weight: bold;
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
 .grid-container {
-    grid-template-columns: repeat(4, 15%);
+    grid-template-columns: repeat(4, 20%);
 }
+.rewards-card-container-bg {
+    width: 100vw; 
+    height: auto; 
+    max-width: 100%; 
+    position: relative;
+    margin: 0 auto; 
 }
-@media screen and (max-width: 768px) {
-
-    .rewards-card-container-bg {
-        width: 100vw; 
-        height: auto; 
-        max-width: 100%; 
-        position: relative;
-        margin: 0 auto; 
-    }
-    .rewards-card {
-        height: 45vw;
-        width: 100%;          
-        max-width: 100%;     
-        box-sizing: border-box; 
-        padding: 10px;        
-        margin: 0 auto;      
-    }
-    .rewards-img {
-        width: 10vw;
-        height: 10vw;
-    }
-    .rewards-info-section { 
-        
-        font-size: 2vw;
-    }
-    .rewards-button{
-        font-size: 1vw;
-    }
-    .rewards-card-container-bg{
-        right:10vw;
-    }
-
+.rewards-card {
+    height: 45vw;
+    width: 100%;          
+    max-width: 100%;     
+    box-sizing: border-box; 
+    padding: 10px;        
+    margin: 0 auto;      
+}
+.rewards-img {
+    width: 10vw;
+    height: 10vw;
+}
+.rewards-info-section { 
+    
+    font-size: 2vw;
+}
+.rewards-button{
+    font-size: 1vw;
+}
 }

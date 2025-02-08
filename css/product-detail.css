@@ -26,6 +26,7 @@ body {
 * {
     box-sizing: border-box;
     color: #ffffff;
+    font-family: 'Poppins', sans-serif;
 }
 
 header {
@@ -96,12 +97,16 @@ header a {
 }
 .right h1{
     margin: 0;
-    font-size: 3.2vw;
+    font-size: 2.2vw;
+}
+.right hr{
+    margin: 0;
 }
 
 .product-description-name{
     margin: 0;
-    font-size: 1.2vw;
+    margin-top: 2rem;
+    font-size: 1vw;
 }
 .price-container{
     display: flex;
@@ -109,17 +114,52 @@ header a {
     gap: 1rem;
 }
 .dollar-icon{
-    width: 3vw;
-    height: 3vw;
+    width: 2.5vw;
+    height: 2.5vw;
 }
 .product-price{
-    font-size: 1.8vw;
+    font-size: 1.3vw;
 }
 .product-condition{
-    font-size: 1.5vw;
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: 1.3vw;
 }
 .product-description{
-    font-size: 1vw;
+    font-size: 0.85vw;
+}
+@media screen and (max-width: 1200px) {
+    .right h1{
+        margin: 0;
+        font-size: 2.4vw;
+    }
+    .right hr{
+        margin: 0;
+    }
+    
+    .product-description-name{
+        margin: 0;
+        margin-top: 1.4rem;
+        font-size: 1.3vw;
+    }
+    .dollar-icon{
+        width: 2.5vw;
+        height: 2.5vw;
+    }
+    .product-price{
+        font-size: 1.3vw;
+    }
+    .product-condition{
+        margin: 0;
+        margin-bottom: 1rem;
+        font-size: 1.5vw;
+    }
+    .product-description{
+        font-size: 0.90vw;
+    }
+    .product-description{
+        font-size: 1.1vw;
+    }
 }
 hr{
     margin: 1.5rem 6rem;
@@ -186,7 +226,7 @@ hr{
     background-color: rgb(234, 229, 229);
     padding: 1.5rem 3rem;
     color: black;
-    font-size: 2vw;
+    font-size: 1.6vw;
     border-radius: 20px;
     font-weight: 700;
 }
@@ -592,6 +632,9 @@ footer {
     .left img{
         width: 100%;
     }
+    .right{
+        padding: 0.8rem 2rem;
+    }
     .right h1{
         font-size: 2em;
     }
@@ -689,5 +732,8 @@ footer {
     }
     .popup-content-seller {
         width: 80%;
+    }
+    #description-line{
+        display: none;
     }
 }
