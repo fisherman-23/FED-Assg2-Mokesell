@@ -406,3 +406,28 @@ header {
     width: 100%;
     border-radius: 25px;
 }
+
+@media screen and (max-width: 768px) {
+    .brand {
+        height: 10vw;
+        
+    }
+    .brand img {
+        height: 10vw;
+    }
+
+    .main-nav{
+
+        font-size: 5vw;  /* Increase font size on smaller screens */
+        padding: 4vw;    /* Adjust padding for smaller screens */
+    }
+
+    .main-nav a{
+        right: 200px;
+        
+    }
+    .landing-text{
+        padding: 10px;
+        font-size: small;
+    }
+}
