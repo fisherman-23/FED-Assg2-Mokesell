@@ -235,3 +235,4 @@ Focused on developing and optimizing the rewards page, ensuring it was both func
 - Assets
   - [Retro Computer 3D Model](https://www.blenderkit.com/get-blenderkit/0d42296d-6f1b-4ab1-9f06-a3dbf0b366b4/)
   - [Figma Phosphor Icon Pack](https://www.figma.com/community/file/903830135544202908/phosphor-icons)
+

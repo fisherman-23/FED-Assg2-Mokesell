@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rewards</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/rewards.css">
         <!-- Standard Favicon -->
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
@@ -26,27 +27,97 @@
 </head>
 
 <body>
+    <!-- menu, no touchy -->
     <header>
-        <a href="index.html">
-            <div class="brand">
-                <img src="mokesell.png" alt="Mokesell Logo" style="height: 50px;">
-                <h1>mokesell</h1>
-            </div>
-        </a>
+        <div class="brand">
+            <img src="mokesell2 2.png" alt="Mokesell Logo" style="height: 50px;">
+            <h1>mokesell</h1>
+        </div>
         <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="productPage.html">Products</a></li>
                 <li><a href="rewards.html">Rewards</a></li>
                 <button id="profile-btn"> <img src="profile-icon.svg" style="height:50px"></button>
+
             </ul>
         </nav>
 
-        
     </header>
+    </header>
+    <section class="title-section">
+        <div class="landing-text"> <!-- see css, text goes down -->
+            <h1>rewards</h1>
+            <p>play games, and exchange them with rewards!
+            </p>
+        </div>
+    </section>
+    <!-- Game portion -->
+    <h1 class="game-title">Memory Cards</h1>
+    <section class="game-section">
+      <div class="grid-container">
+      </div>
+      <p class="game-info">Score: <span class="score"></span></p>
+      <p class="game-info">Tries left: <span class="tries"></span></p>
+      <div class="actions">
+          <button onclick="restart()">Restart</button>
+      </div>
+    </section>
+    <!-- Voucher portion -->
+     <section class="landing-text">
+        <h1>Vouchers</h1>
+        <h2>here, you can exchange points for vouchers.</h2>
+     </section>
+        
+    <section class="rewards-card-container-bg">
+        <section class="rewards-card-container">
+            <div class="rewards-card">
+                <div class="gradient-blur">
+                    <section class="rewards-info-section">
+                        <h2>3% OFF voucher</h2>
+                        <p>GET 20 POINTS</p>
+                    </section>
+                </div>
 
+                <img class="rewards-img" src="public/mokesell2 2.png"> 
+
+                <div class="rewards-voucher-bg">
+                    <button class="rewards-button">Redeem</button>
+                </div>
+            </div>
+            <div class="rewards-card">
+                <div class="gradient-blur">
+                    <section class="rewards-info-section">
+                        <h2>5% OFF voucher</h2>
+                        <p>GET 50 POINTS</p>
+                    </section> 
+                </div>
+
+                <img class="rewards-img" src="public/mokesell2 2.png"> 
+
+                <div class="rewards-voucher-bg">
+                    <button class="rewards-button">Redeem</button>
+                </div>
+            </div>
+            <div class="rewards-card">
+                <div class="gradient-blur">
+                    <section class="rewards-info-section">
+                        <h2>10% OFF voucher</h2>
+                        <p>GET 100 POINTS</p>
+                    </section>
+                </div>
+                
+                <img class="rewards-img" src="public/mokesell2 2.png"> 
+
+                <div class="rewards-voucher-bg">
+                    <button class="rewards-button">Redeem</button>
+                </div>
+            </div>
+        </section>
+    </section>
 
     
+    
+    <script src="rewards.js"></script>
 </body>
-
 </html>
