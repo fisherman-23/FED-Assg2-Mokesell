@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rewards</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/rewards.css">
         <!-- Standard Favicon -->
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
@@ -63,67 +64,24 @@
                 BIGGER PLACEHOLDER BIGGER PLACEHOLDER BIGGER PLACEHOLDER BIGGER PLACEHOLDER 
                 BIGGER PLACEHOLDER BIGGER PLACEHOLDER BIGGER PLACEHOLDER BIGGER PLACEHOLDER 
                 BIGGER PLACEHOLDER BIGGER PLACEHOLDER BIGGER PLACEHOLDER BIGGER PLACEHOLDER 
-                
             </p>
-            
-            <a href="#games" class="btn">play games</a>
-            <a href="/redeem.html" class="btn">get rewards</a> <!-- move slowly-->
         </div>
     </section>
-    <section class="stats-section" id="games"> <!-- all non gamification classes must be changed-->
-        <div class="stat-card"> <!-- should be sigmented so its equal split twice, once in mobile-->
-            <h2>Stats</h2>
-            <p>(name of user)</p>
-            <ol>
-                <li>times played</li>
-                <li>kills</li>
-                <li>deaths</li>
-                <li>skill issues</li>
-            </ol>
-            
-        </div>
-        <div class="stat-card">
-            <h2>rankings</h2>
-            <p>leaderboards</p>
-            <ol>
-                <li>times played</li>
-                <li>kills</li>
-                <li>deaths</li>
-                <li>skill issues</li>
-            </ol>
-        </div>
-        
-
-
-        <section class="trending-section"> <!-- games section -->
-            <h2>games</h2>
-            <p>list of games</p>
-        </section>
-
-        <section class="explore-sell-section">
-            <div class="explore-card" > <!-- change this div -->
-                <h2>dinosaur</h2> <!-- I DONT KNOW WHAT TO RENAME THIS TO -->
-                <img src="explore-icon.svg" alt="Explore Icon">
-                <a href="/redeem.html" class="btn">get rewards</a>
-            </div>
-        </section>
-        <section class="explore-sell-section">
-            <div class="sell-card">
-                <h2>GAME 2</h2>
-                <img src="sell-icon.svg" alt="Sell Icon">
-            </div>
-        </section>
-
-
-        <section class="trending-section"> <!-- games section -->
-            <h2>rewards</h2>
-            <p>redeem rewards here</p>
-        </section>
-
-
+    <!-- Game portion -->
+    <h1 class="game-title">Memory Cards</h1>
+    <section class="game-section">
+      <div class="grid-container">
+      </div>
+      <p class="game-info">Score: <span class="score"></span></p>
+      <p class="game-info">Tries left: <span class="tries"></span></p>
+      <div class="actions">
+          <button onclick="restart()">Restart</button>
+      </div>
     </section>
-
-    
+    <!-- Voucher portion -->
+    <section>
+        <h1>Vouchers</h1>
+    </section>
+    <script src="rewards.js"></script>
 </body>
-
 </html>
