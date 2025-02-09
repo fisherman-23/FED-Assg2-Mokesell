@@ -51,7 +51,10 @@ hr {
     padding: 1rem 1rem;
     margin: 1rem 0;
 }
-
+.dashboard-sidebar ul li:hover {
+    background-color: #242424;
+    border-radius: 0.5rem;
+}
 .dashboard-sidebar ul li.selected {
     background-color: #474747;
     border-radius: 0.5rem;

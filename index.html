@@ -36,101 +36,202 @@
         </a>
         <button class="hamburger-button">
             <img src="hamburger-icon.svg" width="45" alt="Hamburger Icon">
+
         </button>
         <ul class="mobile-menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="productPage.html">Products</a></li>
             <li><a href="rewards.html">Rewards</a></li>
-            <li><button class="profile-btn"> <img src="profile-icon.svg" style="height:50px" alt="profile-icon"></button></li>
+            <li><button class="profile-btn"> <img src="profile-icon.svg" style="height:50px"
+                        alt="profile-icon"></button></li>
         </ul>
         <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="productPage.html">Products</a></li>
                 <li><a href="rewards.html">Rewards</a></li>
-                <li><button class="profile-btn"> <img src="profile-icon.svg" style="height:50px" alt="profile-icon"></button></li>
+                <li><button class="profile-btn"> <img src="profile-icon.svg" style="height:50px"
+                            alt="profile-icon"></button></li>
             </ul>
         </nav>
     </header>
-
     <!-- Landing Section with Welcome Text and 3D Canvas -->
     <section class="landing-section">
         <div class="landing-text">
             <h2>Buy and sell with Mokesell</h2>
-            <p>Welcome to Mokesell, the ultimate destination for second-hand personal computing hardware!...</p>
+            <p>Welcome to Mokesell, the ultimate destination for second-hand personal computing hardware! Whether you’re
+                upgrading your gaming rig, building a custom PC, or simply decluttering, Mokesell makes buying and
+                selling easy, secure, and affordable. Explore a wide range of pre-owned PCs, GPUs, CPUs, and monitors
+                from trusted individuals in our growing community. By choosing second-hand, you save money, reduce
+                electronic waste, and support a sustainable future. Join Mokesell today and turn yesterday’s tech into
+                tomorrow’s treasure!</p>
             <a href="productPage.html" class="btn">Start Exploring</a>
         </div>
         <div class="landing-3d">
             <canvas id="canvas"></canvas>
         </div>
     </section>
-
     <!-- Marquee Section with Promotions -->
     <div class="marquee">
         <div class="marquee-content">
             <span>1.1 SALE UP TO 30% OFF 🎉</span>
             <span>Buy now to enjoy free delivery🚀</span>
             <span>USE PROMOCODE RAFECHAN to get an additional SGD30 OFF 🌟</span>
-            <!-- Repeated promo messages for continuous scrolling effect -->
+            <span>1.1 SALE UP TO 30% OFF 🎉</span>
+            <span>Buy now to enjoy free delivery🚀</span>
+            <span>USE PROMOCODE RAFECHAN to get an additional SGD30 OFF 🌟</span>
+            <span>1.1 SALE UP TO 30% OFF 🎉</span>
+            <span>Buy now to enjoy free delivery🚀</span>
+            <span>USE PROMOCODE RAFECHAN to get an additional SGD30 OFF 🌟</span>
+
         </div>
     </div>
-
     <!-- Home Section with Service Exploration and Trending Products -->
     <section class="home-section">
         <h2 class="explore-text">The services we provide</h2>
         <section class="explore-sell-section">
             <a href="productPage.html">
-                <div class="explore-card">
+                <div class="explore-card tilt-card">
                     <h2>EXPLORE PRODUCTS</h2>
                     <img src="explore-icon.svg" alt="Explore Icon">
                 </div>
             </a>
             <a href="productPage.html">
-                <div class="sell-card">
+
+                <div class="sell-card tilt-card">
                     <h2>SELL HARDWARE</h2>
                     <img src="sell-icon.svg" alt="Sell Icon">
                 </div>
             </a>
         </section>
-
         <!-- Trending Products Section -->
         <section class="trending-section">
             <h2>Explore our Trending Products</h2>
             <p>based on number of offers made</p>
             <div class="product-card-container">
                 <!-- Product cards displaying popular items -->
+                <div class="product-card" onclick="window.location.href='product-detail.html?id=EFjmcZqRcTWQAxWC37FD'">
+                    <div class="gradient-blur">
+                        <section class="product-info-section">
+                            <h2>Aorus RTX 5080</h2>
+                            <p>SGD 600</p>
+                        </section>
+                        <img src="/productIMG/product14.jpg" alt="Product Image">
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="product-card" onclick="window.location.href='product-detail.html?id=Qbh9DARIgxhACi9jG9yC'">
+                    <div class="gradient-blur">
+                        <section class="product-info-section">
+                            <h2>CORSAIR VENGEANCE a5100 Gaming PC</h2>
+                            <p>SGD 1500</p>
+                        </section>
+                        <img src="/productIMG/product1.jpg" alt="Product Image">
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="product-card" onclick="window.location.href='product-detail.html?id=M7TYLzuDOptWS7kSiSDu'">
+                    <div class="gradient-blur">
+                        <section class="product-info-section">
+                            <h2>Corsair DDR5 32gb RAM</h2>
+                            <p>SGD 600</p>
+                        </section>
+                        <img src="/productIMG/product6.jpg" alt="Product Image">
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
             </div>
         </section>
-
         <!-- Why Choose Mokesell Section with Benefits -->
         <section class="why-section">
             <div class="why-text">
                 <h2>Why choose Mokesell?</h2>
-                <p>At Mokesell, we believe in making technology affordable, sustainable, and accessible. Here's why you should choose us:</p>
+                <p>At Mokesell, we believe in making technology affordable, sustainable, and accessible. Here's why you
+                    should choose us:</p>
                 <ul>
-                    <!-- List of reasons to choose Mokesell -->
+                    <li><strong>Affordable and Quality Products:</strong> Find high-quality second-hand PCs, GPUs, CPUs,
+                        and monitors at a fraction of the cost of new hardware. Mokesell connects you with trusted
+                        sellers, ensuring you get great value for your money.</li>
+
+                    <li><strong>Sustainable Tech:</strong> By choosing second-hand, you're helping reduce electronic
+                        waste and supporting a more sustainable tech ecosystem. Every purchase helps conserve resources
+                        and minimizes environmental impact.</li>
+
+                    <li><strong>Customizable and Flexible Options:</strong> Mokesell gives you the freedom to find
+                        exactly what you need, with a wide range of second-hand computing hardware available. Whether
+                        you're upgrading a single component or outfitting an entire system, our platform allows you to
+                        choose from various options that fit your budget and preferences.</li>
+
+                    <li><strong>Community-Driven:</strong> Mokesell is powered by a community of tech enthusiasts and
+                        everyday users. Join a growing network where you can discover great deals, share knowledge, and
+                        be part of a movement toward smarter, sustainable tech.</li>
                 </ul>
+
                 <p>Choose Mokesell and make your next tech purchase a win for both your wallet and the planet!</p>
             </div>
             <div class="why-img">
-                <img src="rafe.png" alt="Co-founder">
+                <img class="tilt-card" src="rafe.png" alt="Co-founder">
                 <p><strong>Rafe Chan:</strong> Co-founder</p>
-                <img src="jing.png" alt="Co-founder">
+                <img class="tilt-card" src="jing.png" alt="Co-founder">
                 <p><strong>Jing Shun:</strong> Co-founder</p>
             </div>
         </section>
-
         <!-- User Reviews Section -->
         <section class="review-section">
             <h2>What our users say</h2>
             <div class="reviews">
                 <div id="cards">
-                    <!-- Displaying user reviews -->
+                    <div class="reviewCard">
+                        <div class="topCard">
+                            <img src="/profile-icon.svg" class="profilePicture" alt="PFP">
+                            <h3>Ooi Jing Shun</h3>
+                        </div>
+                        <div class="botCard">
+                            <p>
+                                Mokesell is an absolute haven for PC enthusiasts! Their knowledgeable staff were
+                                incredibly helpful in guiding me through the process of building my dream gaming rig.
+                                They patiently answered all my questions, offered expert advice, and ensured I made
+                                informed decisions. Whether you're looking for brand-new components or quality
+                                second-hand parts, Mokesell has you covered!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="reviewCard">
+                        <div class="topCard">
+                            <img src="/profile-icon.svg" class="profilePicture" alt="PFP">
+                            <h3>Ranen Sim</h3>
+                        </div>
+                        <div class="botCard">
+                            <p>
+                                I had an amazing experience shopping at Mokesell! Their selection of first and
+                                second-hand computer parts is impressive, and their staff is incredibly knowledgeable.
+                                They took the time to help me find the best components within my budget and even gave me
+                                useful tips on optimizing my build. Highly recommend Mokesell for anyone upgrading or
+                                building a PC!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="reviewCard">
+                        <div class="topCard">
+                            <img src="/profile-icon.svg" class="profilePicture" alt="PFP">
+                            <h3>John Smith</h3>
+                        </div>
+                        <div class="botCard">
+                            <p>
+                                Mokesell is the go-to place for anyone into PCs! Their team is not only friendly but
+                                also highly knowledgeable about both new and used computer parts. They helped me pick
+                                the perfect upgrades for my setup, making sure I got the best performance for my money.
+                                I’ll definitely be coming back for future builds!
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </section>
-
     <!-- Footer Section with Links and Social Media -->
     <footer>
         <div class="footer-content">
@@ -140,6 +241,7 @@
                     <h2>mokesell</h2>
                 </a>
             </div>
+
             <div class="footer-links">
                 <ul>
                     <li><a href="about.html">About Us</a></li>
@@ -149,6 +251,7 @@
                     <li><a href="terms.html">Terms of Service</a></li>
                 </ul>
             </div>
+
             <div class="footer-social">
                 <a href="https://facebook.com/mokesell" target="_blank">
                     <img src="facebook-logo.svg" alt="Facebook" style="height: 24px;">
@@ -166,8 +269,6 @@
             <p>&copy; 2025 mokesell. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- Including External JavaScript Files -->
     <script type="module" src="three.js"></script>
     <script type="module" src="script.js"></script>
 

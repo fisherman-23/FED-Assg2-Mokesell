@@ -48,3 +48,11 @@ hamburger.onclick = () => {
   console.log("clicked");
   toggleMobileMenu(hamburger.nextElementSibling);
 };
+import VanillaTilt from "vanilla-tilt";
+
+VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+  reverse: true,
+  max: 10,
+
+  easing: "cubic-bezier(.03,.98,.52,.99)",
+});

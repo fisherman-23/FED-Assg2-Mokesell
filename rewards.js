@@ -1,4 +1,5 @@
 import { checkSignedIn } from "./auth.js";
+
 const gridContainer = document.querySelector(".grid-container");
 let cards = [];
 let firstCard, secondCard;
@@ -17,7 +18,9 @@ if (localStorage.getItem("totalScore")) {
 
 document.querySelector(".tries").textContent = tries;
 document.querySelector(".score").textContent = score;
-document.querySelector(".total-score").textContent = `User Total Score: ${totalScore}`;
+document.querySelector(
+  ".total-score"
+).textContent = `User Total Score: ${totalScore}`;
 
 fetch("cards.json")
   .then((res) => res.json())
@@ -123,7 +126,9 @@ function checkForMatch() {
     score++;
     totalScore++;
     document.querySelector(".score").textContent = score;
-    document.querySelector(".total-score").textContent = `User Total Score: ${totalScore}`;
+    document.querySelector(
+      ".total-score"
+    ).textContent = `User Total Score: ${totalScore}`;
 
     disableCards();
     if (tries === 0) {

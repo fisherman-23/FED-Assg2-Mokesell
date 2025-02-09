@@ -41,6 +41,15 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 });
 function productDetail(id) {
-    console.log(`"Product Clicked ${id}"`);
-    window.location.href = `product-detail.html?id=${id}`;
-  }
+  console.log(`"Product Clicked ${id}"`);
+  window.location.href = `product-detail.html?id=${id}`;
+}
+
+function toggleMobileMenu(menu) {
+  menu.classList.toggle("open");
+}
+const hamburger = document.querySelector(".hamburger-button");
+hamburger.onclick = () => {
+  console.log("clicked");
+  toggleMobileMenu(hamburger.nextElementSibling);
+};
