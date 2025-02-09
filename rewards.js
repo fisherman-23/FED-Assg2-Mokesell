@@ -56,6 +56,8 @@ reward100Button.addEventListener("click", () => {
   }
 });
 
+
+// Everytime load or restart this function shuffles the cards
 function shuffleCards() {
   let currentIndex = cards.length,
     randomIndex,
@@ -69,6 +71,7 @@ function shuffleCards() {
   }
 }
 
+// Loops through the cards list and display it
 function generateCards() {
   for (let card of cards) {
     const cardElement = document.createElement("div");
@@ -85,6 +88,7 @@ function generateCards() {
   }
 }
 
+// When a card is click it flipped and calls for check for match
 function flipCard() {
   if (tries === 0) {
     document.querySelector(".tries").textContent =
@@ -111,6 +115,7 @@ function flipCard() {
   checkForMatch();
 }
 
+//Checks if it matches by comparing name value (JSON) 
 function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
 
@@ -137,7 +142,7 @@ function checkForMatch() {
     }
   }
 }
-
+//If the card matches it locks it
 function disableCards() {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
@@ -145,6 +150,7 @@ function disableCards() {
   resetBoard();
 }
 
+//After 1s it flips the card back
 function unflipCards() {
   setTimeout(() => {
     firstCard.classList.remove("flipped");
@@ -159,6 +165,7 @@ function resetBoard() {
   lockBoard = false;
 }
 
+//Restarts the game
 function restart() {
   // Save total score to local storage
   localStorage.setItem("totalScore", totalScore);

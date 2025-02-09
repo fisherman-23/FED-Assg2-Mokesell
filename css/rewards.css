@@ -1,5 +1,5 @@
 
-
+/* Reward title section */
 .title-section {
     background-image: url('/landing-bg.png'); /*CHANGE TO ARCADE GAME BACKGROUND? (figma)*/
     height: 40vh;
@@ -24,7 +24,7 @@
     margin-bottom: 2rem;
 }
 .title-text h1{
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 .voucher-text{
     width: 100%;
@@ -33,13 +33,13 @@
     margin-bottom: 4rem;
     font-size: 1.5rem;
 }
-
+/* Voucher section */
 .rewards-card-container-bg {
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
 }
 
 .rewards-card-container {
@@ -128,7 +128,7 @@
     
 }
 
-
+/* Styling for game */
 
 .game-section{
 display: flex;
@@ -220,6 +220,7 @@ transform: rotateY(180deg);
 }
 button {
     cursor: pointer;
+    border: none;
 }
 .landing-text{
     padding: 2rem;
@@ -229,16 +230,20 @@ button {
     font-size: 2rem;
     font-weight: bold;
 }
+
+/* mobile view */
 @media screen and (max-width: 1000px) {
 .grid-container {
-    grid-template-columns: repeat(4, 20%);
+    grid-template-columns: repeat(4, 20%); 
+    /* Changes the card row from 6 to 4 for mobile view */
 }
 .rewards-card-container-bg {
     width: 100vw; 
     height: auto; 
     max-width: 100%; 
     position: relative;
-    margin: 0 auto; 
+    margin: auto;
+    margin-bottom: 5rem; 
 }
 .rewards-card {
     height: 45vw;
