@@ -300,6 +300,8 @@ header a {
     flex: 1;
     cursor: pointer;
     border-radius: 15px;
+    transition: transform 0.2s ease;
+
 }
 .product-card img{
     width: 100%;
@@ -724,6 +726,10 @@ footer {
     margin-top: 20px;
     font-size: 0.8rem;
     color: #ccc;
+}
+.product-card:hover {
+    transform: scale(1.03);
+    transition: transform 0.2s ease;
 }
 @media screen and (max-width: 900px) {
     header {

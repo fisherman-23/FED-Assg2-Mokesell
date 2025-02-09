@@ -205,6 +205,12 @@ header a {
     flex: 1 1 25%;
     cursor: pointer;
     border-radius: 15px;
+    transition: transform 0.2s ease;
+
+}
+.product-card:hover {
+    transform: scale(1.03);
+    transition: transform 0.2s ease;
 }
 
 .load-more {
