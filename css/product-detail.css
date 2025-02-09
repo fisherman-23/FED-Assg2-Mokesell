@@ -12,7 +12,7 @@
     font-weight: bold;
     font-style: normal;
 }
-
+/* Set the fonts of the entire page */
 body {
     background-color: #0A0A0A;
     font-family: 'Poppins', sans-serif;
@@ -28,7 +28,7 @@ body {
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
 }
-
+/* Main nav menu */
 header {
     width: 100%;
     display: flex;
@@ -74,6 +74,8 @@ header a {
     font-size: 1.2rem;
     color: #ffffff;
 }
+
+/* Styling for product details */
 .product-detail{
     width: 100vw;
     display: flex;
@@ -85,6 +87,7 @@ header a {
     gap: 10rem;
     padding: 1.5rem 6rem;
 }
+/* Product image */
 .left img{
     width: 31vw;
     border-radius: 15px;
@@ -95,6 +98,8 @@ header a {
     padding: 0;
     margin: 0;
 }
+
+/* Product information text styling (right side) */
 .right h1{
     margin: 0;
     font-size: 2.2vw;
@@ -128,6 +133,7 @@ header a {
 .product-description{
     font-size: 0.85vw;
 }
+/* Sizing chanes for different screens size */
 @media screen and (max-width: 1200px) {
     .right h1{
         margin: 0;
@@ -164,6 +170,7 @@ header a {
 hr{
     margin: 1.5rem 6rem;
 }
+/* Styling for user information section */
 .user-info{
     width: 100%;
     display: flex;
@@ -242,6 +249,8 @@ hr{
     padding: 1rem;
     border-radius: 15px;
 }
+
+/* Styling for review section */
 .review-user{
     display: flex;
     align-items: center;
@@ -280,6 +289,8 @@ hr{
 .review-rating img{
     width: 1.2vw;
 }
+
+/* Styling for loading animation */
 .loading {
     width: 100vw;
     height: 100vh;
@@ -294,6 +305,7 @@ hr{
     transition: opacity 0.5s ease-in-out;
 }
 
+/* Styling for view offers and make offers */
 .popup {
     position: fixed;
     top: 0;
@@ -301,7 +313,7 @@ hr{
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px); /* Blurs the background */
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -317,7 +329,7 @@ hr{
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px); /* Blurs the background */
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -410,6 +422,8 @@ hr{
     font-size: 2.5rem;
     cursor: pointer;
 }
+
+/* Styling for mobile view */
 .hamburger-button {
     display: none;
     position: relative;
@@ -468,6 +482,8 @@ hr{
     transition: all 0.3s ease;
     cursor: pointer;
 }
+
+/* Styling for footer section */
 footer {
     background-color: #1b1b1b;
     color: #fff;
@@ -612,23 +628,28 @@ footer {
     text-align: right;
   }
   
+/* Styling for mobile view */
 @media screen and (max-width: 900px) {
+    /* Hides main nav */
     .main-nav{
         display: none;
     }
-
+    /* Show hamburger button */
     .hamburger-button {
         display: block;
     }
+    /* Reposition main nav */
     header{
         padding: 0.8rem 2rem;
     }
+    /* Change orientation of the product details */
     .product-detail-container{
         flex-direction: column;
         align-items: center;
         gap: 8vh;
         padding: 0.8rem 2rem;
     }
+    /* Text sizing changes for product details information */
     .left img{
         width: 100%;
     }
@@ -657,6 +678,7 @@ footer {
     hr{
         margin: 1rem 3rem;
     }
+    /* Change orientation for user information */
     .user-info{
         flex-direction: column;
         padding: 0.8rem 2rem;
@@ -702,6 +724,7 @@ footer {
         width: 7vw;
         height: 7vw;
     }
+    /* footer */
     .footer-content {
         flex-direction: column;
         gap: 20px;

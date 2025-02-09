@@ -16,7 +16,7 @@ import {
 import { checkSignedIn } from "./auth";
 
 const db = getFirestore();
-
+// Check if user is signed in
 document.addEventListener("DOMContentLoaded", async function () {
   console.log("Document loaded");
   // Ensure checkSignedIn returns a resolved promise, even if it's null
@@ -259,7 +259,7 @@ function showToast(header, message, type) {
     toast.classList.remove("show");
   }, 4000);
 }
-
+// Load offers
 function loadOffers(offers) {
   const offerList = document.getElementById("offer-list");
   offerList.innerHTML = ""; // Clear any existing offers

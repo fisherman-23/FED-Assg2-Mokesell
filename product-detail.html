@@ -26,6 +26,7 @@
 </head>
 
 <body>
+    <!-- Lottie loading animation -->
     <div class="loading">
         <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
             type="module"></script>
@@ -33,6 +34,7 @@
             background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay>
         </dotlottie-player>
     </div>
+    <!-- nav menu -->
     <header>
         <a href="index.html">
             <div class="brand">
@@ -59,6 +61,7 @@
             </ul>
         </nav>
     </header>
+    <!-- Noticfication card -->
     <div class="toast">
         <div class="toast-icon">
             <img src="tick.svg" alt="tick">
@@ -68,12 +71,16 @@
             <p>Your account has been created successfully.</p>
         </div>
     </div>
+    <!-- Product details section -->
     <section class="product-detail">
         <div class="product-detail-container">
+            <!-- Product image (left side) -->
             <div class="left">
                 <img src="about:blank" class="product-img" alt="product image">
             </div>
+            <!-- Product information (right side) -->
             <div class="right">
+                <!-- Javascript used to dynamically load in the details -->
                 <h1 class="product-name"></h1>
                 <div class="price-container">
                     <img class="dollar-icon" src="/dollar.png" alt="dollar icon">
@@ -88,8 +95,10 @@
         </div>
     </section>
     <hr>
+    <!-- User information section -->
     <section>
         <div class="user-info">
+            <!-- Infomration  about the seller and chat button (left side) -->
             <div class="user-left">
                 <img src="/profile-icon.svg" class="user-pfp" alt="profile icon">
                 <div class="user-profile">
@@ -101,6 +110,7 @@
                     <button class="chat-btn"><img src="/ChatTeardropDots.svg" alt="chat icon"></button>
                 </div>
             </div>
+            <!-- Making offers button (right side) -->
             <div class="user-right">
                 <button id="make-offer">Make Offer</button>
                 <button id="view-offer">View Offer</button>
@@ -109,10 +119,12 @@
         </div>
     </section>
     <hr>
+    <!-- Review section -->
     <section>
         <div class="review-section">
             <h1>Reviews</h1>
             <div class="review-container">
+                <!-- Card for reviews -->
                 <div class="review-card">
                     <div class="review-top">
                         <div class="review-user">
@@ -132,6 +144,7 @@
             </div>
         </div>
     </section>
+    <!-- Popup for making offers (buyer view) -->
     <div id="popup" class="popup">
 
         <div class="popup-content">
@@ -148,6 +161,7 @@
             </div>
         </div>
     </div>
+    <!-- Popup for viewing offers (seller view) -->
     <div id="popup-seller" class="popup-seller">
 
         <div class="popup-content-seller">
@@ -159,6 +173,7 @@
             </div>
         </div>
     </div>
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
