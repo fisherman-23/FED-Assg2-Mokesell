@@ -282,7 +282,7 @@ function loadOffers(offers) {
 
     const chatButton = document.createElement("button");
     chatButton.classList.add("chat-btn");
-    chatButton.innerHTML = '<img src="/ChatTeardropDots.svg" alt="chat icon">';
+    chatButton.innerHTML = '<img src="ChatTeardropDots.svg" alt="chat icon">';
     chatButton.addEventListener("click", async () => {
       if (!getAuth().currentUser) {
         window.location.href = "login.html";
