@@ -41,7 +41,8 @@ function loadProducts(data) {
                 `;
       productcontainer.appendChild(productdiv);
     }
-  } else { //This is when the number of products left is not 8 it will switch the for loop range to the max to prevent indexOutofRange error
+  } else {
+    //This is when the number of products left is not 8 it will switch the for loop range to the max to prevent indexOutofRange error
     for (let i = numberOfCards; i < data.length; i++) {
       const product = data[i];
       const productdiv = document.createElement("div");
@@ -115,7 +116,6 @@ popup.addEventListener("click", (e) => {
 const uploadLeft = document.querySelector(".uploadLeft");
 const fileInput = document.getElementById("imageUpload");
 const imagePreview = document.getElementById("imagePreview");
-
 
 // Triggers the input file prompt when the box for upload image has been click
 uploadLeft.addEventListener("click", function () {
@@ -273,20 +273,25 @@ const priceDisplay = document.querySelector(".price-display");
 priceRange.addEventListener("input", () => {
   let priceValue = priceRange.value;
   priceDisplay.textContent = `$0 - $${priceValue}`;
-  if (filterCategory.length != 0) { //Checks if a filter by category has been selected
-    filtered = products.filter((item) => { //if yes then it filters the product by item category and check if its under the price range
+  if (filterCategory.length != 0) {
+    //Checks if a filter by category has been selected
+    filtered = products.filter((item) => {
+      //if yes then it filters the product by item category and check if its under the price range
       return (
         filterCategory.includes(item.category) && item.price <= priceRange.value
       );
     });
-  } else { //if no then it filters just by price
+  } else {
+    //if no then it filters just by price
     filtered = products.filter((item) => {
       return item.price <= priceRange.value;
     });
   }
-  if (filterCategory.length != 0 || priceValue < 1000) { //Only call the separate display function when a filter is applied
+  if (filterCategory.length != 0 || priceValue < 1000) {
+    //Only call the separate display function when a filter is applied
     displayProducts(filtered);
-  } else { //if it has been removed then it will load back the original display
+  } else {
+    //if it has been removed then it will load back the original display
     productcontainer.innerHTML = "";
     numberOfCards = 0;
     loadProducts(products);
@@ -297,7 +302,8 @@ priceRange.addEventListener("input", () => {
 //Filter for categories
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", () => { //Check whether the product has been check or unchecked
+  checkbox.addEventListener("change", () => {
+    //Check whether the product has been check or unchecked
     if (checkbox.checked) {
       filterCategory.push(checkbox.value); //if so then its added to the list of filter by
     } else {
@@ -305,15 +311,18 @@ checkboxes.forEach((checkbox) => {
         (value) => value !== checkbox.value //if not it is removed from the filter list
       );
     }
-    const filtered = products.filter((item) => { //Filter by category and price range
+    const filtered = products.filter((item) => {
+      //Filter by category and price range
       return (
         filterCategory.includes(item.category) && item.price <= priceRange.value
       );
     });
     console.log(filtered);
-    if (filterCategory.length != 0) {  //Only call the separate display function when a filter is applied
+    if (filterCategory.length != 0) {
+      //Only call the separate display function when a filter is applied
       displayProducts(filtered);
-    } else { //if it has been removed then it will load back the original display
+    } else {
+      //if it has been removed then it will load back the original display
       productcontainer.innerHTML = "";
       numberOfCards = 0;
       loadProducts(products);

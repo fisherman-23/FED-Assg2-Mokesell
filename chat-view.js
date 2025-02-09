@@ -195,7 +195,7 @@ hamburger.onclick = () => {
 function logOut() {
   logout()
     .then(() => {
-      window.location.href = "/login.html";
+      window.location.href = "login.html";
     })
     .catch((error) => {
       console.error("Error logging out:", error);

@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       });
     } else {
       // Redirect to login page if not signed in
-      window.location.href = "/login.html";
+      window.location.href = "login.html";
     }
   } catch (error) {
     console.error("Error:", error);
