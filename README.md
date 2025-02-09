@@ -120,7 +120,7 @@ Responsible for developing and implementing the frontend of the website using HT
   Implemented powerful search and filter options, allowing users to efficiently find products based on specific criteria. The search functionality was designed for easy use and improved user experience.
 
 - **Memory Game**:  
-  Adopted an interactive memory game, providing a fun and engaging feature for users. The game adds an entertaining element to the website, encouraging user participation.
+  Followed a tutorial to develop an interactive memory game and adopted it to fix mokesell context + styling fixes, providing a fun and engaging feature for users. The game adds an entertaining element to the website, encouraging user participation.
 
 - **Mobile Optimization**:  
   Focused on ensuring the website was fully optimized for mobile devices. Applied responsive design techniques to ensure that the site’s layout and functionality adapt to various screen sizes and devices, improving usability and performance on mobile platforms.
@@ -247,3 +247,9 @@ Focused on developing and optimizing the rewards page, ensuring it was both func
 ### Usage of Generative AI
 
 We use Generative AI tools like ChatGPT, DeepSeek & Microsoft Copilot to assist us in the development of this assignment. These tools have been employed to help with various tasks, including generating ideas, improving code quality, drafting documentation, and refining our overall project. While the AI has been instrumental in enhancing the efficiency of our work, we acknowledge that the final output, analysis, and conclusions are the result of our individual efforts and critical thinking.
+
+1. ThreeJS model mouse tracking: ChatGPT was used to help with implementation of tracking the mouse movement and moving the 3D model accordingly
+![image](https://github.com/user-attachments/assets/729f2326-0c1e-4005-9e92-6236e428b964)
+
+2. Product details data: ChatGPT was used to generate 14 product details in the form of a specified JSON format for testing of your application
+![image](https://github.com/user-attachments/assets/7a7b1d6d-6736-4ef2-ae7b-9923c9a92e12)
