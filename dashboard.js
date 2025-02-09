@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
       } else {
         // redirect to login
-        window.location.href = "login.html";
+        window.location.href = "/login.html";
       }
     })
     .catch((error) => {
