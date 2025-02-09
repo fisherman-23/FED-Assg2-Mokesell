@@ -1,3 +1,11 @@
+/**
+ * @fileoverview
+ * This script handles real-time chat functionality, including message rendering, sending messages,
+ * listening for updates via Firestore, and user authentication.
+ *
+ * @author Jing Shun
+ */
+
 import {
   getMessagesById,
   getUserData,
@@ -20,7 +28,8 @@ import { checkSignedIn } from "./auth.js";
 import { logout } from "./auth.js";
 
 const db = getFirestore();
-// Sample JSON data for messages (assuming timeSent is a Firebase Timestamp)
+
+// Sample JSON data for messages (not to be used in production) (assuming timeSent is a Firebase Timestamp)
 let messages = [
   {
     senderId: "user1",
@@ -182,6 +191,7 @@ hamburger.onclick = () => {
   toggleMobileMenu(hamburger.nextElementSibling);
 };
 
+// Define the logOut function
 function logOut() {
   logout()
     .then(() => {

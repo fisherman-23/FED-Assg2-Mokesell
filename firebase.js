@@ -1,3 +1,11 @@
+/**
+ * @fileoverview
+ * This module initializes the Firebase application with firebase configurations like API KEY and
+ * exports essential Firebase services, such as authentication and storage, for use in the project.
+ *
+ * @author Jing Shun
+ */
+
 import dotenv from "dotenv";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -9,6 +17,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 
+// Load environment variables from .env file
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -22,6 +31,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+// Export Firebase services
 export const storage = getStorage(app);
 export const auth = getAuth(app);
 export default app;

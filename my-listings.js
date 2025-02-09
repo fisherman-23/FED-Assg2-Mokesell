@@ -1,3 +1,12 @@
+/**
+ * @fileoverview
+ * This script is responsible for displaying a user's product listings on the dashboard page.
+ * It fetches the user's data and product details from the database, and dynamically renders
+ * the products as clickable cards.
+ *
+ * @author Jing Shun
+ */
+
 import { doc } from "firebase/firestore";
 import { checkSignedIn, logout } from "./auth";
 import { getUserData, getListingsByIds } from "./services";

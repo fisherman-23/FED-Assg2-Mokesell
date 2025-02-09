@@ -1,6 +1,17 @@
+/**
+ * @fileoverview
+ * This script manages the chat interface and user authentication.
+ * It handles fetching user data, retrieving chat details, rendering the chat list,
+ * toggling the mobile menu, and logging out the user.
+ *
+ * @author Jing Shun
+ */
+
 import { getChats, getUserData, getUsernameById } from "./services.js";
 import { checkSignedIn } from "./auth.js";
 import { logout } from "./auth.js";
+
+// When page is loaded, check if user is signed in then fetch user data and chats
 document.addEventListener("DOMContentLoaded", function () {
   const signedInPromise = checkSignedIn() || Promise.resolve(null);
 
@@ -49,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error checking sign-in status:", error);
     });
 });
+// Toggle mobile menu
 function toggleMobileMenu(menu) {
   menu.classList.toggle("open");
 }
@@ -58,6 +70,7 @@ hamburger.onclick = () => {
   toggleMobileMenu(hamburger.nextElementSibling);
 };
 
+// Define logout function
 function logOut() {
   logout()
     .then(() => {

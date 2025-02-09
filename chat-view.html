@@ -30,28 +30,34 @@
 
 <body>
     <header>
+        <!-- Brand logo and name with a link to the homepage -->
         <a href="index.html">
             <div class="brand">
                 <img src="mokesell.png" alt="Mokesell Logo" style="height: 50px;">
                 <h1>mokesell</h1>
             </div>
         </a>
+        <!-- Back button to navigate to the previous page -->
         <a onclick="window.history.back()" class="back">back</a>
+        <!-- Hamburger button for mobile menu -->
         <button class="hamburger-button">
             <img src="hamburger-icon.svg" width="45" alt="Hamburger Icon">
 
         </button>
+        <!-- Mobile menu with navigation links -->
         <ul class="mobile-menu">
             <li class="selected"><a href="dashboard.html">Overview</a></li>
             <li><a href="chat-list.html">Chats</a></li>
             <li><a href="my-listings.html">Listings</a></li>
             <li class="logout-btn"> <a>Log Out</a></li>
-            <li id="back-btn"> <a onclick="window.history.back()"><img src="back.svg" style="height:50px" alt="back"></a></li>
+            <li id="back-btn"> <a onclick="window.history.back()"><img src="back.svg" style="height:50px"
+                        alt="back"></a></li>
 
         </ul>
     </header>
     <hr>
     <section class="dashboard-section">
+        <!-- Sidebar navigation links -->
         <div class="dashboard-sidebar">
             <ul>
                 <li><a href="dashboard.html">Overview</a></li>
@@ -62,13 +68,16 @@
             </ul>
         </div>
         <div class="dashboard-content">
+            <!-- Chat section header -->
             <h1 id="chat-header">Chat</h1>
+            <!-- Container for chat messages -->
             <div class="chat-messages" id="chat-messages"></div>
+            <!-- Chat input field and send button -->
             <div class="chat-input">
                 <input type="text" id="chat-input" placeholder="Type a message...">
                 <button id="send-btn">Send</button>
             </div>
- 
+
         </div>
 
     </section>

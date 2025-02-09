@@ -176,6 +176,7 @@ header a {
     padding: 1rem 0;
 }
 
+/* This is the animation for the marquee */
 @keyframes scroll {
     from {
         transform: translateX(0);
@@ -191,10 +192,12 @@ header a {
     display: inline-flex;
 }
 
+
 .marquee-content span {
     display: inline-flex;
 }
 
+/* Featured card styling with mesh gradient generated */
 .featured-card {
     background-color:hsla(240,45%,50%,1);
     background-image:
@@ -310,6 +313,7 @@ header a {
     aspect-ratio: 5/5;
     object-fit: cover;
 }
+/* Progressive gradient blur effect */
 .gradient-blur > div,
 .gradient-blur::before,
 .gradient-blur::after {
@@ -318,7 +322,7 @@ header a {
     inset: 0;
     border-radius: 15px;
 }
-
+/* Progressive gradient blur effect - uses divs stack on each other, with varying opacity masking*/
 .gradient-blur > div:nth-of-type(1) {
     z-index: 6;
     backdrop-filter: blur(3px); /* Decreased blur amount */
@@ -533,6 +537,8 @@ header a {
     border: solid;
     box-shadow: rgba(90, 69, 228, 0.4) -5px 5px, rgba(90, 69, 228, 0.3) -10px 10px, rgba(90, 69, 228, 0.2) -15px 15px, rgba(90, 69, 228, 0.1) -20px 20px, rgba(90, 69, 228, 0.05) -25px 25px;
 }
+
+/* Disable scrollbar for cards */
 #cards::-webkit-scrollbar {
     display: none;
 }
@@ -575,7 +581,7 @@ header a {
 
 
 
-
+/* Styling for toast notification */
 .toast {
     position: fixed;
     top: 2rem;
@@ -626,6 +632,7 @@ header a {
 
     border: none;
 }
+/* Styling for mobile menu */
 .mobile-menu {
     display: flex;
     position: fixed;
@@ -645,7 +652,7 @@ header a {
     text-align: left;
     border-radius: 45px 0px 0px 45px;
 }
-
+/* When open class is added, the menu will slide in from the right */
 .open.mobile-menu {
     display: flex;
     flex-direction: column;
@@ -668,6 +675,7 @@ header a {
     padding-right: 0px;
 }
 
+/* Styling for footer components */
 footer {
     background-color: #1b1b1b;
     color: #fff;
@@ -731,6 +739,7 @@ footer {
     transform: scale(1.03);
     transition: transform 0.2s ease;
 }
+/* Responsive design */
 @media screen and (max-width: 900px) {
     header {
         padding: 0.8rem 2rem;

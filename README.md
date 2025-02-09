@@ -211,15 +211,20 @@ Focused on developing and optimizing the rewards page, ensuring it was both func
 - **Purpose:** A library for rendering animations in JSON format.
 - **Impact:** Enables smooth, lightweight animations that improve the overall visual appeal of the website without sacrificing performance.
 
-### dotenv
-
-- **Purpose:** Loads environment variables from a `.env` file into `process.env`.
-- **Impact:** Secures sensitive data like API keys and configurations, making the project more manageable and secure across different environments.
-
 ### Image Caching and Query Parameters
 
 - **Purpose:** Caches images for faster retrieval and uses query parameters to fetch listing information and control image versions or changes.
 - **Impact:** Enhances website performance by reducing image load times and ensuring that the most up-to-date listing information and images are served to users efficiently.
+
+### Vanila Tilt JS
+
+- **Purpose:** A lightweight JavaScript library used to create interactive 3D tilt effects on DOM elements. It allows elements to respond to mouse movement, adding depth and interactivity to the website.
+- **Impact:** Enhances the visual appeal and user engagement of the website by providing subtle, smooth animations that make interactions feel more dynamic and immersive.
+
+### dotenv
+
+- **Purpose:** Loads environment variables from a `.env` file into `process.env`.
+- **Impact:** Secures sensitive data like API keys and configurations, making the project more manageable and secure across different environments.
 
 ### HTML, CSS, JS
 
@@ -234,6 +239,7 @@ Focused on developing and optimizing the rewards page, ensuring it was both func
 - Resources
   - [Firebase Documentation](https://firebase.google.com/docs)
   - [Query Parameters](https://www.branch.io/glossary/query-parameters/#:~:text=What%20are%20query%20parameters%3F,web%20server%20when%20making%20requests.)
+  - [Mesh Gradient Generator](https://www.csshero.org/mesher/)
 - Assets
   - [Retro Computer 3D Model](https://www.blenderkit.com/get-blenderkit/0d42296d-6f1b-4ab1-9f06-a3dbf0b366b4/)
   - [Figma Phosphor Icon Pack](https://www.figma.com/community/file/903830135544202908/phosphor-icons)

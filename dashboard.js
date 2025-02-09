@@ -1,3 +1,12 @@
+/**
+ * @fileoverview
+ * This script manages the dashboard's functionality, including displaying user data (welcome message,
+ * listing count, purchase count, and like count), handling logout, and toggling the mobile menu.
+ * It also ensures redirection to the login page if the user is not signed in.
+ *
+ * @author Jing Shun
+ */
+
 import { checkSignedIn, logout } from "./auth";
 import { getUserData } from "./services";
 

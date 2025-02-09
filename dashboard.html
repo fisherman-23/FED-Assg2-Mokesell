@@ -28,28 +28,34 @@
 
 <body>
     <header>
+        <!-- Brand logo and name with a link to the homepage -->
         <a href="index.html">
             <div class="brand">
                 <img src="mokesell.png" alt="Mokesell Logo" style="height: 50px;">
                 <h1>mokesell</h1>
             </div>
         </a>
+        <!-- Back button to navigate to the previous page -->
         <a onclick="window.history.back()" class="back">back</a>
+        <!-- Hamburger button for mobile menu -->
         <button class="hamburger-button">
             <img src="hamburger-icon.svg" width="45" alt="Hamburger Icon">
 
         </button>
+        <!-- Mobile menu with navigation links -->
         <ul class="mobile-menu">
             <li class="selected"><a href="dashboard.html">Overview</a></li>
             <li><a href="chat-list.html">Chats</a></li>
             <li><a href="my-listings.html">Listings</a></li>
             <li class="logout-btn"> <a>Log Out</a></li>
-            <li id="back-btn"> <a onclick="window.history.back()"><img src="back.svg" style="height:50px" alt="back"></a></li>
+            <li id="back-btn"> <a onclick="window.history.back()"><img src="back.svg" style="height:50px"
+                        alt="back"></a></li>
         </ul>
     </header>
     <hr>
     <section class="dashboard-section">
         <div class="dashboard-sidebar">
+            <!-- Sidebar navigation links -->
             <ul>
                 <li class="selected"><a href="dashboard.html">Overview</a></li>
                 <li><a href="chat-list.html">Chats</a></li>
@@ -60,8 +66,11 @@
         </div>
 
         <div class="dashboard-content">
+            <!-- Welcome message for the user -->
             <h1 id="dashboard-welcome">Welcome, User</h1>
+            <!-- Container for displaying dashboard statistics -->
             <div class="dashboard-stats-container">
+                <!-- Stat card for the number of listings -->
                 <div class="stat-card">
                     <h2 id="listing-count">0</h2>
                     <p>Number of listings</p>

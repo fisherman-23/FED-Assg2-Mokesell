@@ -29,28 +29,35 @@
 </head>
 
 <body>
+    <!-- Header section with logo, back button, and mobile menu toggle -->
     <header>
+        <!-- Brand logo linked to homepage -->
         <a href="index.html">
             <div class="brand">
                 <img src="mokesell.png" alt="Mokesell Logo" style="height: 50px;">
                 <h1>mokesell</h1>
             </div>
         </a>
+        <!-- Back button, navigates back in browser history -->
         <a onclick="window.history.back()" class="back">back</a>
+        <!-- Hamburger menu button for mobile navigation -->
         <button class="hamburger-button">
             <img src="hamburger-icon.svg" width="45" alt="Hamburger Icon">
 
         </button>
+        <!-- Mobile menu with navigation links -->
         <ul class="mobile-menu">
             <li class="selected"><a href="dashboard.html">Overview</a></li>
             <li><a href="chat-list.html">Chats</a></li>
             <li><a href="my-listings.html">Listings</a></li>
             <li class="logout-btn"> <a>Log Out</a></li>
-            <li id="back-btn"> <a onclick="window.history.back()"><img src="back.svg" style="height:50px" alt="back"></a></li>
+            <li id="back-btn"> <a onclick="window.history.back()"><img src="back.svg" style="height:50px"
+                        alt="back"></a></li>
 
         </ul>
     </header>
     <hr>
+    <!-- Main content section for the dashboard -->
     <section class="dashboard-section">
         <div class="dashboard-sidebar">
             <ul>
@@ -61,10 +68,13 @@
 
             </ul>
         </div>
+        <!-- Main dashboard content section -->
         <div class="dashboard-content">
+            <!-- Page header for the "My Listings" section -->
             <h1 id="chat-header">My listings</h1>
+            <!-- Container for displaying product listings -->
             <div class="product-container">
-
+                <!-- Product listings will be dynamically populated here via JS-->
             </div>
         </div>
 
