@@ -131,7 +131,7 @@ header a {
     font-size: 1.3vw;
 }
 .product-description{
-    font-size: 0.85vw;
+    font-size: 1vw;
 }
 /* Sizing chanes for different screens size */
 @media screen and (max-width: 1200px) {

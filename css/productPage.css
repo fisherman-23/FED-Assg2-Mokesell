@@ -364,6 +364,10 @@ border-radius: 15px;
     height: 80vh;
     background-color: #0B192C;
     border-radius: 20px;
+    overflow-y: auto;
+}
+.popup-content::-webkit-scrollbar {
+    display: none; 
 }
 .uploadContainer{
     display: flex;

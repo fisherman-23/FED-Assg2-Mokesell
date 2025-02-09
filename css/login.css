@@ -49,10 +49,11 @@
 #login-form input {
     padding: 0.5rem;
     border: 2px solid #ffffff;
-    border-radius: 25px;
+    border-radius: 15px;
     background-color: transparent;
     width: 100%;
     font-family: Poppins;
+    margin-top: 0.8rem;
 }
 
 #login-form button {
@@ -75,10 +76,12 @@
 #signup-form input {
     padding: 0.5rem;
     border: 2px solid #ffffff;
-    border-radius: 25px;
+    border-radius: 15px;
     background-color: transparent;
     width: 100%;
     font-family: Poppins;
+    margin-top: 0.8rem;
+
 }
 
 #signup-form button {
@@ -112,6 +115,7 @@ form div {
 }
 .input-group {
     width: 100%;
+    margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 900px) {
