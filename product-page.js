@@ -10,13 +10,14 @@ let increment = 8;
 let products = [];
 let filterCategory = [];
 
-// When page loads first,
+// When page loads first, it calls the API for the database of listings
 
 document.addEventListener("DOMContentLoaded", async function () {
-  products = await getListings();
+  products = await getListings(); //Then it stores the listings in a list to prevent excessive API calling
   loadProducts(products);
 });
 
+// Then it will load in the first 8 products, for everytime this function is called 8 more products is loaded in
 function loadProducts(data) {
   products = data;
   document.querySelector(".end").style.display = "none";
@@ -40,7 +41,7 @@ function loadProducts(data) {
                 `;
       productcontainer.appendChild(productdiv);
     }
-  } else {
+  } else { //This is when the number of products left is not 8 it will switch the for loop range to the max to prevent indexOutofRange error
     for (let i = numberOfCards; i < data.length; i++) {
       const product = data[i];
       const productdiv = document.createElement("div");
@@ -67,15 +68,18 @@ function loadProducts(data) {
   numberOfCards = numberOfCards + increment;
 }
 
+// Event listener for load more button which calls the above function when clicked
 document.querySelector(".load-more").addEventListener("click", function () {
   loadProducts(products);
 });
+
+// Event listener for products card when click it redirects the user to the product details page
 function productDetail(id) {
   console.log(`"Product Clicked ${id}"`);
   window.location.href = `product-detail.html?id=${id}`;
 }
 
-
+// Upload listing popup
 const popup = document.getElementById("popup");
 const closeButton = document.getElementById("close-btn");
 document.querySelector(".upload").addEventListener("click", function () {
@@ -112,10 +116,13 @@ const uploadLeft = document.querySelector(".uploadLeft");
 const fileInput = document.getElementById("imageUpload");
 const imagePreview = document.getElementById("imagePreview");
 
+
+// Triggers the input file prompt when the box for upload image has been click
 uploadLeft.addEventListener("click", function () {
   fileInput.click();
 });
 
+// When a file has been entered it reads the file and show a preview of that image
 fileInput.addEventListener("change", function () {
   const file = fileInput.files[0];
   const reader = new FileReader();
@@ -128,6 +135,7 @@ fileInput.addEventListener("change", function () {
   }
 });
 
+// Object for the new listed product
 function product(name, price, desc, condition, category, img) {
   this.name = name;
   this.price = price;
@@ -137,6 +145,7 @@ function product(name, price, desc, condition, category, img) {
   this.img = img;
 }
 
+// When the form has been succesfully submitted the data is put into the product obj
 const form = document.querySelector(".uploadForm");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -148,7 +157,6 @@ form.addEventListener("submit", function (event) {
     document.getElementById("category").value,
     fileInput.files[0]
   );
-  //Do your thingy here
   console.log(newListing);
   if (fileInput.files[0]) {
     // check for file size or not image
@@ -200,6 +208,7 @@ const dotLottie = lottie.loadAnimation({
   path: "test.json",
 });
 
+// Separate Display function for filtering and searching
 function displayProducts(products) {
   //Takes in a the list of search results and displays them
   productcontainer.innerHTML = "";
@@ -264,20 +273,20 @@ const priceDisplay = document.querySelector(".price-display");
 priceRange.addEventListener("input", () => {
   let priceValue = priceRange.value;
   priceDisplay.textContent = `$0 - $${priceValue}`;
-  if (filterCategory.length != 0) {
-    filtered = products.filter((item) => {
+  if (filterCategory.length != 0) { //Checks if a filter by category has been selected
+    filtered = products.filter((item) => { //if yes then it filters the product by item category and check if its under the price range
       return (
         filterCategory.includes(item.category) && item.price <= priceRange.value
       );
     });
-  } else {
+  } else { //if no then it filters just by price
     filtered = products.filter((item) => {
       return item.price <= priceRange.value;
     });
   }
-  if (filterCategory.length != 0 || priceValue < 1000) {
+  if (filterCategory.length != 0 || priceValue < 1000) { //Only call the separate display function when a filter is applied
     displayProducts(filtered);
-  } else {
+  } else { //if it has been removed then it will load back the original display
     productcontainer.innerHTML = "";
     numberOfCards = 0;
     loadProducts(products);
@@ -288,23 +297,23 @@ priceRange.addEventListener("input", () => {
 //Filter for categories
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", () => {
+  checkbox.addEventListener("change", () => { //Check whether the product has been check or unchecked
     if (checkbox.checked) {
-      filterCategory.push(checkbox.value);
+      filterCategory.push(checkbox.value); //if so then its added to the list of filter by
     } else {
       filterCategory = filterCategory.filter(
-        (value) => value !== checkbox.value
+        (value) => value !== checkbox.value //if not it is removed from the filter list
       );
     }
-    const filtered = products.filter((item) => {
+    const filtered = products.filter((item) => { //Filter by category and price range
       return (
         filterCategory.includes(item.category) && item.price <= priceRange.value
       );
     });
     console.log(filtered);
-    if (filterCategory.length != 0) {
+    if (filterCategory.length != 0) {  //Only call the separate display function when a filter is applied
       displayProducts(filtered);
-    } else {
+    } else { //if it has been removed then it will load back the original display
       productcontainer.innerHTML = "";
       numberOfCards = 0;
       loadProducts(products);

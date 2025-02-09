@@ -24,8 +24,9 @@
     <!-- Web App Manifest (For PWA support) -->
     <link rel="manifest" href="favicon/site.webmanifest">
 </head>
-
+<!-- HTML for product pages -->
 <body>
+    <!-- Nav Bar -->
     <header>
         <a href="index.html">
             <div class="brand">
@@ -41,6 +42,7 @@
                 <li><a href="dashboard.html"><img src="profile-icon.svg" style="height:50px" alt="profile icon"></a></li>
             </ul>
         </nav>
+        <!-- Mobile view for nav bar (initally hidden) -->
         <button class="hamburger-button">
             <img src="hamburger-icon.svg" width="45" alt="Hamburger Icon">
 
@@ -52,19 +54,25 @@
             <li><a href="dashboard.html"><img src="profile-icon.svg" style="height:50px" alt="profile icon"></a></li>
         </ul>
     </header>
+    <!-- Product banner which shows img and slogan text & Search and filter buttons-->
     <section class="top-banner">
+        <!-- Banner + slogan -->
         <div class="banner">
             <h1>Shop your Dream Build</h1>
         </div>
+        <!-- Search and filter buttons -->
         <div class="search-bar">
             <input class="search" type="text" placeholder="Search for products...">
             <button class="filter"><img src="filter.png" alt="filter button"></button>
             <button class="upload"><img src="upload.png" alt="filter button"></button>
         </div>
     </section>
+    <!-- Display of products section -->
     <section class="products">
+        <!-- Empty products container (used js to import api data into here) -->
         <div class="product-card-container">
         </div>
+        <!-- Buttons for load more products and display end of products -->
         <div>
             <button class="load-more">Load More</button>
         </div>
@@ -72,67 +80,73 @@
             <h1 class="end">End of products</h1>
         </div>
     </section>
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <button id="close-btn" class="close-btn">&times;</button>
-            <div class="uploadContainer">
-                <div class="uploadLeft">
-                    <img id="imagePreview" src="camera.png" alt="Camera" class="uploadImage">
-                    <h2>Upload a picture of your product</h2>
-                </div>
-                <div class="uploadRight">
-                    <form class="uploadForm">
-                        <input type="file" id="imageUpload" class="uploadInput" accept="image/*" style="display: none;"
-                            required>
-                        <div>
-                            <label>Product Name</label><br>
-                            <input id="productName" type="text" class="uploadInput" required><br>
-                        </div>
-                        <div>
-                            <label>Listing Price</label><br>
-                            <input id="productPrice" type="number" class="uploadInput" required step="any"><br>
-                        </div>
-                        
-                        <div>
-                            <label>Product Description</label><br>
-                            <textarea id="description" class="uploadInput" cols="30" rows="10" required></textarea><br>
-                        </div>
-                        <div>
-                            <label>Product Condition</label><br>
-                            <select id="condition">
-                                <option value="brand new">Brand new</option>
-                                <option value="good">Good</option>
-                                <option value="used">Used</option>
-                                <option value="Damaged">Damaged</option>
-                            </select><br>
-                        </div>
-                        <div>
-                            <label>Product Category</label><br>
-                            <select id="category">
-                                <option value="cpu">CPU</option>
-                                <option value="gpu">GPU</option>
-                                <option value="ram">RAM</option>
-                                <option value="motherboard">Motherboard</option>
-                                <option value="psu">PSU</option>
-                                <option value="case">Case</option>
-                                <option value="storage">Storage</option>
-                                <option value="peripherals">Peripherals</option>
-                                <option value="other">Other</option>
-                            </select><br>
-                        </div>
-                        <input type="submit" value="List" class="uploadButton">
-                    </form>
+    <!-- Pop up for listing of products -->
+    <section>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <button id="close-btn" class="close-btn">&times;</button>
+                <div class="uploadContainer">
+                    <div class="uploadLeft">
+                        <img id="imagePreview" src="camera.png" alt="Camera" class="uploadImage">
+                        <h2>Upload a picture of your product</h2>
+                    </div>
+                    <div class="uploadRight">
+                        <form class="uploadForm">
+                            <input type="file" id="imageUpload" class="uploadInput" accept="image/*" style="display: none;"
+                                required>
+                            <div>
+                                <label>Product Name</label><br>
+                                <input id="productName" type="text" class="uploadInput" required><br>
+                            </div>
+                            <div>
+                                <label>Listing Price</label><br>
+                                <input id="productPrice" type="number" class="uploadInput" required step="any"><br>
+                            </div>
+                            
+                            <div>
+                                <label>Product Description</label><br>
+                                <textarea id="description" class="uploadInput" cols="30" rows="10" required></textarea><br>
+                            </div>
+                            <div>
+                                <label>Product Condition</label><br>
+                                <select id="condition">
+                                    <option value="brand new">Brand new</option>
+                                    <option value="good">Good</option>
+                                    <option value="used">Used</option>
+                                    <option value="Damaged">Damaged</option>
+                                </select><br>
+                            </div>
+                            <div>
+                                <label>Product Category</label><br>
+                                <select id="category">
+                                    <option value="cpu">CPU</option>
+                                    <option value="gpu">GPU</option>
+                                    <option value="ram">RAM</option>
+                                    <option value="motherboard">Motherboard</option>
+                                    <option value="psu">PSU</option>
+                                    <option value="case">Case</option>
+                                    <option value="storage">Storage</option>
+                                    <option value="peripherals">Peripherals</option>
+                                    <option value="other">Other</option>
+                                </select><br>
+                            </div>
+                            <input type="submit" value="List" class="uploadButton">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <!-- Lottie animation for uploading -->
     <canvas id="dotlottie-canvas"></canvas>
     <div id="dotlottie-animation"></div>
-
+    <!-- Filter side panel -->
     <div class="sidepanel">
+        <!-- Close button -->
         <button id="sidepanel-close" class="sidepanel-close">&times;</button>
         <h1 class="sidepanel-cat">Filter</h1>
         <div>
+            <!-- Filter by category -->
             <h2 class="sidepanel-cat">Category</h2>
             <form id="category-form">
 
@@ -163,6 +177,7 @@
         </div>
         <hr>
         <div>
+            <!-- Filter by price using slider -->
             <h2 class="sidepanel-cat">Price</h2>
             <span class="price-display">$0 - $1000</span>
             <div class="range-input">
@@ -171,6 +186,7 @@
         </div>
         <hr>
     </div>
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">

@@ -1,3 +1,4 @@
+/* Default font */
 @font-face {
     font-family: 'Poppins';
     src: url('/fonts/Poppins-Regular.ttf') format('truetype');
@@ -12,6 +13,7 @@
     font-style: normal;
 }
 
+/* Set default font for this page */
 body {
     background-color: #0A0A0A;
     font-family: 'Poppins', sans-serif;
@@ -28,6 +30,8 @@ body {
 body {
     overflow-x: hidden;
 }
+
+/* Styling for nav bar */
 header {
     position: relative;
     width: 100%;
@@ -75,6 +79,7 @@ header a {
     color: #ffffff;
 }
 
+/* Product banner styling with slogan overlay */
 .top-banner{
     display: flex;
     justify-content: center;
@@ -82,6 +87,7 @@ header a {
     height: 80vh;
     flex-direction: column;
 }
+/* Styling for product image */
 .banner {
     background-image: url(../productpage-banner.png);
     background-size: cover;
@@ -94,18 +100,21 @@ header a {
     justify-content: center;
     align-items: center;
     position: relative; 
-  }
-  
-  .banner::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4); 
-    border-radius: 15px; 
-  }
+}
+
+/* Adds a tinted effect over the image for text clarity */
+.banner::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.4); 
+border-radius: 15px; 
+}
+
+/* Text with shadow for contrast */
 .banner h1{
     font-size: 7rem;
     font-weight: bold;
@@ -113,6 +122,8 @@ header a {
     text-align: center;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
 }
+
+/* Styling for search menu, filter and upload */
 .search-bar {
     display: flex;
     justify-content: center;
@@ -167,6 +178,8 @@ header a {
 .upload, .filter{
     cursor: pointer;
 }
+
+/* Styling for products container */
 .products {
     display: flex;
     justify-content: center;
@@ -174,6 +187,7 @@ header a {
     margin-top: 3rem;
     flex-direction: column;
 }
+/* Sets up a grid for each products so there will be four products for each row */
 .product-card-container {
     display: grid;
     justify-content: center;
@@ -181,6 +195,8 @@ header a {
     gap: 1.5rem;
     width: 80vw;
 }
+
+/* styling for end of products word */
 .end{
     background: none;
     font-size: 1.8rem;
@@ -189,6 +205,7 @@ header a {
     text-align: center;
 }
 
+/* styling for product card, adds a layer of progressive blur on the card for text */
 .gradient-blur img {
     max-width: 100%;
     border-radius: 15px;
@@ -248,6 +265,7 @@ header a {
     border-radius: 15px;
 }
 
+/* Progressive blur */
 .gradient-blur > div:nth-of-type(1) {
     z-index: 6;
     backdrop-filter: blur(3px); /* Decreased blur amount */
@@ -285,7 +303,7 @@ header a {
     );
 }
 
-
+/* styling for text on product card */
 .product-info-section {
     position: absolute;
     z-index: 20;
@@ -306,6 +324,8 @@ header a {
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
     z-index: 21;
 }
+
+/* Adds a slight tint on the product card for text clarity on white background */
 .product-info-section::after {
     content: '';
     position: absolute;
@@ -319,6 +339,9 @@ header a {
     border-bottom-left-radius: 15px;
     z-index: 19;
   }
+
+/* Styling for upload popup */
+/* Adds a blur effect on the screen when popup is pressed */
 .popup {
     position: fixed;
     top: 0;
@@ -335,6 +358,7 @@ header a {
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+/* Size and background colour of the the popup card */
 .popup-content {
     width: 70vw;
     height: 80vh;
@@ -348,6 +372,7 @@ header a {
     /* align-items: center; */
     gap: 9%;
 }
+/* Styling for upload product image */
 .uploadLeft{
     display: flex;
     flex-direction: column;
@@ -364,6 +389,8 @@ header a {
 .uploadImage{
     width: 15rem;
 }
+
+/* Styling for form for upload listings */
 .uploadInput, select, option{
     background-color: #FFFFFF;
     width: 20rem;
@@ -407,6 +434,8 @@ header a {
     font-size: 2.5rem;
     cursor: pointer;
 }
+
+/* Styling for lottie aninmation when the uploading the listing */
 #dotlottie-canvas {
     position: fixed;
     top: 0;
@@ -437,6 +466,8 @@ header a {
     display: none;
 }
 
+
+/* Styling for filter panel */
 .sidepanel {
     z-index: 100;
     position: fixed;  
@@ -448,29 +479,29 @@ header a {
     padding: 1rem;
     transition: left 0.5s ease; 
   }
-  
+/* Makes the filter have a slide in from the left animation */
 
-  .sidepanel-cat {
-    color: black;
-  }
-  
-  .sidepanel-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 30px;
-    background: transparent;
-    border: none;
-    color: black;
-    font-size: 2.5rem;
-    cursor: pointer;
-  }
-  
+.sidepanel-cat {
+color: black;
+}
 
-  .sidepanel.open {
-    left: 0;  
-  }
-  
+.sidepanel-close {
+position: absolute;
+top: 1rem;
+right: 1rem;
+font-size: 30px;
+background: transparent;
+border: none;
+color: black;
+font-size: 2.5rem;
+cursor: pointer;
+}
+
+
+.sidepanel.open {
+left: 0;  
+}
+
 .sidepanel-cat{
     color: black;
 }
@@ -485,6 +516,8 @@ header a {
     font-size: 2.5rem;
     cursor: pointer;
 }
+
+/* Styling for price range input */
 .range-input input{
     width: 70%;
 }
@@ -501,6 +534,8 @@ header a {
 
     border: none;
 }
+
+/* Styling for mobile menu */
 .mobile-menu {
     display: flex;
     position: fixed;
@@ -542,6 +577,7 @@ header a {
     padding-right: 0px;
 }
 
+/* styling for footer design */
 footer {
     background-color: #1b1b1b;
     color: #fff;
@@ -600,10 +636,13 @@ footer {
     color: #ccc;
 }
 
+/* Styling for mobile view */
 @media screen and (max-width: 900px) {
+    /* hides the original menu */
     .main-nav{
         display: none;
     }
+    /* shows the hamburger menu for mobile */
     .hamburger{
         display: block;
     }
@@ -616,6 +655,8 @@ footer {
     .search{
         width: 12rem;
     }
+
+    /* changes the number of cards per row to 2 when on mobile */
     .product-card-container{
         grid-template-columns: repeat(2, 1fr);
     }
