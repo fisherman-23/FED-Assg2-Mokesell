@@ -142,9 +142,6 @@ Focused on developing and optimizing the rewards page, ensuring it was both func
 - **Rewards Page Development**:  
   Developed the rewards page, where users can view and redeem their rewards. Focused on creating an intuitive layout that encourages engagement and enhances the overall user experience. Ensured that the rewards page aligned with the overall branding, providing a seamless look and feel for users. Worked on maintaining visual consistency with the rest of the website’s design.
 
-- **Mobile Optimization**:  
-  Ensured the rewards page was fully responsive and optimized for mobile devices. Applied mobile-first design principles to improve usability on smartphones and tablets, enhancing the user experience across different screen sizes.
-
 ## Features Summary:
 
 1. **User Account Management**
@@ -165,17 +162,22 @@ Focused on developing and optimizing the rewards page, ensuring it was both func
 7. **Unique User Interface using Three.js and Lottie Animations**
 
 ## Mokesell Web Pages
+
 ### Home Page:
-![home-page](https://github.com/user-attachments/assets/f7ee888e-925d-446b-b7a2-c4e14e699963)
+
+![home-page](showcase-thumbnails/home-page.png)
 
 ### Product Page:
-![product-list](https://github.com/user-attachments/assets/241ae4d7-42dd-4988-8b75-17fc52de04d5)
+
+![product-list](showcase-thumbnails/product-list.png)
 
 ### Product Details Page:
-![product-detail](https://github.com/user-attachments/assets/91e9a603-aa73-41f3-80fc-24adc92d579b)
+
+![product-detail](showcase-thumbnails/product-detail.png)
 
 ### Chat Page:
-![chat](https://github.com/user-attachments/assets/c75ee535-db14-4b41-bff7-42dc3cd84823)
+
+![chat](showcase-thumbnails/chat.png)
 
 ## Technology Usage
 
@@ -236,3 +238,6 @@ Focused on developing and optimizing the rewards page, ensuring it was both func
   - [Retro Computer 3D Model](https://www.blenderkit.com/get-blenderkit/0d42296d-6f1b-4ab1-9f06-a3dbf0b366b4/)
   - [Figma Phosphor Icon Pack](https://www.figma.com/community/file/903830135544202908/phosphor-icons)
 
+### Usage of Generative AI
+
+We use Generative AI tools like ChatGPT, DeepSeek & Microsoft Copilot to assist us in the development of this assignment. These tools have been employed to help with various tasks, including generating ideas, improving code quality, drafting documentation, and refining our overall project. While the AI has been instrumental in enhancing the efficiency of our work, we acknowledge that the final output, analysis, and conclusions are the result of our individual efforts and critical thinking.

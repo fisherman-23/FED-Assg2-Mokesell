@@ -1,3 +1,18 @@
+/**
+ * @fileoverview
+ * This script provides authentication functionality using Firebase, including user signup, login, logout,
+ * and state change listeners. It includes functions for creating a new user, logging in an existing user,
+ * and logging out. It also saves user data (including username) to Firestore upon signup and listens for
+ * authentication state changes to manage user sessions.
+ *
+ * @author Jing Shun
+ *
+ * @function signUp - Signs up a new user with email, password, and username.
+ * @function login - Logs in an existing user with email and password.
+ * @function logout - Logs out the current user.
+ * @function checkSignedIn - Checks if a user is signed in and retrieves their ID token.
+ */
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
